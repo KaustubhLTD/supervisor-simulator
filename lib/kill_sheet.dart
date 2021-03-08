@@ -64,14 +64,17 @@ class _KillSheetState extends State<KillSheet> {
                     padding: const EdgeInsets.only(top: 8.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [Text('WELL CONTROL PRE-KICK DATA SHEET')],
+                      children: [
+                        Text('WELL CONTROL PRE-KICK DATA SHEET',
+                            style: TextStyle(fontWeight: FontWeight.bold))
+                      ],
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 8.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [Text('(surface BOP stack))')],
+                      children: [Text('(SUBSEA ONLY)')],
                     ),
                   ),
                 ],
@@ -82,7 +85,10 @@ class _KillSheetState extends State<KillSheet> {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      overallMeasurement(), //Overall Mesurements
+                      // Padding(
+                      //   padding: const EdgeInsets.all(8.0),
+                      //   child: overallMeasurement(),
+                      // ), //Overall Mesurements
                       Container(
                         // height: 50,
                         color: Colors.grey.withOpacity(0.4),
@@ -90,7 +96,13 @@ class _KillSheetState extends State<KillSheet> {
                           padding: const EdgeInsets.only(top: 4.0, bottom: 4.0),
                           child: Row(
                             children: [
-                              Text('CAPACITIES AND VOLUME'),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8.0),
+                                child: Text(
+                                  'CAPACITIES AND VOLUME',
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -168,7 +180,7 @@ class _KillSheetState extends State<KillSheet> {
           child: TextFormField(
               decoration: InputDecoration(
             isDense: true,
-            contentPadding: EdgeInsets.all(6.0),
+            contentPadding: EdgeInsets.all(8.0),
             hintText: value,
             border: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.white),
@@ -183,229 +195,389 @@ class _KillSheetState extends State<KillSheet> {
 
   Widget capacitiesAndVolumeTableView() {
     return Container(
-        margin: EdgeInsets.only(left:2,right: 2),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey),
-                   
-                  ),
-      // margin: EdgeInsets.all(20),
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Expanded(
-                 flex:2,
-                child: Table(
-                  columnWidths: {
-                    0: FlexColumnWidth(3),
-                    // 1: FlexColumnWidth(2),
-                    // 2: FlexColumnWidth(4),
-                  },    
-                  
-                    border: TableBorder(
-                       verticalInside: BorderSide(color: Colors.grey),
-                                 horizontalInside: BorderSide(color: Colors.grey),),
-                               
-                  children: [
-                    TableRow(children: [
-                      Container(
-                        height: 60,
-                       
-                        child: Center(child: Text('DRILLING STRING DATA')),
-                      ),
-                      Container(
-                        height: 60,
-                        child: Center(child: Text('O.D.(in)')),
-                      ),
-                      Container(
-                        height: 60,
-                        child: Center(child: Text('I.D.(in)')),
-                      ),
-                      Container(
-                        height: 60,
-                        child: Center(child: Text('Wt.(lb/ft)')),
-                      ),
-                    ]),
-                    TableRow(children: [
-                      Container(
-                        height: 60,
-                         width:100,
-                        child: Center(child: Text('DRILL PIPE')),
-                      ),
-                      Container(
-                        height: 60,
-                        child: Center(child: Text('5.0')),
-                      ),
-                      Container(
-                        height: 60,
-                        child: Center(child: Text('4.3')),
-                      ),
-                      Container(
-                        height: 60,
-                        child: Center(child: Text('')),
-                      ),
-                    ]),
-                    TableRow(children: [
-                      Container(
-                        height: 60,
-                         width:100,
-                        child: Center(child: Text('HWDP')),
-                      ),
-                      Container(
-                        height: 60,
-                        child: Center(child: Text('5.0')),
-                      ),
-                      Container(
-                        height: 60,
-                        child: Center(child: Text('3.0')),
-                      ),
-                      Container(
-                        height: 60,
-                        child: Center(child: Text('')),
-                      ),
-                    ]),
-                     TableRow(children: [
-                      Container(
-                        height: 60,
-                         width:100,
-                        child: Center(child: Text('DRILL COLLARS')),
-                      ),
-                      Container(
-                        height: 60,
-                        child: Center(child: Text('5.0')),
-                      ),
-                      Container(
-                        height: 60,
-                        child: Center(child: Text('3.0')),
-                      ),
-                      Container(
-                        height: 60,
-                        child: Center(child: Text('')),
-                      ),
-                    ]),
-                  ],
-                ),
-              ),
-              Expanded(
-                flex:1,
-                child: Column(
-                  children: [
-                    Table(
-                        border: TableBorder(
-                       verticalInside: BorderSide(color: Colors.grey),
-                                 horizontalInside: BorderSide(color: Colors.grey),
-                                  left: BorderSide(color: Colors.grey)
-                                 ),
-                                 
-                      children: [
-                        TableRow(children: [
-                          Container(
-                            height: 30,
-                            child: Center(
-                                child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                  Text('CAPACITY'),
-                                  Text('*'),
-                                  Text('LENGTH'),
-                                  Text('='),
-                                  Text('VOLUME'),
-                                ])),
-                          ),
-                        ])
-                      ],
-                    ),
-                    // Container(
-                    //   height: 30,
-                    //   child: Text('hello')),
-                    Table(
-                      // defaultColumnWidth: FixedColumnWidth(120.0),
-                       border: TableBorder(
-                       verticalInside: BorderSide(color: Colors.grey),
-                                 horizontalInside: BorderSide(color: Colors.grey),
-                                  left: BorderSide(color: Colors.grey)
-                                 ),
-                      children: [
-                        TableRow(children: [
-                          Container(
-                            height: 30,
-                            child: Center(child: Text('(bbl/ft)',style: TextStyle(fontSize: 12),),),
-                          ),
-                          Container(
-                            height: 30,
-                            child: Center(child: Text('(ft)',style: TextStyle(fontSize: 12)),),
-                          ),
-                          Container(
-                            height: 30,
-                            child: Center(child: Text('(bbl)',style: TextStyle(fontSize: 12)),),
-                          ),
-                        ]),
-                        TableRow(children: [
-                          Container(
-                            height: 60,
-                            child: Center(child: Text('0.0.178')),
-                          ),
-                          Container(
-                            height: 60,
-                            child: Center(child: Text('7160')),
-                          ),
-                          Container(
-                            height: 60,
-                            child: Center(child: Text('127.4')),
-                          ),
-                        ]),
-                        TableRow(children: [
-                          Container(
-                            height: 60,
-                            child: Center(child: Text('0.0087')),
-                          ),
-                          Container(
-                            height: 60,
-                            child: Center(child: Text('240')),
-                          ),
-                          Container(
-                            height: 60,
-                            child: Center(child: Text('2.1')),
-                          ),
-                        ]),
-                           TableRow(children: [
-                          Container(
-                            height: 60,
-                            child: Center(child: Text('0.0087')),
-                          ),
-                          Container(
-                            height: 60,
-                            child: Center(child: Text('240')),
-                          ),
-                          Container(
-                            height: 60,
-                            child: Center(child: Text('2.1')),
-                          ),
-                        ]),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              Expanded(
-                              child: Table(children: [
-                   TableRow(children: [
-                            Container(
-                              height: 30,
-                              child: Center(child: Text('(bbl/ft)',style: TextStyle(fontSize: 12),),),
-                            ),
-                ],)
-            ],
-          ),
-              )
-        ],
+      margin: EdgeInsets.only(left: 2, right: 2),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey),
       ),
-        ]),
+      // margin: EdgeInsets.all(20),
+      child: Column(children: [
+        Row(
+          children: [
+            Expanded(
+              flex: 2,
+              child: Table(
+                columnWidths: {
+                  0: FlexColumnWidth(3),
+                  // 1: FlexColumnWidth(2),
+                  // 2: FlexColumnWidth(4),
+                },
+                border: TableBorder(
+                  verticalInside: BorderSide(color: Colors.grey),
+                  horizontalInside: BorderSide(color: Colors.grey),
+                ),
+                children: [
+                  TableRow(children: [
+                    Container(
+                      height: 60,
+                      child: Center(
+                        child: Text(
+                          'DRILLING STRING DATA',
+                          style: TextStyle(fontWeight: FontWeight.w500),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      height: 60,
+                      child: Center(
+                          child: Text(
+                        'O.D.(in)',
+                        style: TextStyle(fontWeight: FontWeight.w500),
+                      )),
+                    ),
+                    Container(
+                      height: 60,
+                      child: Center(
+                          child: Text(
+                        'I.D.(in)',
+                        style: TextStyle(fontWeight: FontWeight.w500),
+                      )),
+                    ),
+                    Container(
+                      height: 60,
+                      child: Center(
+                          child: Text(
+                        'Wt.(lb/ft)',
+                        style: TextStyle(fontWeight: FontWeight.w500),
+                      )),
+                    ),
+                  ]),
+                  TableRow(children: [
+                    Container(
+                      height: 60,
+                      width: 100,
+                      child: Center(
+                          child: Text(
+                        'DRILL PIPE',
+                        style: TextStyle(fontWeight: FontWeight.w500),
+                      )),
+                    ),
+                    Container(
+                      height: 60,
+                      child: Center(
+                          child: Text(
+                        '5.0',
+                        style: TextStyle(fontWeight: FontWeight.w500),
+                      )),
+                    ),
+                    Container(
+                      height: 60,
+                      child: Center(
+                          child: Text(
+                        '4.3',
+                        style: TextStyle(fontWeight: FontWeight.w500),
+                      )),
+                    ),
+                    Container(
+                      height: 60,
+                      child: Center(
+                          child: Text(
+                        '',
+                        style: TextStyle(fontWeight: FontWeight.w500),
+                      )),
+                    ),
+                  ]),
+                  TableRow(children: [
+                    Container(
+                      height: 60,
+                      width: 100,
+                      child: Center(child: Text('HWDP')),
+                    ),
+                    Container(
+                      height: 60,
+                      child: Center(child: Text('5.0')),
+                    ),
+                    Container(
+                      height: 60,
+                      child: Center(child: Text('3.0')),
+                    ),
+                    Container(
+                      height: 60,
+                      child: Center(child: Text('')),
+                    ),
+                  ]),
+                  TableRow(children: [
+                    Container(
+                      height: 60,
+                      width: 100,
+                      child: Center(child: Text('DRILL COLLARS')),
+                    ),
+                    Container(
+                      height: 60,
+                      child: Center(child: Text('5.0')),
+                    ),
+                    Container(
+                      height: 60,
+                      child: Center(child: Text('3.0')),
+                    ),
+                    Container(
+                      height: 60,
+                      child: Center(child: Text('')),
+                    ),
+                  ]),
+                ],
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: Column(
+                children: [
+                  Table(
+                    border: TableBorder(
+                        verticalInside: BorderSide(color: Colors.grey),
+                        horizontalInside: BorderSide(color: Colors.grey),
+                        left: BorderSide(color: Colors.grey)),
+                    children: [
+                      TableRow(
+                        children: [
+                        Container(
+                          height: 30,
+                          child: Center(
+                              child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                Text('CAPACITY'),
+                                Text('*'),
+                                Text('LENGTH'),
+                                Text('='),
+                                Text('VOLUME'),
+                              ])),
+                        ),
+                      ])
+                    ],
+                  ),
+                  // Container(
+                  //   height: 30,
+                  //   child: Text('hello')),
+                  Table(
+                    // defaultColumnWidth: FixedColumnWidth(120.0),
+                    border: TableBorder(
+                        verticalInside: BorderSide(color: Colors.grey),
+                        horizontalInside: BorderSide(color: Colors.grey),
+                        left: BorderSide(color: Colors.grey)),
+                    children: [
+                      TableRow(children: [
+                        Container(
+                          height: 30,
+                          child: Center(
+                            child: Text(
+                              '(bbl/ft)',
+                              style: TextStyle(fontSize: 12),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: 30,
+                          child: Center(
+                            child: Text('(ft)', style: TextStyle(fontSize: 12)),
+                          ),
+                        ),
+                        Container(
+                          height: 30,
+                          child: Center(
+                            child:
+                                Text('(bbl)', style: TextStyle(fontSize: 12)),
+                          ),
+                        ),
+                      ]),
+                      TableRow(children: [
+                        Container(
+                          height: 60,
+                          child: Center(child: Text('0.0.178')),
+                        ),
+                        Container(
+                          height: 60,
+                          child: Center(child: Text('7160')),
+                        ),
+                        Container(
+                          height: 60,
+                          child: Center(child: Text('127.4')),
+                        ),
+                      ]),
+                      TableRow(children: [
+                        Container(
+                          height: 60,
+                          child: Center(child: Text('0.0087')),
+                        ),
+                        Container(
+                          height: 60,
+                          child: Center(child: Text('240')),
+                        ),
+                        Container(
+                          height: 60,
+                          child: Center(child: Text('2.1')),
+                        ),
+                      ]),
+                      TableRow(children: [
+                        Container(
+                          height: 60,
+                          child: Center(child: Text('0.0087')),
+                        ),
+                        Container(
+                          height: 60,
+                          child: Center(child: Text('240')),
+                        ),
+                        Container(
+                          height: 60,
+                          child: Center(child: Text('2.1')),
+                        ),
+                      ]),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+        Row(
+          children: [
+            Expanded(
+              child:
+               Table(
+                columnWidths: {
+                  0: FlexColumnWidth(3.5),
+                  1: FlexColumnWidth(0.5),
+                  2: FlexColumnWidth(0.5),
+                },
+                border: TableBorder(
+                  verticalInside: BorderSide(color: Colors.grey),
+                  horizontalInside: BorderSide(color: Colors.grey),
+                  // left: BorderSide(color: Colors.grey),
+                  top: BorderSide(color: Colors.grey),
+                ),
+                children: [
+                  TableRow(
+                    children: [
+                      Container(
+                          height: 60,
+                          child: Center(
+                            child: Padding(
+                              padding: const EdgeInsets.all(4.0),
+                              child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                 
+                                  children: [
+                                    Container(
+                                        height: 30.0,
+                                        // width: 460.0,
+                                        decoration: new BoxDecoration(
+                                          shape: BoxShape.rectangle,
+                                          border: new Border.all(
+                                            color: Colors.black,
+                                            width: 1.0,
+                                          ),
+                                        ),
+                                        child: Center(
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(left:18.0,right: 18.0),
+                                              child: Text(
+                        'CHECK THAT TOTAL LENGTH = MESURED DEPTH',style: TextStyle(fontSize: 12),),
+                                            ))),
+                                          // SizedBox(width: 100,),
+                                    Icon(Icons.arrow_right)
+                                  ],
+                                ),
+                            ),
+                          ),
+                        ),
+                      Container(
+                        height: 60,
+                        child: Stack(children: [
+                          Center(
+                            child: Text(
+                              '(bbl/ft)',
+                              style: TextStyle(fontSize: 12),
+                            ),
+                          ),
+                          Positioned(bottom: 1, right: 8, child: Text('ft')),
+                        ]),
+                      ),
+                       Container(
+                        height: 60,
+                        child: Stack(children: [
+                          Center(
+                            child: Text(
+                              '(bbl/ft)',
+                              style: TextStyle(fontSize: 12),
+                            ),
+                          ),
+                          Positioned(bottom: 1, right: 8, child: Text('[bbls]')),
+                        ]),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
+
+       Row(
+         
+         children: [
+           Table(
+                    columnWidths: {
+                      0: FlexColumnWidth(0.5),
+                      1: FlexColumnWidth(0.3),
+                      2: FlexColumnWidth(0.3),
+                      3:  FlexColumnWidth(0.3),
+                     
+                    },
+                    border: TableBorder(
+                      verticalInside: BorderSide(color: Colors.grey),
+                      horizontalInside: BorderSide(color: Colors.grey),
+                      // left: BorderSide(color: Colors.grey),
+                      top: BorderSide(color: Colors.grey),
+                    ),
+                    children: [
+                      TableRow(
+                        children: [
+                          Container(
+                              height: 40,
+                              child: Center(
+                                child: Text('DRILLING PIPE IN CASING')
+                              ),
+                            ),
+                           Container(
+                              height: 40,
+                              child: Center(
+                                child: Text('0.12345')
+                              ),
+                            ),
+                            
+                             Container(
+                              height: 40,
+                              child: Center(
+                                child: Text('0.765')
+                              ),
+                            ),  
+                              Container(
+                              height: 40,
+                              child: Center(
+                                child: Text('0.122')
+                              ),
+                            ),  
+                             
+                            
+                         
+                        ],
+                      )
+
+                    ],
+                  ),
+         ],
+       ),
+      ]),
     );
   }
 }
