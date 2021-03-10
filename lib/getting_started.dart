@@ -55,9 +55,9 @@ class _GuidelinesState extends State<Guidelines> {
                         height: 6,
                       ),
                       Text(
-                        'At the end of this simulation, you will be able to learn and/or evaluate yourself on how to:',
-                        style: TextStyle(color: Colors.grey[500]),
-                      ),
+                          'At the end of this simulation, you will be able to learn and/or evaluate yourself on how to:',
+                          style: TextStyle(color: Colors.grey[500],),
+                        ),
                       SizedBox(height: 12),
                       Text(
                           '\u2022 Verify pre-operational setups before begining the kill operations.',

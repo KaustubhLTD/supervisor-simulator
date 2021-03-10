@@ -7,6 +7,8 @@ import 'package:flutter_application_1/mode_selection.dart';
 import 'package:flutter_application_1/sign_in.dart';
 import 'package:flutter_application_1/splash_screen.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'widgets/multilingual.dart';
 
 
 
@@ -34,6 +36,23 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: SplashScreen(),
+       supportedLocales: [
+        Locale('en', 'US'),
+
+      ],
+      localizationsDelegates: [
+        Multilingual.delegate,
+        GlobalMaterialLocalizations.delegate,
+      ],
+      localeResolutionCallback: (locale, supportedLocales) {
+        for (var supportedLocaleLanguage in supportedLocales) {
+          if (supportedLocaleLanguage.languageCode == locale.languageCode &&
+              supportedLocaleLanguage.countryCode == locale.countryCode) {
+            return supportedLocaleLanguage;
+          }
+        }
+        return supportedLocales.first;
+      },
     );
   }
 

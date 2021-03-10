@@ -1,5 +1,8 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utilities/constants.dart';
+import 'package:flutter_application_1/utilities/multilingual_service.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ModeSelection extends StatefulWidget {
   @override
@@ -8,26 +11,28 @@ class ModeSelection extends StatefulWidget {
 
 class KillMethodModel {
   String image;
-  String title;
+  String title ;
   KillMethodModel(this.image, this.title);
 }
 
 class _ModeSelectionState extends State<ModeSelection> {
   List<KillMethodModel> killMethodData = [
-    KillMethodModel('assets/images/drillerMethod.png', 'Drillers Method'),
-    KillMethodModel('assets/images/waitAndWeight.png', 'Wait and Weight'),
-    KillMethodModel('assets/images/bullheading.png', 'Bullheading'),
-    KillMethodModel('assets/images/volumetric.png', 'Volumetric'),
-    KillMethodModel('assets/images/lubeAndBleed.png', 'Lube and Bleed'),
+    KillMethodModel('assets/images/drillerMethod.png', 'drillers_method'),
+    KillMethodModel('assets/images/waitAndWeight.png', 'wait_and_weight'),
+    KillMethodModel('assets/images/bullheading.png', 'bullheading'),
+    KillMethodModel('assets/images/volumetric.png', 'volumetric'),
+    KillMethodModel('assets/images/lubeAndBleed.png', 'lube_and_bleed'),
   ];
 
   String selectedField = '';
+  String selectedMode = '';
 
   bool visiblebutton = false;
 
-  void _changed(bool visibility, String field) {
+  void _changed(bool visibility, String field,String mode) {
     setState(() {
       selectedField = field;
+      selectedMode = mode;
       visiblebutton = visibility;
     });
   }
@@ -36,55 +41,7 @@ class _ModeSelectionState extends State<ModeSelection> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      bottomNavigationBar: Row(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left:2.0),
-            child: Text('v5.3',
-                style: TextStyle(fontSize: 12, color: Colors.white)),
-          ),
-          Flexible(
-            child: Card(
-              color: Colors.grey[50].withOpacity(0.5),
-              child: Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: RichText(
-                  textAlign: TextAlign.center,
-                  text: TextSpan(
-                    children: <TextSpan>[
-                      TextSpan(
-                          text: 'For using IADC assesment mode,contact us at',
-                          style: TextStyle(fontSize: 10, color: Colors.black)),
-                      TextSpan(
-                          text: ' info@learntodrill.com',
-                          style: TextStyle(
-                              fontSize: 10, color: Constants.textColor)),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
-          visiblebutton
-              ? SizedBox(
-                  height: 10,
-                  width: 30,
-                )
-              : Card(
-                  color: Constants.themeBlue,
-                  child: Padding(
-                     padding: const EdgeInsets.all(2.0),
-                    child: Icon(
-                        
-                      Icons.shopping_cart,
-                      color: Colors.white,
-                      size: 20
-                    ),
-                  ))
-        ],
-      ),
+      
       appBar: AppBar(
         automaticallyImplyLeading: false,
          backgroundColor: Colors.white,
@@ -99,20 +56,23 @@ class _ModeSelectionState extends State<ModeSelection> {
           ? Container(
              height: 30,
             // width: 80,
-            child: Padding(
-              padding: const EdgeInsets.only(right:160.0),
-              child: RaisedButton(
+            child: Row(
+              children: [
+              // contentPadding: EdgeInsets.all(0),
+              //             leading: 
+              RaisedButton(
                  shape: RoundedRectangleBorder(
   borderRadius: BorderRadius.circular(8.0),),
                 color: Constants.themeBlue,
                   onPressed: () {
-                    selectedField == "Drillers Method" || selectedField == "Wait and Weight"||selectedField == "Bullheading"||selectedField == "Volumetric"||selectedField == "Lube and Bleed"
+                    selectedField == "Driller's Method" || selectedField == "Wait and Weight"||selectedField == "Bullheading"||selectedField == "Volumetric"||selectedField == "Lube and Bleed"
                         ? setState(() {
-                            _changed(true, "Practice");
+                            _changed(true, "Practice",
+                            '');
                           })
                         : selectedField == 'Select rig'
                             ? setState(() {
-                                _changed(true, "Drillers Method");
+                                _changed(true, "Driller's Method","");
                               })
                             : selectedField == "Practice" || selectedField == "Take a Test"
                                 ? setState(() {
@@ -122,9 +82,9 @@ class _ModeSelectionState extends State<ModeSelection> {
                                 : null;
                   },
                   child: Text(
-                    'Back',
+                    getText('back',context),
                     style: TextStyle(fontSize: 12,color: Colors.white),
-                  )),
+                  )),]
             ),
           )
           :Container(),
@@ -215,7 +175,8 @@ class _ModeSelectionState extends State<ModeSelection> {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                "Simulator for Drilling Operation Supervisor Course",
+                getText("simulator_for_drilling_operations_supervisor_course", context),
+                // "Simulator for Drilling Operation Supervisor Course",
                 style: TextStyle(color: Constants.textColor),
               ),
             ),
@@ -230,95 +191,201 @@ class _ModeSelectionState extends State<ModeSelection> {
                         'assets/images/bgSimulationSelectionDown.png'),
                     fit: BoxFit.cover)),
           ),
-          SingleChildScrollView(
-            child: Container(
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.center,
+          Column(
+            // mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            
+          
+            children: [
+              Column(
+                // mainAxisSize: MainA,
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(0.0),
                     child: Text(
+                      
                      selectedField == "Practice" || selectedField == "Take a Test"
-                          ? 'Select Method'
-                          : selectedField == "Drillers Method" ||
+                          ? getText('select_method',context)
+                          : selectedField == "Driller's Method" ||
                                   selectedField == "Wait and Weight"
-                              ? 'Select Rig'
-                              : 'Select Mode',
+                              ? getText('select_rig',context)
+                              : getText('select_mode',context),
                       style: TextStyle(fontSize: 20, color: Colors.white),
                     ),
                   ),
-                  selectedField == "Practice" || selectedField == "Take a Test"
-                      ? Text(
-                          '$selectedField -> Select Method',
-                          style: TextStyle(fontSize: 14, color: Colors.white),
-                        )
-                      : selectedField == "Drillers Method"
-                          ? Text(
-                              'Practices -> $selectedField -> Select rig',
-                              style:
-                                  TextStyle(fontSize: 14, color: Colors.white),
-                            )
-                          : SizedBox(),
-                  MediaQuery.of(context).orientation == Orientation.landscape
-                      ? SizedBox()
-                      : SizedBox(
-                          height: 40,
-                        ),
-                  selectedField == "Practice" || selectedField == "Take a Test"
-                      ? methodSelectionView()
-                      : selectedField == "Drillers Method" || selectedField == "Wait and Weight"||selectedField == "Bullheading"||selectedField == "Volumetric"||selectedField == "Lube and Bleed"
-                          ? Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                InkWell(
-                                    onTap: () {
-                                      Navigator.pushNamed(
-                                          context, '/guidelines');
-                                    },
-                                    child: rigSelectionCards(
-                                        'assets/images/surface.png',
-                                        'Surface')),
-                                MediaQuery.of(context).orientation ==
-                                        Orientation.landscape
-                                    ? SizedBox(width: 2)
-                                    : SizedBox(),
-                                InkWell(
-                                    onTap: () {
-                                      Navigator.pushNamed(
-                                          context, '/guidelines');
-                                    },
-                                    child: rigSelectionCards(
-                                        'assets/images/subsea.png',
-                                        'Subsea'))
-                              ],
-                            )
-                          : Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                InkWell(
-                                    onTap: () {
-                                      _changed(true, "Practice");
-                                    },
-                                    child: modeCards(
-                                        'assets/images/practice.png',
-                                        'Practice')),
-                              
-                                InkWell(
-                                    onTap: () {
-                                      _changed(true, "Take a Test");
-                                    },
-                                    child: modeCards(
-                                        'assets/images/takeTest.png',
-                                        'Take a Test'))
-                              ],
-                            ),
-                  SizedBox(
-                    height: 30,
-                  ),
+                 
+                 
+                  selectedField == "Practice" 
+                  ?
+                                       Text(
+                       getText('practice_select_method',context),
+                        style: TextStyle(fontSize: 14, color: Colors.white),
+                      )
+                  :selectedField == "Take a Test" ?
+
+                     Text(
+                       getText('test_select_method',context),
+                        style: TextStyle(fontSize: 14, color: Colors.white),
+                      )
+                  
+                   : selectedField == "Driller's Method" && selectedMode == "Practice" 
+                   ? Text(getText('practice_drillers_method_select_rig',context),style: TextStyle(fontSize: 14, color: Colors.white))
+                  : selectedField == "Driller's Method" && selectedMode == "Test" ?
+                  Text(getText('test_drillers_method_select_rig',context),style: TextStyle(fontSize: 14, color: Colors.white))
+
+                   : selectedField == "Wait and Weight" && selectedMode == "Practice" 
+                   ? Text(getText('practice_wnw_method_select_rig',context),style: TextStyle(fontSize: 14, color: Colors.white))
+                  : selectedField == "Wait and Weight" && selectedMode == "Test" ?
+                  Text(getText('test_wnw_method_select_rig',context),style: TextStyle(fontSize: 14, color: Colors.white))
+
+                  //  : selectedField == "Driller's Method" && selectedMode == "Practice" 
+                  //  ? Text(getText('practice_drillers_method_select_rig',context))
+                  // : selectedField == "Driller's Method" && selectedMode == "Test" ?
+                  // Text(getText('test_drillers_method_select_rig',context))
+                  //     ?  RichText(
+                  //       text:   TextSpan(
+                  //   children: <TextSpan>[
+                  //      TextSpan(
+                  //         text: 'Practice ->',
+                  //         style: TextStyle(fontSize: 14, color: Colors.white)),
+                  //     TextSpan(
+                  //         text: '$selectedField ->',
+                  //         style: TextStyle(fontSize: 14, color: Colors.white)),
+                  //     TextSpan(
+                       
+                  //         text: ' Select rig',
+                  //         style: TextStyle(
+                  //             fontSize: 14, color: Colors.white.withOpacity(0.8))),
+                  //   ],
+                  // ) 
+                  //     )
+                      
+                    
+                      
+                      
+                      // Text(
+                      //     'Practices -> $selectedField -> Select rig',
+                      //     style:
+                      //         TextStyle(fontSize: 14, color: Colors.white),
+                      //   )
+                      : SizedBox(),
+
                 ],
               ),
+            
+              
+              // MediaQuery.of(context).orientation == Orientation.landscape
+              //     ? SizedBox()
+              //     : SizedBox(
+              //         // height: 20,
+              //       ),
+              selectedField == "Practice" || selectedField == "Take a Test"
+                  ? methodSelectionView()
+                  : (selectedField == "Driller's Method" || selectedField == "Wait and Weight"||selectedField == "Bullheading"||selectedField == "Volumetric"||selectedField == "Lube and Bleed") 
+                      ? Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            InkWell(
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                      context, '/guidelines');
+                                },
+                                child: rigSelectionCards(
+                                    'assets/images/surface.png',
+                                    'Surface')),
+                            MediaQuery.of(context).orientation ==
+                                    Orientation.landscape
+                                ? SizedBox(width: 2)
+                                : SizedBox(),
+                            InkWell(
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                      context, '/guidelines');
+                                },
+                                child: rigSelectionCards(
+                                    'assets/images/subsea.png',
+                                    'Subsea'))
+                          ],
+                        )
+                      : Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            InkWell(
+                                onTap: () {
+                                  _changed(true, "Practice","Practice");
+                                 
+                                },
+                                child: modeCards(
+                                    'assets/images/practice.png',
+                                    getText('practice',context))),
+                          
+                            InkWell(
+                                onTap: () {
+                                  _changed(true, "Take a Test", "Test");
+                                },
+                                child: modeCards(
+                                    'assets/images/takeTest.png',
+                                    getText('take_a_test',context)))
+                          ],
+                        ),
+                         Row(
+        // mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left:8.0),
+            child: Text('v5.3',
+                style: TextStyle(fontSize: 12, color: Colors.white)),
+          ),
+          Flexible(
+            child: Card(
+              color: Colors.grey[50].withOpacity(0.5),
+              child: Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                    children: <TextSpan>[
+
+                     
+                    
+                      TextSpan(
+                        recognizer: TapGestureRecognizer()..onTap = () {
+                          launch("mailto:info@learntodrill.com");
+          // mailto:smith@example.org?subject=News&body=New%20plugin;
+        },
+                          text:  getText('for_using_iadc_assessment_mode_contact_us', context),
+                          style: TextStyle(
+                              fontSize: 10, color: Constants.textColor)),
+                    ],
+                  ),
+                ),
+              ),
             ),
+          ),
+          visiblebutton
+              ? SizedBox(
+                  height: 10,
+                  width: 30,
+                )
+              : Card(
+                  color: Constants.themeBlue,
+                  child: Padding(
+                     padding: const EdgeInsets.all(2.0),
+                    child: Icon(
+                        
+                      Icons.shopping_cart,
+                      color: Colors.white,
+                     size: MediaQuery.of(context).size.height*0.05,
+                      // size: 18
+                    ),
+                  ))
+        ],
+      ),
+              // SizedBox(
+              //   height: 20,
+              // ),
+            ],
           ),
         ],
       ),
@@ -354,40 +421,16 @@ class _ModeSelectionState extends State<ModeSelection> {
                   fontSize: 16.0,
                   fontWeight: FontWeight.normal,
                   color: Colors.white)),
-          Text('Credits:5',
+          Text(
+            getText('credits', context) + ':5',
+            // 'Credits:5',
               style: TextStyle(fontSize: 12.0, color: Colors.white)),
               SizedBox(height: 2,)
         ],
       ),
     );
 
-    //  Card(
-    //   shape: RoundedRectangleBorder(
-
-    //                           borderRadius: BorderRadius.circular(15),
-    //                         ),
-    //   key: UniqueKey(),
-    //   color: Constants.themeTang,
-    //   child: Column(children: <Widget>[
-    //     Container(
-    //         height:
-    //             MediaQuery.of(context).orientation == Orientation.landscape
-    //                 ? MediaQuery.of(context).size.width * 0.23
-    //                 : null,
-    //         color: Constants.themeBlue,
-    //         child: Image(
-    //           image: AssetImage(image), fit: BoxFit.contain,
-             
-    //         )),
-    //     Text(title,
-    //         style: TextStyle(
-    //             fontSize: 18.0,
-    //             fontWeight: FontWeight.normal,
-    //             color: Colors.white)),
-    //     Text('Credits:5',
-    //         style: TextStyle(fontSize: 12.0, color: Colors.white))
-    //   ]),
-    // );
+    
   }
 
   Widget rigSelectionCards(String image, String title) {
@@ -431,9 +474,10 @@ class _ModeSelectionState extends State<ModeSelection> {
 
   Widget methodSelectionView() {
     return Container(
-      height: MediaQuery.of(context).orientation == Orientation.landscape
-          ? 180
-          : 200,
+      height: 
+        MediaQuery.of(context).orientation == Orientation.landscape
+           ? MediaQuery.of(context).size.height*0.48:MediaQuery.of(context).size.height*0.48,
+         
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: killMethodData.length,
@@ -444,13 +488,47 @@ class _ModeSelectionState extends State<ModeSelection> {
   }
 
   Widget getMethodCard(KillMethodModel killmethod, BuildContext context) {
-    return   
+    return  
+    
+    //  Card(
+    //   shape: RoundedRectangleBorder(
+    //         borderRadius: BorderRadius.circular(10)),
+    //   color: Constants.themeTang,
+    //   child: Column(children: <Widget>[
+    //     Container(
+    //        decoration: BoxDecoration(
+    //                 color: Constants.themeBlue,
+    //                 borderRadius: BorderRadius.only(
+    //                     topLeft: Radius.circular(10),
+    //                     topRight: Radius.circular(10))),
+    //         height: MediaQuery.of(context).orientation == Orientation.landscape
+    //             ? MediaQuery.of(context).size.width * 0.21
+    //             : null,
+           
+    //         child: Image(
+    //             image: AssetImage(killmethod.image),
+    //             fit: BoxFit.contain,
+    //             height:  MediaQuery.of(context).size.height*0.42,
+    //             width:  MediaQuery.of(context).size.height*0.42
+    //             )
+    //             ),
+    //     Padding(
+    //       padding: const EdgeInsets.all(8.0),
+    //       child: Text(killmethod.title,
+    //           style: TextStyle(
+    //               fontSize: 18.0,
+    //               fontWeight: FontWeight.normal,
+    //               color: Colors.white)),
+    //     ),
+    //   ]),
+    // );
+   
     MediaQuery.of(context).orientation == Orientation.landscape?
     Padding(
       padding: const EdgeInsets.only(left:4.0,right:4.0),
       child: InkWell(
         onTap: (){
-           _changed(true, killmethod.title);
+           _changed(true, getText(killmethod.title,context),selectedMode);
         },
 //  _changed(true, killmethod.title),
               child: Card(
@@ -470,13 +548,15 @@ class _ModeSelectionState extends State<ModeSelection> {
                   image: AssetImage(killmethod.image),
                   fit: BoxFit.contain,
                    
-                  height:  MediaQuery.of(context).orientation == Orientation.landscape ?    MediaQuery.of(context).size.height*0.38 : null,
-                  width:  MediaQuery.of(context).orientation == Orientation.landscape ?    MediaQuery.of(context).size.height*0.42 : null,
+                  height:  MediaQuery.of(context).orientation == Orientation.landscape ?    MediaQuery.of(context).size.height*0.38 : 100,
+                  width:  MediaQuery.of(context).orientation == Orientation.landscape ?    MediaQuery.of(context).size.height*0.42 : 100,
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 5),
-                child: Text(killmethod.title,
+                child: Text(
+                  getText(killmethod.title,context)
+                 ,
                     style: TextStyle(
                         fontSize: 16.0,
                         fontWeight: FontWeight.normal,
@@ -489,9 +569,11 @@ class _ModeSelectionState extends State<ModeSelection> {
       ),
     ):
 
+
+
     InkWell(
       onTap: () {
-        _changed(true, killmethod.title);
+        _changed(true, killmethod.title,selectedMode);
       },
       child: AnimatedSwitcher(
         duration: const Duration(milliseconds: 1000),

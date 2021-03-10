@@ -112,7 +112,7 @@ List<String> configList = ["Well Config 1","Well Config 2","IADC Config 1","IADC
                       Expanded(
                           flex: 2,
                           child: Container(
-                            // color: Colors.yellow,
+                          //  color: Colors.yellow,
                             child: configurationDetails(),
                           ))
                     ],
@@ -136,9 +136,12 @@ List<String> configList = ["Well Config 1","Well Config 2","IADC Config 1","IADC
                   visualDensity: VisualDensity(horizontal: 0, vertical: -4),
                   dense: true,
                   contentPadding: EdgeInsets.all(0.0),
-                  title: Text(
-                   configList[index],
-                    style: TextStyle(fontSize: 16),
+                  title: Padding(
+                    padding: const EdgeInsets.only(left:10.0),
+                    child: Text(
+                     configList[index],
+                      style: TextStyle(fontSize: 16),
+                    ),
                   ),
                   onTap: (){
                     setState(() {
@@ -159,328 +162,47 @@ List<String> configList = ["Well Config 1","Well Config 2","IADC Config 1","IADC
      }
       
       );
-    // return SingleChildScrollView(
-    //   child: Padding(
-    //     padding: const EdgeInsets.all(8.0),
-    //     child: Column(
-    //       //  mainAxisAlignment: MainAxisAlignment.start,
-    //       crossAxisAlignment: CrossAxisAlignment.start,
-    //       children: [
-    //         ListTile(
-    //           visualDensity: VisualDensity(horizontal: 0, vertical: -4),
-    //           dense: true,
-    //           contentPadding: EdgeInsets.all(0.0),
-    //           title: Text(
-    //             'Well Config 1',
-    //             style: TextStyle(fontSize: 16),
-    //           ),
-    //           trailing: Icon(
-    //             Icons.arrow_forward_ios,
-    //             size: 10,
-    //           ),
-    //           onTap: () {
-    //             setState(() {
-    //               drillpipeOD = 5.0;
-    //               drillpipeID = 4.276;
-    //               drillCollarOD = 6.25;
-    //               drillCollarID = 2.78;
-    //               casingOD = 10.75;
-    //               casingID = 9.95;
-    //               drillbitSize = 8.5;
-    //               formationPressure = 5616.0;
-    //               isSelected=true;
-    //             });
-    //           },
-    //         ),
-    //         Divider(),
-    //         ListTile(
-    //           visualDensity: VisualDensity(horizontal: 0, vertical: -4),
-    //           dense: true,
-    //           contentPadding: EdgeInsets.all(0.0),
-    //           title: Text(
-    //             'Well Config 2',
-    //             style: TextStyle(fontSize: 16),
-    //           ),
-    //           // trailing: Icon(
-    //           //   Icons.arrow_forward_ios,
-    //           //   size: 10,
-    //           // ),
-    //           onTap: () {
-    //             setState(() {
-    //               drillpipeOD = 15.0;
-    //               drillpipeID = 14.276;
-    //               drillCollarOD = 116.25;
-    //               drillCollarID = 2.78;
-    //               casingOD = 110.75;
-    //               casingID = 9.95;
-    //               drillbitSize = 8.5;
-    //               formationPressure = 5616.0;
-    //                isSelected=true;
-    //             });
-    //           },
-    //         ),
-    //         Divider(),
-    //         ListTile(
-    //           visualDensity: VisualDensity(horizontal: 0, vertical: -4),
-    //           dense: true,
-    //           contentPadding: EdgeInsets.all(0.0),
-    //           title: Text(
-    //             'IADC Config 1',
-    //             style: TextStyle(fontSize: 16),
-    //           ),
-    //           // trailing: Icon(
-    //           //   Icons.arrow_forward_ios,
-    //           //   size: 10,
-    //           // ),
-    //             onTap: () {
-    //             setState(() {
-    //               drillpipeOD = 5.0;
-    //               drillpipeID = 4.276;
-    //               drillCollarOD = 6.25;
-    //               drillCollarID = 2.78;
-    //               casingOD = 10.75;
-    //               casingID = 9.95;
-    //               drillbitSize = 8.5;
-    //               formationPressure = 5616.0;
-    //                isSelected=true;
-    //             });
-    //           },
-    //         ),
-    //         Divider(),
-    //         ListTile(
-    //           visualDensity: VisualDensity(horizontal: 0, vertical: -4),
-    //           dense: true,
-    //           contentPadding: EdgeInsets.all(0.0),
-    //           title: Text(
-    //             'IADC Config 2',
-    //             style: TextStyle(fontSize: 16),
-    //           ),
-    //           // trailing: Icon(
-    //           //   Icons.arrow_forward_ios,
-    //           //   size: 10,
-    //           // ),
-    //             onTap: () {
-    //             setState(() {
-    //               drillpipeOD = 5.0;
-    //               drillpipeID = 4.276;
-    //               drillCollarOD = 6.25;
-    //               drillCollarID = 2.78;
-    //               casingOD = 10.75;
-    //               casingID = 9.95;
-    //               drillbitSize = 8.5;
-    //               formationPressure = 5616.0;
-    //                isSelected=true;
-    //             });
-    //           },
-    //         ),
-    //         Divider(),
-    //         ListTile(
-    //           visualDensity: VisualDensity(horizontal: 0, vertical: -4),
-    //           dense: true,
-    //           contentPadding: EdgeInsets.all(0.0),
-    //           title: Text(
-    //             'IADC Config 3',                        
-    //             style: TextStyle(fontSize: 16),
-    //           ),
-    //           // trailing: Icon(
-    //           //   Icons.arrow_forward_ios,
-    //           //   size: 10,
-    //           // ),
-
-    //             onTap: () {
-    //             setState(() {
-    //               drillpipeOD = 5.0;
-    //               drillpipeID = 4.276;
-    //               drillCollarOD = 6.25;
-    //               drillCollarID = 2.78;
-    //               casingOD = 10.75;
-    //               casingID = 9.95;
-    //               drillbitSize = 8.5;
-    //               formationPressure = 5616.0;
-    //                isSelected=true;
-    //             });
-    //           },
-    //         ),
-    //         Divider(),
-    //         ListTile(
-    //           visualDensity: VisualDensity(horizontal: 0, vertical: -4),
-    //           dense: true,
-    //           contentPadding: EdgeInsets.all(0.0),
-    //           title: Text(
-    //             'New Well Config 1',
-    //             style: TextStyle(fontSize: 16),
-    //           ),
-    //           // trailing: Icon(
-    //           //   Icons.arrow_forward_ios,
-    //           //   size: 10,
-    //           // ),
-
-    //             onTap: () {
-    //             setState(() {
-    //               drillpipeOD = 5.0;
-    //               drillpipeID = 4.276;
-    //               drillCollarOD = 6.25;
-    //               drillCollarID = 2.78;
-    //               casingOD = 10.75;
-    //               casingID = 9.95;
-    //               drillbitSize = 8.5;
-    //               formationPressure = 5616.0;
-    //                isSelected=true;
-    //             });
-    //           },
-    //         ),
-    //         Divider(),
-    //         ListTile(
-    //           visualDensity: VisualDensity(horizontal: 0, vertical: -4),
-    //           dense: true,
-    //           contentPadding: EdgeInsets.all(0.0),
-    //           title: Text(
-    //             'New IADC Config 1',
-    //             style: TextStyle(fontSize: 16),
-    //           ),
-    //           // trailing: Icon(
-    //           //   Icons.arrow_forward_ios,
-    //           //   size: 10,
-    //           // ),
-
-    //             onTap: () {
-    //             setState(() {
-    //               drillpipeOD = 5.0;
-    //               drillpipeID = 4.276;
-    //               drillCollarOD = 6.25;
-    //               drillCollarID = 2.78;
-    //               casingOD = 10.75;
-    //               casingID = 9.95;
-    //               drillbitSize = 8.5;
-    //               formationPressure = 5616.0;
-    //                isSelected=true;
-    //             });
-    //           },
-    //         ),
-    //         Divider(),
-    //         ListTile(
-    //           visualDensity: VisualDensity(horizontal: 0, vertical: -4),
-    //           dense: true,
-    //           contentPadding: EdgeInsets.all(0.0),
-    //           title: Text(
-    //             'New IADC Config 2',
-    //             style: TextStyle(fontSize: 16),
-    //           ),
-    //           // trailing: Icon(
-    //           //   Icons.arrow_forward_ios,
-    //           //   size: 10,
-    //           // ),
-
-    //             onTap: () {
-    //             setState(() {
-    //               drillpipeOD = 5.0;
-    //               drillpipeID = 4.276;
-    //               drillCollarOD = 6.25;
-    //               drillCollarID = 2.78;
-    //               casingOD = 10.75;
-    //               casingID = 9.95;
-    //               drillbitSize = 8.5;
-    //               formationPressure = 5616.0;
-    //                isSelected=true;
-    //             });
-    //           },
-    //         ),
-    //         Divider(),
-    //         ListTile(
-    //           visualDensity: VisualDensity(horizontal: 0, vertical: -4),
-    //           dense: true,
-    //           contentPadding: EdgeInsets.all(0.0),
-    //           title: Text(
-    //             'New IADC Config 3',
-    //             style: TextStyle(fontSize: 16),
-    //           ),
-    //           // trailing: Icon(
-    //           //   Icons.arrow_forward_ios,
-    //           //   size: 10,
-    //           // ),
-
-    //             onTap: () {
-    //             setState(() {
-    //               drillpipeOD = 5.0;
-    //               drillpipeID = 4.276;
-    //               drillCollarOD = 6.25;
-    //               drillCollarID = 2.78;
-    //               casingOD = 10.75;
-    //               casingID = 9.95;
-    //               drillbitSize = 8.5;
-    //               formationPressure = 5616.0;
-    //                isSelected=true;
-    //             });
-    //           },
-    //         ),
-    //         Divider(),
-    //       ],
-    //     ),
-    //   ),
-    // );
+   
   }
 
   Widget configurationDetails() {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          Container(
-            // height: 50,
-            color: Colors.grey.withOpacity(0.4),
-            child: Padding(
-              padding: const EdgeInsets.only(top: 4.0, bottom: 4.0),
-              child: Row(
-                children: [
-                  Text('Configuration Details'),
-                ],
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 8.0),
+    return ListView(
+      
+      children: [
+        Container(
+          //  height: 50,
+          color: Colors.grey.withOpacity(0.4),
+          child: Padding(
+            padding: const EdgeInsets.only(top: 4.0, bottom: 4.0),
             child: Row(
               children: [
-                Expanded(child: Text('Drillpipe OD')),
-                Expanded(
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: TextFormField(
-                            decoration: InputDecoration(
-                          isDense: true,
-                          contentPadding: EdgeInsets.all(8.0),
-                          hintText: drillpipeOD.toString(),
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                            borderRadius: BorderRadius.circular(5.7),
-                          ),
-                        )),
-                      ),
-                      Text('  inches  ')
-                    ],
-                  ),
-                ),
+                Text('Configuration Details'),
               ],
             ),
           ),
-          Divider(),
-          Row(
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 8.0),
+          child: Row(
             children: [
-              Expanded(child: Text('Drillpipe ID')),
+              Expanded(child: Text('Drillpipe OD')),
               Expanded(
                 child: Row(
                   children: [
                     Expanded(
                       child: TextFormField(
+                        readOnly: true,
                           decoration: InputDecoration(
+                            hintStyle: TextStyle(color:Colors.black),
                         isDense: true,
                         contentPadding: EdgeInsets.all(8.0),
-                        hintText: drillpipeID.toString(),
+                        hintText: drillpipeOD.toString(),
                         border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
                           borderRadius: BorderRadius.circular(5.7),
                         ),
-                      )),
+                      )
+                      ),
                     ),
                     Text('  inches  ')
                   ],
@@ -488,192 +210,258 @@ List<String> configList = ["Well Config 1","Well Config 2","IADC Config 1","IADC
               ),
             ],
           ),
-          Divider(),
-          //  Row(
-          //   children: [
-          //     Expanded(child: Text('Drillpipe ID')),
-          //     Expanded(
-          //       child: Row(
-          //         children: [
-          //           Expanded(
-          //             child: TextFormField(
-          //                 decoration: InputDecoration(
-          //               isDense: true,
-          //               contentPadding: EdgeInsets.all(8.0),
-          //               hintText:  drillpipeID.toString(),
-          //               border: OutlineInputBorder(
-          //                 borderSide: BorderSide(color: Colors.white),
-          //                 borderRadius: BorderRadius.circular(5.7),
-          //               ),
-          //             )),
-          //           ),
-          //           Text('  inches  ')
-          //         ],
-          //       ),
-          //     ),
-          //   ],
-          // ),
-          // Divider(),
-          Row(
-            children: [
-              Expanded(child: Text('Drill collar OD')),
-              Expanded(
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: TextFormField(
-                          decoration: InputDecoration(
-                        isDense: true,
-                        contentPadding: EdgeInsets.all(8.0),
-                        hintText: drillCollarOD.toString(),
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
-                          borderRadius: BorderRadius.circular(5.7),
-                        ),
-                      )),
-                    ),
-                    Text('  inches  ')
-                  ],
-                ),
+        ),
+        Divider(),
+        Row(
+          children: [
+            Expanded(child: Text('Drillpipe ID')),
+            Expanded(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                       readOnly: true,
+                        decoration: InputDecoration(
+                            hintStyle: TextStyle(color:Colors.black),
+                      isDense: true,
+                      contentPadding: EdgeInsets.all(8.0),
+                      hintText: drillpipeID.toString(),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                        borderRadius: BorderRadius.circular(5.7),
+                      ),
+                    )),
+                  ),
+                  Text('  inches  ')
+                ],
               ),
-            ],
-          ),
-          Divider(),
-          Row(
-            children: [
-              Expanded(child: Text('Drill collar ID')),
-              Expanded(
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: TextFormField(
-                          decoration: InputDecoration(
-                        isDense: true,
-                        contentPadding: EdgeInsets.all(8.0),
-                        hintText: drillCollarID.toString(),
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
-                          borderRadius: BorderRadius.circular(5.7),
-                        ),
-                      )),
-                    ),
-                    Text('  inches  ')
-                  ],
-                ),
+            ),
+          ],
+        ),
+        Divider(),
+        //  Row(
+        //   children: [
+        //     Expanded(child: Text('Drillpipe ID')),
+        //     Expanded(
+        //       child: Row(
+        //         children: [
+        //           Expanded(
+        //             child: TextFormField(
+        //                 decoration: InputDecoration(
+        //               isDense: true,
+        //               contentPadding: EdgeInsets.all(8.0),
+        //               hintText:  drillpipeID.toString(),
+        //               border: OutlineInputBorder(
+        //                 borderSide: BorderSide(color: Colors.white),
+        //                 borderRadius: BorderRadius.circular(5.7),
+        //               ),
+        //             )),
+        //           ),
+        //           Text('  inches  ')
+        //         ],
+        //       ),
+        //     ),
+        //   ],
+        // ),
+        // Divider(),
+        Row(
+          children: [
+            Expanded(child: Text('Drill collar OD')),
+            Expanded(
+              child: Row(
+                
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                       readOnly: true,
+                        decoration: InputDecoration(
+                            hintStyle: TextStyle(color:Colors.black),
+                      isDense: true,
+                      contentPadding: EdgeInsets.all(8.0),
+                      hintText: drillCollarOD.toString(),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                        borderRadius: BorderRadius.circular(5.7),
+                      ),
+                    )),
+                  ),
+                  Text('  inches  ')
+                ],
               ),
-            ],
-          ),
-          Divider(),
-          Row(
-            children: [
-              Expanded(child: Text('Casing OD')),
-              Expanded(
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: TextFormField(
-                          decoration: InputDecoration(
-                        isDense: true,
-                        contentPadding: EdgeInsets.all(8.0),
-                        hintText: casingOD.toString(),
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
-                          borderRadius: BorderRadius.circular(5.7),
-                        ),
-                      )),
-                    ),
-                    Text('  inches  ')
-                  ],
-                ),
+            ),
+          ],
+        ),
+        Divider(),
+        Row(
+          children: [
+            Expanded(child: Text('Drill collar ID')),
+            Expanded(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                       readOnly: true,
+                        decoration: InputDecoration(
+                            hintStyle: TextStyle(color:Colors.black),
+                      isDense: true,
+                      contentPadding: EdgeInsets.all(8.0),
+                      hintText: drillCollarID.toString(),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                        borderRadius: BorderRadius.circular(5.7),
+                      ),
+                    )),
+                  ),
+                  Text('  inches  ')
+                ],
               ),
-            ],
-          ),
-          Divider(),
-          Row(
-            children: [
-              Expanded(child: Text('Casing ID')),
-              Expanded(
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: TextFormField(
-                          decoration: InputDecoration(
-                        isDense: true,
-                        contentPadding: EdgeInsets.all(8.0),
-                        hintText: casingID.toString(),
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
-                          borderRadius: BorderRadius.circular(5.7),
-                        ),
-                      )),
-                    ),
-                    Text('  inches  ')
-                  ],
-                ),
+            ),
+          ],
+        ),
+        Divider(),
+        Row(
+          children: [
+            Expanded(child: Text('Casing OD')),
+            Expanded(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                       readOnly: true,
+                        decoration: InputDecoration(
+                            hintStyle: TextStyle(color:Colors.black),
+                      isDense: true,
+                      contentPadding: EdgeInsets.all(8.0),
+                      hintText: casingOD.toString(),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                        borderRadius: BorderRadius.circular(5.7),
+                      ),
+                    )),
+                  ),
+                  Text('  inches  ')
+                ],
               ),
-            ],
-          ),
-          Divider(),
-          Row(
-            children: [
-              Expanded(child: Text('Drillbit size')),
-              Expanded(
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: TextFormField(
-                          decoration: InputDecoration(
-                        isDense: true,
-                        contentPadding: EdgeInsets.all(8.0),
-                        hintText: drillbitSize.toString(),
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
-                          borderRadius: BorderRadius.circular(5.7),
-                        ),
-                      )),
-                    ),
-                    Text('  inches  ')
-                  ],
-                ),
+            ),
+          ],
+        ),
+        Divider(),
+        Row(
+          children: [
+            Expanded(child: Text('Casing ID')),
+            Expanded(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                       readOnly: true,
+                        decoration: InputDecoration(
+                            hintStyle: TextStyle(color:Colors.black),
+                      isDense: true,
+                      contentPadding: EdgeInsets.all(8.0),
+                      hintText: casingID.toString(),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                        borderRadius: BorderRadius.circular(5.7),
+                      ),
+                    )),
+                  ),
+                  Text('  inches  ')
+                ],
               ),
-            ],
-          ),
-          Divider(),
-          Row(
-            children: [
-              Expanded(child: Text('Formation Pressure')),
-              Expanded(
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: TextFormField(
-                          decoration: InputDecoration(
-                        isDense: true,
-                        contentPadding: EdgeInsets.all(8.0),
-                        hintText: formationPressure.toString(),
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
-                          borderRadius: BorderRadius.circular(5.7),
-                        ),
-                      )),
-                    ),
-                    Text('  psi        ')
-                  ],
-                ),
+            ),
+          ],
+        ),
+        Divider(),
+        Row(
+          children: [
+            Expanded(child: Text('Drillbit size')),
+            Expanded(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                       readOnly: true,
+                        decoration: InputDecoration(
+                            hintStyle: TextStyle(color:Colors.black),
+                      isDense: true,
+                      contentPadding: EdgeInsets.all(8.0),
+                      hintText: drillbitSize.toString(),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                        borderRadius: BorderRadius.circular(5.7),
+                      ),
+                    )),
+                  ),
+                  Text('  inches  ')
+                ],
               ),
-            ],
-          ),
-          SizedBox(height: 20,),
-          RaisedButton(
-           shape: RoundedRectangleBorder(
-  borderRadius: BorderRadius.circular(4.0),),
-             color:Color(0xFF166ABE),
-             child: Text('Continue With this Configuration',style: TextStyle(color: Colors.white),),
-            onPressed: (){
+            ),
+          ],
+        ),
+        Divider(),
+        Row(
+          children: [
+            Expanded(child: Text('Formation Pressure')),
+            Expanded(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                       readOnly: true,
+                        decoration: InputDecoration(
+                            hintStyle: TextStyle(color:Colors.black),
+                      isDense: true,
+                      contentPadding: EdgeInsets.all(8.0),
+                      hintText: formationPressure.toString(),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                        borderRadius: BorderRadius.circular(5.7),
+                      ),
+                    )),
+                  ),
+                  Text('  psi        ')
+                ],
+              ),
+            ),
+          ],
+        ),
+        SizedBox(height: 150,),
+      Container(
+                  
+                  child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: SizedBox(
+                      width: 250,
+                      height: 50,
+                      
+                      child: RaisedButton(
+                         color:Color(0xFF166ABE),
+             child: Text('Continue With this configuration',style: TextStyle(color: Colors.white),),
+                       
+                        onPressed: () {},
+                      ),
+                    ),
+                  ),
+                ),
+
+                 SizedBox(height: 30,),
+        // RaisedButton(onPressed: (){})
+        // ignore: deprecated_member_use
+  //       Container(
+  //         width: 50,
+  //         child: RaisedButton(
+            
+  //          shape: RoundedRectangleBorder(
+             
+  // borderRadius: BorderRadius.circular(4.0),),
+  //            color:Color(0xFF166ABE),
+  //            child: Text('Continue With this Configuration',style: TextStyle(color: Colors.white),),
+  //           onPressed: (){
            
-          })
-        ],
-      ),
+  //         }),
+  //       )
+      ],
     );
   }
 }
