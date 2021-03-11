@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: routing,
       title: 'Flutter Demo',
       theme: ThemeData(
+        errorColor: Colors.grey,
        
         primarySwatch: Colors.blue,
        
