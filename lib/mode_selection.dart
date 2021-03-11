@@ -65,11 +65,20 @@ class _ModeSelectionState extends State<ModeSelection> {
   borderRadius: BorderRadius.circular(8.0),),
                 color: Constants.themeBlue,
                   onPressed: () {
-                    selectedField == "Driller's Method" || selectedField == "Wait and Weight"||selectedField == "Bullheading"||selectedField == "Volumetric"||selectedField == "Lube and Bleed"
+ (selectedField == "Driller's Method"  || selectedField == "Wait and Weight"||selectedField == "Bullheading"||selectedField == "Volumetric"||selectedField == "Lube and Bleed") && selectedMode == "Practice" 
                         ? setState(() {
                             _changed(true, "Practice",
-                            '');
-                          })
+                            'Practice');
+                          }) 
+
+      :
+      (selectedField == "Driller's Method"  || selectedField == "Wait and Weight"||selectedField == "Bullheading"||selectedField == "Volumetric"||selectedField == "Lube and Bleed") && selectedMode == "Test" 
+       ? setState(() {
+                          _changed(true, "Take a Test", "Test");
+                          }) 
+
+                         
+                          
                         : selectedField == 'Select rig'
                             ? setState(() {
                                 _changed(true, "Driller's Method","");
