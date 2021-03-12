@@ -27,24 +27,7 @@ class _SignInState extends State<SignIn> {
   bool newUser = false;
   bool _obscureText = true;
 
-  String _validateEmail(String value) {
-    value = value.trim();
-    if (value.isEmpty || !value.contains('@') || !isEmail(value)) {
-      return 'Please enter a valid email!';
-    } else
-      return null;
-  }
-
-  String _validatePassword(String value) {
-    if (value.length == 0) {
-      return "Please enter a password";
-    }
-    if (value.length <= 6) {
-      return "Please enter a password";
-    } else {
-      return null;
-    }
-  }
+ 
 
   signIn() {
     final isValid = _loginUserFormKey.currentState.validate();
@@ -187,7 +170,7 @@ class _SignInState extends State<SignIn> {
                                 decoration: InputDecoration(
                                   isDense: true,
                                   contentPadding: EdgeInsets.all(8.0),
-                                  hintText: 'Enter your valid email id here',
+                                  hintText: getText('enter_your_valid_email_id_here', context),
                                   hintStyle: TextStyle(
                                       fontSize: 14, color: Colors.grey[300]),
                                   border: OutlineInputBorder(
@@ -236,7 +219,7 @@ class _SignInState extends State<SignIn> {
                                                 BoxConstraints(
                                                     minHeight: 24,
                                                     minWidth: 24),
-                                            hintText: "Password",
+                                            hintText: getText('password',context),
                                             hintStyle: TextStyle(
                                                 fontSize: 14,
                                                 color: Colors.grey[300]),
@@ -320,7 +303,7 @@ class _SignInState extends State<SignIn> {
                                               // this._validatePassword,
 
                                               decoration: new InputDecoration(
-                                                hintText: "Password",
+                                                hintText: getText('password',context),
                                                 hintStyle: TextStyle(
                                                     fontSize: 14,
                                                     color: Colors.grey[300]),
@@ -387,7 +370,7 @@ class _SignInState extends State<SignIn> {
                                                     BoxConstraints(
                                                         minHeight: 24,
                                                         minWidth: 24),
-                                                hintText: "Confirm Password",
+                                                hintText: getText('confirm_password',context),
                                                 hintStyle: TextStyle(
                                                     fontSize: 14,
                                                     color: Colors.grey[300]),
@@ -471,7 +454,7 @@ class _SignInState extends State<SignIn> {
               Navigator.of(context).pop();
             },
             isDefaultAction: true,
-            child: Text("OK"),
+            child: Text(getText('ok', context),),
           ),
         ],
       ),
@@ -492,14 +475,14 @@ class _SignInState extends State<SignIn> {
               Navigator.of(context).pop();
             },
             isDefaultAction: true,
-            child: Text("No"),
+            child: Text(getText('no', context),),
           ),
           CupertinoDialogAction(
             onPressed: () {
               Navigator.of(context).pop();
             },
             isDefaultAction: true,
-            child: Text("Yes"),
+            child: Text(getText('yes', context)),
           ),
         ],
       ),

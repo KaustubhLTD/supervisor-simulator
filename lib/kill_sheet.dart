@@ -6,8 +6,6 @@ class KillSheet extends StatefulWidget {
   _KillSheetState createState() => _KillSheetState();
 }
 
-
-
 class _KillSheetState extends State<KillSheet> {
   @override
   Widget build(BuildContext context) {
@@ -526,76 +524,69 @@ class _KillSheetState extends State<KillSheet> {
         ),
         Row(
           children: [
-             Expanded(
-               flex: 1,
-                            child: Table(
-                      border: TableBorder(
-                          verticalInside: BorderSide(color: Colors.grey),
-                          horizontalInside: BorderSide(color: Colors.grey),
-                          top: BorderSide(color: Colors.grey)),
-                      children: [
-                        TableRow(children: [
-                          Container(
-                            height: 30,
-                            child: Center(
-                                child:
-                                Text('ANNULUS DATA')
-                                ),
-                          ),
-                        ])
-                      ],
+            Expanded(
+              flex: 1,
+              child: Table(
+                border: TableBorder(
+                    verticalInside: BorderSide(color: Colors.grey),
+                    horizontalInside: BorderSide(color: Colors.grey),
+                    top: BorderSide(color: Colors.grey)),
+                children: [
+                  TableRow(children: [
+                    Container(
+                      height: 30,
+                      child: Center(child: Text('ANNULUS DATA')),
                     ),
-             ),
-             Expanded(
-               flex:2,
-                            child: Table(
-                      border: TableBorder(
-                          top:  BorderSide(color: Colors.grey) ,
-                          verticalInside: BorderSide(color: Colors.grey),
-                          horizontalInside: BorderSide(color: Colors.grey),
-                          // left: BorderSide(color: Colors.grey)),
-                      ),
-                      children: [
-                        TableRow(children: [
-                          Container(
-                            height: 30,
-                            child: Center(
-                                child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                  Text('CAPACITY'),
-                                  Text('*'),
-                                  Text('LENGTH'),
-                                  Text('='),
-                                  Text('VOLUME'),
-                                ])),
-                          ),
-                        ])
-                      ],
+                  ])
+                ],
+              ),
+            ),
+            Expanded(
+              flex: 2,
+              child: Table(
+                border: TableBorder(
+                  top: BorderSide(color: Colors.grey),
+                  verticalInside: BorderSide(color: Colors.grey),
+                  horizontalInside: BorderSide(color: Colors.grey),
+                  // left: BorderSide(color: Colors.grey)),
+                ),
+                children: [
+                  TableRow(children: [
+                    Container(
+                      height: 30,
+                      child: Center(
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                            Text('CAPACITY'),
+                            Text('*'),
+                            Text('LENGTH'),
+                            Text('='),
+                            Text('VOLUME'),
+                          ])),
                     ),
-             ),
-              Expanded(
-                            child: Table(
-                      border: TableBorder(
-                          verticalInside: BorderSide(color: Colors.grey),
-                          horizontalInside: BorderSide(color: Colors.grey),
-                          top: BorderSide(color: Colors.grey)),
-                      children: [
-                        TableRow(children: [
-                          Container(
-                            height: 30,
-                            child: Center(
-                                child:
-                                Text('ANNULUS DATA')
-                                ),
-                          ),
-                        ])
-                      ],
+                  ])
+                ],
+              ),
+            ),
+            Expanded(
+              child: Table(
+                border: TableBorder(
+                    verticalInside: BorderSide(color: Colors.grey),
+                    horizontalInside: BorderSide(color: Colors.grey),
+                    top: BorderSide(color: Colors.grey)),
+                children: [
+                  TableRow(children: [
+                    Container(
+                      height: 30,
+                      child: Center(child: Text('ANNULUS DATA')),
                     ),
-             ),
-
-        ],),
+                  ])
+                ],
+              ),
+            ),
+          ],
+        ),
         Row(
           children: [
             Expanded(
@@ -628,7 +619,7 @@ class _KillSheetState extends State<KillSheet> {
                         height: 40,
                         child: Center(child: Text('0.765')),
                       ),
-                       Container(
+                      Container(
                         height: 40,
                         child: Center(child: Text('0.765')),
                       ),
@@ -648,7 +639,7 @@ class _KillSheetState extends State<KillSheet> {
                         height: 40,
                         child: Center(child: Text('0.765')),
                       ),
-                       Container(
+                      Container(
                         height: 40,
                         child: Center(child: Text('0.765')),
                       ),
@@ -668,7 +659,7 @@ class _KillSheetState extends State<KillSheet> {
                         height: 40,
                         child: Center(child: Text('0.765')),
                       ),
-                       Container(
+                      Container(
                         height: 40,
                         child: Center(child: Text('0.765')),
                       ),
@@ -688,13 +679,12 @@ class _KillSheetState extends State<KillSheet> {
                         height: 40,
                         child: Center(child: Text('0.456')),
                       ),
-                       Container(
+                      Container(
                         height: 40,
                         child: Center(child: Text('0.5467')),
                       ),
                     ],
                   ),
-                 
                 ],
               ),
             ),
@@ -707,7 +697,6 @@ class _KillSheetState extends State<KillSheet> {
                   left: BorderSide(color: Colors.grey),
                   top: BorderSide(color: Colors.grey),
                 ),
-                
                 children: [
                   TableRow(
                     children: [
@@ -717,7 +706,7 @@ class _KillSheetState extends State<KillSheet> {
                       ),
                     ],
                   ),
-                   TableRow(
+                  TableRow(
                     children: [
                       Container(
                         height: 120,
@@ -725,122 +714,192 @@ class _KillSheetState extends State<KillSheet> {
                       ),
                     ],
                   ),
-                 
-                 
                 ],
               ),
             ),
-
           ],
-        )
-        ,
+        ),
         Table(
-                columnWidths: {
-                   0: FlexColumnWidth(1.334),
-                  1: FlexColumnWidth(0.5),
-                  2: FlexColumnWidth(0.5),
-                },
-                border: TableBorder(
-                  verticalInside: BorderSide(color: Colors.grey),
-                  horizontalInside: BorderSide(color: Colors.grey),
-                  // left: BorderSide(color: Colors.grey),
-                  top: BorderSide(color: Colors.grey),
+          columnWidths: {
+            0: FlexColumnWidth(1.334),
+            1: FlexColumnWidth(0.5),
+            2: FlexColumnWidth(0.5),
+          },
+          border: TableBorder(
+            verticalInside: BorderSide(color: Colors.grey),
+            horizontalInside: BorderSide(color: Colors.grey),
+            // left: BorderSide(color: Colors.grey),
+            top: BorderSide(color: Colors.grey),
+          ),
+          children: [
+            TableRow(
+              children: [
+                // Container(
+                //   height: 60,
+                //   child: Center(
+                //     child: Padding(
+                //       padding: const EdgeInsets.all(4.0),
+                //       child: Row(
+                //         children: [
+                //           Flexible(
+                //                                             child: Container(
+                //                 height: 30.0,
+                //                 // width: 460.0,
+                //                 decoration: new BoxDecoration(
+                //                   shape: BoxShape.rectangle,
+                //                   border: new Border.all(
+                //                     color: Colors.black,
+                //                     width: 1.0,
+                //                   ),
+                //                 ),
+                //                 child: Center(
+                //                     child: Text(
+                //                       'CHECK THAT TOTAL LENGTH = MESURED DEPTH',
+                //                       style: TextStyle(fontSize: 12),
+                //                     ))),
+                //           ),
+                //         ],
+                //       ),
+                //     ),
+                //   ),
+                // ),
+                Container(
+                  height: 60,
+                  child: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Flexible(
+                            child: Container(
+                                height: 30.0,
+                                // width: 460.0,
+                                decoration: new BoxDecoration(
+                                  shape: BoxShape.rectangle,
+                                  border: new Border.all(
+                                    color: Colors.black,
+                                    width: 1.0,
+                                  ),
+                                ),
+                                child: Center(
+                                    child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 18.0, right: 18.0),
+                                  child: Text(
+                                    'CHECK THAT TOTAL LENGTH = MESURED DEPTH',
+                                    style: TextStyle(fontSize: 12),
+                                  ),
+                                ))),
+                          ),
+                          // SizedBox(width: 100,),
+                          // Icon(Icons.)
+                        ],
+                      ),
+                    ),
+                  ),
                 ),
+                Container(
+                  height: 60,
+                  child: Stack(children: [
+                    Center(
+                      child: Text(
+                        '(bbl/ft)',
+                        style: TextStyle(fontSize: 12),
+                      ),
+                    ),
+                    Positioned(bottom: 1, right: 8, child: Text('ft')),
+                  ]),
+                ),
+                Container(
+                  height: 60,
+                  child: Stack(children: [
+                    Center(
+                      child: Text(
+                        '(bbl/ft)',
+                        style: TextStyle(fontSize: 12),
+                      ),
+                    ),
+                    Positioned(bottom: 1, right: 8, child: Text('[bbls]')),
+                  ]),
+                ),
+                Container(
+                  height: 60,
+                  child: Stack(children: [
+                    Center(
+                      child: Text(
+                        '(bbl/ft)',
+                        style: TextStyle(fontSize: 12),
+                      ),
+                    ),
+                    Positioned(bottom: 1, right: 8, child: Text('[bbls]')),
+                  ]),
+                ),
+              ],
+            )
+          ],
+        ),
+        new Container(
+          margin: const EdgeInsets.all(15.0),
+          padding: const EdgeInsets.all(3.0),
+          decoration:
+              BoxDecoration(border: Border.all(color: Colors.blueAccent)),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
                 children: [
-                  TableRow(
-                    children: [
-                      Container(
-                        height: 60,
-                        child: Center(
-                          child: Padding(
-                            padding: const EdgeInsets.all(4.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                    height: 30.0,
-                                    // width: 460.0,
-                                    decoration: new BoxDecoration(
-                                      shape: BoxShape.rectangle,
-                                      border: new Border.all(
-                                        color: Colors.black,
-                                        width: 1.0,
-                                      ),
-                                    ),
-                                    child: Center(
-                                        child: Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 18.0, right: 18.0),
-                                      child: Text(
-                                        'CHECK THAT TOTAL LENGTH = MESURED DEPTH',
-                                        style: TextStyle(fontSize: 12),
-                                      ),
-                                    ))),
-                                // SizedBox(width: 100,),
-                                // Icon(Icons.)
-                              ],
+                  Text(
+                    "TOTAL DRILLSTRING",
+                    style: TextStyle(fontSize: 10),
+                  ),
+                  Text("(SURFACE TO BIT)", style: TextStyle(fontSize: 8)),
+                  SizedBox(
+                    height: 4,
+                  ),
+//  Stack(children: [
+//                           Text(
+//                             '(bbl/ft)',
+//                             style: TextStyle(fontSize: 12),
+//                           ),
+//                           Positioned(
+//                               bottom: 1, right: 0, child: Text('[bbls]')),
+//                         ]),
+                  SizedBox(
+                    width: 160,
+                    child: Stack(
+                      children: [
+                        TextFormField(
+                          textAlign: TextAlign.center,
+                          readOnly: true,
+                          decoration: InputDecoration(
+                         
+                            isDense: true,
+            contentPadding: EdgeInsets.all(8.0),
+          
+                            hintText: '134',
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(5.7),
                             ),
                           ),
                         ),
-                      ),
-                      Container(
-                        height: 60,
-                        child: Stack(children: [
-                          Center(
-                            child: Text(
-                              '(bbl/ft)',
-                              style: TextStyle(fontSize: 12),
-                            ),
-                          ),
-                          Positioned(bottom: 1, right: 8, child: Text('ft')),
-                        ]),
-                      ),
-                      Container(
-                        height: 60,
-                        child: Stack(children: [
-                          Center(
-                            child: Text(
-                              '(bbl/ft)',
-                              style: TextStyle(fontSize: 12),
-                            ),
-                          ),
-                          Positioned(
-                              bottom: 1, right: 8, child: Text('[bbls]')),
-                        ]),
-                      ),
-                       Container(
-                        height: 60,
-                        child: Stack(children: [
-                          Center(
-                            child: Text(
-                              '(bbl/ft)',
-                              style: TextStyle(fontSize: 12),
-                            ),
-                          ),
-                          Positioned(
-                              bottom: 1, right: 8, child: Text('[bbls]')),
-                        ]),
-                      ),
-                    ],
+                        Positioned(
+                          bottom: 1,
+                          right: 1,
+                          child: Text('[bbls]'))
+                      ],
+                    ),
                   )
+                  // Text("My Awesome Border"),
                 ],
               ),
-
-            new Container(
-  margin: const EdgeInsets.all(15.0),
-  padding: const EdgeInsets.all(3.0),
-  decoration: BoxDecoration(
-    border: Border.all(color: Colors.blueAccent)
-  ),
-  child: Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: [
-      Text("My Awesome Border"),
-       Text("My Awesome Border"),
-        Text("My Awesome Border"),
-    ],
-  ),
-)
+              Text("My Awesome Border"),
+              Text("My Awesome Border"),
+            ],
+          ),
+        )
       ]),
     );
   }
