@@ -203,13 +203,18 @@ class _SignInState extends State<SignIn> {
                                           onSaved: (value) =>
                                               this.userData.password = value,
                                           validator: (value) {
-                                            if (value.length != 8 ||
-                                                value.length == 0 ||
-                                                value != '12345678') {
+                                            if (value.length != 8 
+                                               
+                                               ) {
                                               warningDialog(getText(
-                                                  "please_provide_the_correct_password",
+                                                  "password_should_be_mininum_of_6_characters",
                                                   context));
                                               // showDialog(context: context, builder: (_) => AlertDialog(title: Text("Error")));
+                                            }
+                                            else if( value != '12345678'){
+                                                warningDialog(getText(
+                                                  "please_provide_the_correct_password",
+                                                  context));
                                             }
                                             return null;
                                           },

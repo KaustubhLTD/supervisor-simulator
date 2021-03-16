@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/kill_sheet_page2.dart';
+import 'package:flutter_application_1/kill_sheet_page3.dart';
+import 'package:flutter_application_1/kill_sheet_page4.dart';
 import 'package:flutter_application_1/utilities/constants.dart';
+import 'package:flutter_application_1/utilities/multilingual_service.dart';
 
 class KillSheet extends StatefulWidget {
   @override
@@ -7,114 +11,153 @@ class KillSheet extends StatefulWidget {
 }
 
 class _KillSheetState extends State<KillSheet> {
+  int selectedPageCounter = 1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         extendBody: true,
-        body: SafeArea(
-            child: Column(
-          children: [
-            Container(
-              color: Colors.blue,
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [Text('1 of 4')],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Card(
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(color: Colors.white70, width: 1),
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            color: Constants.textColor,
-                            child: Padding(
-                              padding: const EdgeInsets.all(4.0),
-                              child: Icon(
-                                Icons.home,
-                                color: Colors.white,
+        appBar: AppBar(
+          centerTitle: true,
+          leading:  Padding(
+            padding: const EdgeInsets.only(top:10.0),
+            child: Card(
+              
+                              shape: RoundedRectangleBorder(
+                                side: BorderSide(color: Colors.white70, width: 1),
+                                borderRadius: BorderRadius.circular(5),
                               ),
-                            )),
-                        Text(
-                          'Kill Sheet',
-                          style: TextStyle(color: Colors.white, fontSize: 18),
-                        ),
-                        Text('Next',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 18)),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
-            Container(
-              // color: Colors.blue,
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('WELL CONTROL PRE-KICK DATA SHEET',
-                            style: TextStyle(fontWeight: FontWeight.bold))
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [Text('(SUBSEA ONLY)')],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Container(
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: overallMeasurement(),
-                      ), //Overall Mesurements
-                      Container(
-                        // height: 50,
-                        color: Colors.grey.withOpacity(0.4),
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 4.0, bottom: 4.0),
-                          child: Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 8.0),
-                                child: Text(
-                                  'CAPACITIES AND VOLUME',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
+                              color: Constants.textColor,
+                              child: Padding(
+                                padding: const EdgeInsets.all(4.0),
+                                child: Icon(
+                                  Icons.home,
+                                  color: Colors.white,
                                 ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      capacitiesAndVolumeTableView(), //Capacities And Volume Table View
-                    ],
-                  ),
-                ),
-              ),
-            )
+                              )),
+          ),
+          title:  Column(
+            children: [
+              Text('$selectedPageCounter of 4',style: TextStyle(color:Colors.black,fontSize: 10),),
+             SizedBox(height: 8,),
+              Text(
+                              'Kill Sheet',
+                              style: TextStyle(color: Colors.white, fontSize: 18),
+                            ),
+            ],
+          ) ,
+          actions: <Widget>[
+         selectedPageCounter == 4 ?
+          Padding(
+      padding: EdgeInsets.only(right: 20.0,top: 20),
+      child: FlatButton(
+        
+        onPressed: () {
+           
+        },
+        child: 
+       
+      Text('Done',style: TextStyle(color:Colors.white),),
+      )
+    ) :
+
+            
+    Padding(
+      padding: EdgeInsets.only(right: 20.0,top: 20),
+      child: FlatButton(
+        
+        onPressed: () {
+             setState(() {
+                                    selectedPageCounter--;
+                                });
+        },
+        child: 
+        selectedPageCounter > 1 && selectedPageCounter < 4?
+      Text('Previous',style: TextStyle(color:Colors.white),): SizedBox(),
+      )
+    ),
+   
+    selectedPageCounter >= 1 && selectedPageCounter < 4 ?  Padding(
+      padding: EdgeInsets.only(top:20,right: 20.0),
+      child: FlatButton(
+        onPressed: () {
+             setState(() {
+                                    selectedPageCounter++;
+                                });
+        },
+        child: 
+      Text('Next',style: TextStyle(color:Colors.white),),
+      )
+    ) : SizedBox(),
+  ],
+        ),
+        body:
+         selectedPageCounter == 1 ? Column(
+           
+
+          children: [
+         Container(
+           // color: Colors.blue,
+           child: Column(
+             children: [
+               Padding(
+                 padding: const EdgeInsets.only(top: 8.0),
+                 child: Row(
+                   mainAxisAlignment: MainAxisAlignment.center,
+                   children: [
+                     Text('WELL CONTROL PRE-KICK DATA SHEET',
+                         style: TextStyle(fontWeight: FontWeight.bold))
+                   ],
+                 ),
+               ),
+               Padding(
+                 padding: const EdgeInsets.only(top: 8.0),
+                 child: Row(
+                   mainAxisAlignment: MainAxisAlignment.center,
+                   children: [Text('(SUBSEA ONLY)')],
+                 ),
+               ),
+             ],
+           ),
+         ),
+         Expanded(
+           child: Container(
+             child: 
+             SingleChildScrollView(
+               child: Column(
+                 children: [
+                   Padding(
+                     padding: const EdgeInsets.all(8.0),
+                     child: overallMeasurement(),
+                   ), //Overall Mesurements
+                   Container(
+                     // height: 50,
+                     color: Colors.grey.withOpacity(0.4),
+                     child: Padding(
+                       padding: const EdgeInsets.only(top: 4.0, bottom: 4.0),
+                       child: Row(
+                         children: [
+                           Padding(
+                             padding: const EdgeInsets.only(left: 8.0),
+                             child: Text(
+                               'CAPACITIES AND VOLUME',
+                               style: TextStyle(fontWeight: FontWeight.bold),
+                             ),
+                           ),
+                         ],
+                       ),
+                     ),
+                   ),
+                   capacitiesAndVolumeTableView(), //Capacities And Volume Table View
+                 ],
+               ),
+             ),
+           ),
+         )
           ],
-        )));
+        ) : selectedPageCounter == 2 ? Killsheettwo()
+        :selectedPageCounter == 3 ? KillSheetThree()
+        :selectedPageCounter == 4 ? Killsheetfour()
+        :SizedBox());
   }
 
   Widget overallMeasurement() {
@@ -217,7 +260,7 @@ class _KillSheetState extends State<KillSheet> {
                 ),
                 children: [
                   TableRow(children: [
-                    Container(
+                    Container(  
                       height: 60,
                       child: Center(
                         child: Text(
@@ -450,7 +493,7 @@ class _KillSheetState extends State<KillSheet> {
                 border: TableBorder(
                   verticalInside: BorderSide(color: Colors.grey),
                   horizontalInside: BorderSide(color: Colors.grey),
-                  // left: BorderSide(color: Colors.grey),
+                  // bottom: BorderSide(color: Colors.grey),
                   top: BorderSide(color: Colors.grey),
                 ),
                 children: [
@@ -462,7 +505,7 @@ class _KillSheetState extends State<KillSheet> {
                           child: Padding(
                             padding: const EdgeInsets.all(4.0),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Container(
                                     height: 30.0,
@@ -485,6 +528,10 @@ class _KillSheetState extends State<KillSheet> {
                                     ))),
                                 // SizedBox(width: 100,),
                                 // Icon(Icons.)
+                                 SizedBox(width: 18,),
+                          // Icon(Icons.)
+                            Image(image: AssetImage('assets/images/rarrow.png'),height: 32,width: 32,),
+                            SizedBox(width: 18,),
                               ],
                             ),
                           ),
@@ -728,7 +775,7 @@ class _KillSheetState extends State<KillSheet> {
           border: TableBorder(
             verticalInside: BorderSide(color: Colors.grey),
             horizontalInside: BorderSide(color: Colors.grey),
-            // left: BorderSide(color: Colors.grey),
+           bottom: BorderSide(color: Colors.grey),
             top: BorderSide(color: Colors.grey),
           ),
           children: [
@@ -787,14 +834,16 @@ class _KillSheetState extends State<KillSheet> {
                                     child: Padding(
                                   padding: const EdgeInsets.only(
                                       left: 18.0, right: 18.0),
-                                  child: Text(
-                                    'CHECK THAT TOTAL LENGTH = MESURED DEPTH',
-                                    style: TextStyle(fontSize: 12),
-                                  ),
+                                  child:
+                                  Text(
+                                       getText('check_that_total_length_measured_depth',context),
+                                      style: TextStyle(fontSize: 13),
+                                    ),
                                 ))),
                           ),
-                          // SizedBox(width: 100,),
+                           SizedBox(width: 6,),
                           // Icon(Icons.)
+                           Image(image: AssetImage('assets/images/rarrow.png'),height: 32,width: 32,)
                         ],
                       ),
                     ),
@@ -844,60 +893,147 @@ class _KillSheetState extends State<KillSheet> {
           margin: const EdgeInsets.all(15.0),
           padding: const EdgeInsets.all(3.0),
           decoration:
-              BoxDecoration(border: Border.all(color: Colors.blueAccent)),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                children: [
-                  Text(
-                    "TOTAL DRILLSTRING",
-                    style: TextStyle(fontSize: 10),
-                  ),
-                  Text("(SURFACE TO BIT)", style: TextStyle(fontSize: 8)),
-                  SizedBox(
-                    height: 4,
-                  ),
-//  Stack(children: [
-//                           Text(
-//                             '(bbl/ft)',
-//                             style: TextStyle(fontSize: 12),
-//                           ),
-//                           Positioned(
-//                               bottom: 1, right: 0, child: Text('[bbls]')),
-//                         ]),
-                  SizedBox(
-                    width: 160,
-                    child: Stack(
-                      children: [
-                        TextFormField(
-                          textAlign: TextAlign.center,
-                          readOnly: true,
-                          decoration: InputDecoration(
-                         
-                            isDense: true,
-            contentPadding: EdgeInsets.all(8.0),
-          
-                            hintText: '134',
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                              borderRadius: BorderRadius.circular(5.7),
+              BoxDecoration(border: Border.all(color: Colors.black)),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  children: [
+                    Text(
+                     getText('total_drillstring',context),
+                      style: TextStyle(fontSize: 10,fontWeight: FontWeight.w500),
+                    ),
+                    Text(getText('surface_to_bit',context), style: TextStyle(fontSize: 10,color: Colors.black,fontWeight: FontWeight.w600)),
+                    SizedBox(
+                      height: 8,
+                    ),
+
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width*0.25,
+                      child: Stack(
+                        children: [
+                          TextFormField(
+                            textAlign: TextAlign.center,
+                            readOnly: true,
+                            decoration: InputDecoration(
+                           
+                              isDense: true,
+              contentPadding: EdgeInsets.all(8.0),
+            
+                              hintText: '134',
+                               hintStyle: TextStyle(
+                                color: Colors.black,fontWeight: FontWeight.w500,fontSize: 14
+                              ),
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.white),
+                                borderRadius: BorderRadius.circular(5.7),
+                              ),
                             ),
                           ),
-                        ),
-                        Positioned(
-                          bottom: 1,
-                          right: 1,
-                          child: Text('[bbls]'))
-                      ],
+                          Positioned(
+                            bottom: 1,
+                            right: 4,
+                            child: Text('[bbls]',style: TextStyle(fontSize: 10,color: Colors.black,fontWeight: FontWeight.w600 ),))
+                        ],
+                      ),
+                    )
+                    // Text("My Awesome Border"),
+                  ],
+                ),
+                Text("+"),
+                Column(
+                  children: [
+                    Text(
+                     getText('total_annulus',context),
+                     style: TextStyle(fontSize: 10,color: Colors.black,fontWeight: FontWeight.w600)
                     ),
-                  )
-                  // Text("My Awesome Border"),
-                ],
-              ),
-              Text("My Awesome Border"),
-              Text("My Awesome Border"),
-            ],
+                    Text(
+                      getText('bit_to_surface',context), style: TextStyle(fontSize: 10,color: Colors.black,fontWeight: FontWeight.w600)),
+                    SizedBox(
+                      height: 8,
+                    ),
+
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width*0.25,
+                      child: Stack(
+                        children: [
+                          TextFormField(
+                            textAlign: TextAlign.center,
+                            readOnly: true,
+                            decoration: InputDecoration(
+                           
+                              isDense: true,
+              contentPadding: EdgeInsets.all(8.0),
+            
+                              hintText: '462.9',
+                               hintStyle: TextStyle(
+                                color: Colors.black,fontWeight: FontWeight.w500,fontSize: 14
+                              ),
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.white),
+                                borderRadius: BorderRadius.circular(5.7),
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 1,
+                            right: 4,
+                            child: Text('[bbls]',style: TextStyle(fontSize: 10,color: Colors.black,fontWeight: FontWeight.w600  ),))
+                        ],
+                      ),
+                    )
+                    // Text("My Awesome Border"),
+                  ],
+                ),
+                 Text("="),
+
+                 Column(
+                  children: [
+                    Text(
+                      getText('total_system_volume',context),
+                      style: TextStyle(fontSize: 10,color: Colors.black,fontWeight: FontWeight.w600)
+                    ),
+                   
+                    SizedBox(
+                      height: 8,
+                    ),
+
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width*0.25,
+                      child: Stack(
+                        children: [
+                          TextFormField(
+                            textAlign: TextAlign.center,
+                            readOnly: true,
+                            decoration: InputDecoration(
+                           
+                              isDense: true,
+              contentPadding: EdgeInsets.all(8.0),
+            
+                              hintText: '596.9',
+                              hintStyle: TextStyle(
+                                color: Colors.black,fontWeight: FontWeight.w500,fontSize: 14
+                              ),
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.white),
+                                borderRadius: BorderRadius.circular(5.7),
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 1,
+                            right: 4,
+                            child: Text('[bbls]',style: TextStyle(fontSize: 10,color: Colors.black,fontWeight: FontWeight.w600),))
+                        ],
+                      ),
+                    )
+                    // Text("My Awesome Border"),
+                  ],
+                ),
+              ],
+            ),
           ),
         )
       ]),
