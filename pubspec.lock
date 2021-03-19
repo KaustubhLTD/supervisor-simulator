@@ -157,7 +157,7 @@ packages:
   mm_initial_data:
     dependency: "direct main"
     description:
-      path: ".."
+      path: "../flutter_package_mm_initial_data"
       relative: true
     source: path
     version: "0.0.46"

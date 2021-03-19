@@ -27,7 +27,7 @@ dependencies:
   flutter_localizations: 
     sdk: flutter         
   mm_initial_data:
-    path: ../
+    path: ../flutter_package_mm_initial_data
 
 
 
