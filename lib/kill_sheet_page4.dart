@@ -7,6 +7,10 @@ class Killsheetfour extends StatefulWidget {
 }
 
 class _KillsheetfourState extends State<Killsheetfour> {
+
+
+
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +45,13 @@ class _KillsheetfourState extends State<Killsheetfour> {
                         child: Container(
                         
                         child: Center(
-                         child: Text('STROKE PRESSURE')
+                         child: Column(
+                         mainAxisAlignment: MainAxisAlignment.center,
+                           children: [
+                             Text('STROKE PRESSURE'),
+                             Text('(For Wait & Weight)',style: TextStyle(fontSize:10),)
+                           ],
+                         )
                         ),
                         ),
                       ),
@@ -86,7 +96,7 @@ class _KillsheetfourState extends State<Killsheetfour> {
                                   children: [
                                     FittedBox(
                                       child: Text(
-                                        getText('scr_psi', context),
+                                        getText('scr_riser_psi', context),
                                         style: TextStyle(
                                             fontSize: 10, fontWeight: FontWeight.w500),
                                       ),
@@ -106,7 +116,7 @@ class _KillsheetfourState extends State<Killsheetfour> {
                                           isDense: true,
                                           hintText: '276',
                                           hintStyle: TextStyle(
-                                              color: Colors.black,
+                                              
                                               fontWeight: FontWeight.w500,
                                               fontSize: 14),
                                           border: OutlineInputBorder(
@@ -147,7 +157,7 @@ class _KillsheetfourState extends State<Killsheetfour> {
                                           contentPadding: EdgeInsets.all(8),
                                           hintText: '416',
                                           hintStyle: TextStyle(
-                                              color: Colors.black,
+                                              
                                               fontWeight: FontWeight.w500,
                                               fontSize: 14),
                                           border: OutlineInputBorder(
@@ -168,11 +178,11 @@ class _KillsheetfourState extends State<Killsheetfour> {
                               Expanded(
                                 child: Column(
                                   children: [
-                                    Text(
-                                      'drill String volume (bbls)',
-                                      style:
-                                          TextStyle(fontSize: 9, fontWeight: FontWeight.w500),
-                                    ),
+                                    Text(   getText('initial_circulating_pressure',context),  style:
+                                          TextStyle(fontSize: 9, fontWeight: FontWeight.w500),),
+                                
+                                    
+                                    
                 
                                     SizedBox(
                                       height: 18,
@@ -195,11 +205,11 @@ class _KillsheetfourState extends State<Killsheetfour> {
                                           suffixIconConstraints:
                                               BoxConstraints(minWidth: 0, minHeight: 0),
                                           suffixStyle: TextStyle(
-                                              color: Colors.black,
+                                              
                                               fontWeight: FontWeight.w500,
                                               fontSize: 6),
                                           hintStyle: TextStyle(
-                                              color: Colors.black,
+                                              
                                               fontWeight: FontWeight.w500,
                                               fontSize: 14),
                                           border: OutlineInputBorder(
@@ -235,7 +245,7 @@ class _KillsheetfourState extends State<Killsheetfour> {
                                   children: [
                                     FittedBox(
                                       child: Text(
-                                        getText('scr_psi', context),
+                                        getText('scr_riser_psi', context),
                                         style: TextStyle(
                                             fontSize: 10, fontWeight: FontWeight.w500),
                                       ),
@@ -255,7 +265,7 @@ class _KillsheetfourState extends State<Killsheetfour> {
                                           isDense: true,
                                           hintText: '276',
                                           hintStyle: TextStyle(
-                                              color: Colors.black,
+                                              
                                               fontWeight: FontWeight.w500,
                                               fontSize: 14),
                                           border: OutlineInputBorder(
@@ -296,7 +306,7 @@ class _KillsheetfourState extends State<Killsheetfour> {
                                           contentPadding: EdgeInsets.all(8),
                                           hintText: '10.8',
                                           hintStyle: TextStyle(
-                                              color: Colors.black,
+                                              
                                               fontWeight: FontWeight.w500,
                                               fontSize: 14),
                                           border: OutlineInputBorder(
@@ -339,7 +349,7 @@ class _KillsheetfourState extends State<Killsheetfour> {
                                           contentPadding: EdgeInsets.all(8),
                                           hintText: '9.8',
                                           hintStyle: TextStyle(
-                                              color: Colors.black,
+                                              
                                               fontWeight: FontWeight.w500,
                                               fontSize: 14),
                                           border: OutlineInputBorder(
@@ -389,11 +399,11 @@ class _KillsheetfourState extends State<Killsheetfour> {
                                           suffixIconConstraints:
                                               BoxConstraints(minWidth: 0, minHeight: 0),
                                           suffixStyle: TextStyle(
-                                              color: Colors.black,
+                                              
                                               fontWeight: FontWeight.w500,
                                               fontSize: 6),
                                           hintStyle: TextStyle(
-                                              color: Colors.black,
+                                              
                                               fontWeight: FontWeight.w500,
                                               fontSize: 14),
                                           border: OutlineInputBorder(
@@ -451,7 +461,7 @@ class _KillsheetfourState extends State<Killsheetfour> {
                                           isDense: true,
                                           hintText: '692-304',
                                           hintStyle: TextStyle(
-                                              color: Colors.black,
+                                              
                                               fontWeight: FontWeight.w500,
                                               fontSize: 14),
                                           border: OutlineInputBorder(
@@ -467,7 +477,7 @@ class _KillsheetfourState extends State<Killsheetfour> {
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(top: 8.0),
-                                child: Text("+"),
+                                child: Text("\u00D7"),
                               ),
                               Expanded(
                                 child: Column(
@@ -492,7 +502,7 @@ class _KillsheetfourState extends State<Killsheetfour> {
                                           contentPadding: EdgeInsets.all(8),
                                           hintText: '416',
                                           hintStyle: TextStyle(
-                                              color: Colors.black,
+                                              
                                               fontWeight: FontWeight.w500,
                                               fontSize: 14),
                                           border: OutlineInputBorder(
@@ -532,19 +542,9 @@ class _KillsheetfourState extends State<Killsheetfour> {
                                           isDense: true,
                                           contentPadding: EdgeInsets.all(8),
                                           hintText: '0.36',
-                                          suffixIcon: Padding(
-                                            padding:
-                                                const EdgeInsets.only(top: 10.0, right: 2.0),
-                                            child: Text("psi/stk"),
-                                          ),
-                                          suffixIconConstraints:
-                                              BoxConstraints(minWidth: 0, minHeight: 0),
-                                          suffixStyle: TextStyle(
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 6),
+                                         
                                           hintStyle: TextStyle(
-                                              color: Colors.black,
+                                              
                                               fontWeight: FontWeight.w500,
                                               fontSize: 14),
                                           border: OutlineInputBorder(
@@ -603,7 +603,7 @@ class _KillsheetfourState extends State<Killsheetfour> {
                                               isDense: true,
                                               hintText: '1089',
                                               hintStyle: TextStyle(
-                                                  color: Colors.black,
+                                                  
                                                   fontWeight: FontWeight.w500,
                                                   fontSize: 14),
                                               border: OutlineInputBorder(
@@ -644,7 +644,7 @@ class _KillsheetfourState extends State<Killsheetfour> {
                                               contentPadding: EdgeInsets.all(8),
                                               hintText: '3763',
                                               hintStyle: TextStyle(
-                                                  color: Colors.black,
+                                                  
                                                   fontWeight: FontWeight.w500,
                                                   fontSize: 14),
                                               border: OutlineInputBorder(
@@ -686,7 +686,7 @@ class _KillsheetfourState extends State<Killsheetfour> {
                                               hintText: '4852',
                                             
                                               hintStyle: TextStyle(
-                                                  color: Colors.black,
+                                                  
                                                   fontWeight: FontWeight.w500,
                                                   fontSize: 14),
                                               border: OutlineInputBorder(
@@ -734,7 +734,7 @@ class _KillsheetfourState extends State<Killsheetfour> {
                                               isDense: true,
                                               hintText: '36.3',
                                               hintStyle: TextStyle(
-                                                  color: Colors.black,
+                                                  
                                                   fontWeight: FontWeight.w500,
                                                   fontSize: 14),
                                               border: OutlineInputBorder(
@@ -775,7 +775,7 @@ class _KillsheetfourState extends State<Killsheetfour> {
                                               contentPadding: EdgeInsets.all(8),
                                               hintText: '125.4',
                                               hintStyle: TextStyle(
-                                                  color: Colors.black,
+                                                  
                                                   fontWeight: FontWeight.w500,
                                                   fontSize: 14),
                                               border: OutlineInputBorder(
@@ -823,11 +823,11 @@ class _KillsheetfourState extends State<Killsheetfour> {
                                               suffixIconConstraints:
                                                   BoxConstraints(minWidth: 0, minHeight: 0),
                                               suffixStyle: TextStyle(
-                                                  color: Colors.black,
+                                                  
                                                   fontWeight: FontWeight.w500,
                                                   fontSize: 6),
                                               hintStyle: TextStyle(
-                                                  color: Colors.black,
+                                                  
                                                   fontWeight: FontWeight.w500,
                                                   fontSize: 14),
                                               border: OutlineInputBorder(
@@ -859,7 +859,7 @@ Row(
   children: [
     Text('1',style: TextStyle(fontWeight: FontWeight.bold),),
      SizedBox(width:8),
-        Text(getText('calculate_i_c_p', context)),
+        Text(getText('establish_i_c_p', context)),
   ],
 ),
 Divider(),
@@ -900,6 +900,14 @@ Divider(),
 Row(
   children: [
     Text('6',style: TextStyle(fontWeight: FontWeight.bold),),
+     SizedBox(width:8),
+        Text(getText('calculate_adjusted_choke_line_friction_kill_mud', context)),
+  ],
+),
+Divider(),
+Row(
+  children: [
+    Text('7',style: TextStyle(fontWeight: FontWeight.bold),),
      SizedBox(width:8),
         Text(getText('calculate_complete_circulation_in_strokes_and_time', context)),
   ],

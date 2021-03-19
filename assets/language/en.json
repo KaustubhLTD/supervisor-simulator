@@ -483,7 +483,10 @@
     "hwdp_in_open_hole": "HWDP IN OPEN HOLE",
     "drill_collar_in_open_hole": "DRILL COLLAR IN OPEN HOLE",
     "bit_to_shoe_volume": "Bit to Shoe Volume",
+    "bit_to_shoe_volume_bbls": "Bit to Shoe Volume (bbls)",
     "note_total_length_may_not_be_equal_to_measured_depth_if_the_choke_line_is_longer_than_the_riser": "Note: Total length may not be equal to Measured Depth if the choke line is longer than the riser.",
+    "total_drillstring_surface_to_bit": "TOTAL DRILLSTRING (SURFACE TO BIT)",
+    "total_annulus_bit_to_surface": " TOTAL ANNULUS (BIT TO SURFACE)",
     "total_drillstring" :"TOTAL DRILLSTRING",
     "surface_to_bit": "(SURFACE TO BIT)",
     "total_annulus" : "TOTAL ANNULUS", 
@@ -524,6 +527,8 @@
     "casing_tvd": "Casing T.V.D",
     "maximum_allowable_annulus_surface_pressure": "Maximum Allowable Annulus Surface Pressure",
     "sidpp": "SIDPP",
+    "s_i_d_p_p": "S.I.D.P.P",
+
     "t_v_d_from_rkb": "T.V.D. from RKB",
     "kill_mud": "Kill Mud",
     "kill_mud_weight": "Kill Mud Weight",
@@ -545,7 +550,7 @@
     "calculate_complete_circulation_in_strokes_and_time": "Calculate complete circulation, in strokes and time.",
     "i_c_p": "I.C.P",
     "f_c_p": "F.C.P",
-    "difference_icp_fcp": "(ICP-FCP)psi",
+    "difference_icp_fcp": "(ICP-FCP) psi",
    
     "scr_riser_psi": "SCR Riser psi",
     "scr_psi":"SCR psi",

@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
        
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: SplashScreen(),
+      home: Configuration(),
        supportedLocales: [
         Locale('en', 'US'),
 
@@ -83,6 +83,12 @@ class MyApp extends StatelessWidget {
         case '/configuration':
        return PageTransition(
           child: Configuration(),
+           type: PageTransitionType.rightToLeftWithFade
+       );
+       break;
+        case '/killsheet':
+       return PageTransition(
+          child: KillSheet(settings.arguments),
            type: PageTransitionType.rightToLeftWithFade
        );
        break;
