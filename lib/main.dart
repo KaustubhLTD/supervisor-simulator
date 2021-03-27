@@ -39,11 +39,10 @@ class MyApp extends StatelessWidget {
        
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Configuration(),
+      home: ModeSelection(),
        supportedLocales: [
         Locale('en', 'US'),
-
-      ],
+  ],
       localizationsDelegates: [
         Multilingual.delegate,
         GlobalMaterialLocalizations.delegate,
@@ -76,13 +75,13 @@ class MyApp extends StatelessWidget {
        break;
         case '/guidelines':
        return PageTransition(
-          child: Guidelines(),
+          child: Guidelines(settings.arguments),
            type: PageTransitionType.rightToLeftWithFade
        );
        break;
         case '/configuration':
        return PageTransition(
-          child: Configuration(),
+          child: Configuration(settings.arguments),
            type: PageTransitionType.rightToLeftWithFade
        );
        break;

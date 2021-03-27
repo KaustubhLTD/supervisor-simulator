@@ -1,17 +1,76 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/configuration_details.dart';
 import 'package:flutter_application_1/utilities/multilingual_service.dart';
 import 'package:intl/intl.dart';
 
 class KillSheetThree extends StatefulWidget {
+   SelectedMethodRig methodRig;
+    var current;
+  KillSheetThree(this.current,this.methodRig);
   @override
-  _KillSheetThreeState createState() => _KillSheetThreeState();
+  _KillSheetThreeState createState() => _KillSheetThreeState(current,methodRig);
 }
 
 class _KillSheetThreeState extends State<KillSheetThree> {
+   SelectedMethodRig methodRig;
 //  DateTime date = DateTime.now();
 String day = DateFormat('EEEE').format(DateTime.now());
 String date =  DateFormat('dd-MMM-yyyy').format(DateTime.now());
 String time =  DateFormat('HH:mm').format(DateTime.now());
+var current;
+_KillSheetThreeState(this.current,this.methodRig);
+double surfaceLeackOffTest;
+double casingShoeTVD;
+double leakOffTestMudWeight;
+double maximumMudWeight;
+double drillingMudWeight;
+double casingTVD;
+
+
+double maximumAllowableAnnulusSurfacePressure;
+
+double sicp;
+double sidpp;
+double tvdFromRKBH;
+double tvdFromRKB;
+double killMud;
+double casingYeild;
+double safetyFactor;
+
+// double 
+
+ void initState() {
+
+    setState(() {
+        var _config = current.configuration;
+          var _sectionInfo = current.sectionInfo;
+          var ks = current.killSheet;
+      
+leakOffTestMudWeight=_config.leakOffTests.mudWeight.value;
+surfaceLeackOffTest = _config.leakOffTests.mudWeight.value;
+casingShoeTVD = _config.casing.depth.value;
+maximumMudWeight = ks.maximumMudWeight.value;
+drillingMudWeight = ks.originalMud.density.value;
+casingTVD = _config.casing.depth.value;
+maximumAllowableAnnulusSurfacePressure=  ks.maximumAllowableAnnulusSurfacePressure.value;
+sidpp = ks.sidpp.value;
+tvdFromRKB = ks.tvd.value;
+killMud = ks.killMud.density.value;
+casingTVD = _config.casing.depth.value;
+safetyFactor =_config.general.macpSafetyFactor.value;
+casingYeild = _config.casing.yieldStrength.value;
+
+
+
+
+
+
+       
+         
+             });
+             // TODO: implement initState
+             super.initState();
+           }
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +142,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                       child: Text(
                         getText('surface_leak_off_test', context),
                         style: TextStyle(
-                            fontSize: 10, fontWeight: FontWeight.w500),
+                            fontSize: 10,  color: Colors.black),
                       ),
                     ),
                   ),
@@ -108,12 +167,12 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                             BoxConstraints(minWidth: 0, minHeight: 0),
                         suffixStyle: TextStyle(
                             
-                            fontWeight: FontWeight.w500,
+                             color: Colors.black,
                             fontSize: 6),
-                        hintText: '2122',
+                        hintText: surfaceLeackOffTest.toStringAsFixed(0),
                         hintStyle: TextStyle(
                             
-                            fontWeight: FontWeight.w500,
+                             color: Colors.black,
                             fontSize: 14),
                         border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -127,7 +186,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 10.0),
+              padding: const EdgeInsets.only(top: 12.0),
               child: Text("\u00F7"),
             ),
             Expanded(
@@ -136,7 +195,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                 children: [
                   Text(
                     getText('casing_shoe_tvd', context),
-                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
+                    style: TextStyle(fontSize: 10,  color: Colors.black),
                   ),
 
                   SizedBox(
@@ -159,12 +218,12 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                             BoxConstraints(minWidth: 0, minHeight: 0),
                         suffixStyle: TextStyle(
                             
-                            fontWeight: FontWeight.w500,
+                             color: Colors.black,
                             fontSize: 6),
-                        hintText: '8000',
+                        hintText: casingShoeTVD.toStringAsFixed(0),
                         hintStyle: TextStyle(
                             
-                            fontWeight: FontWeight.w500,
+                             color: Colors.black,
                             fontSize: 14),
                         border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -178,7 +237,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 10.0),
+              padding: const EdgeInsets.only(top: 12.0),
               child: Text("\u00F7"),
             ),
             Expanded(
@@ -187,7 +246,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                 children: [
                   Text(
                     '',
-                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
+                    style: TextStyle(fontSize: 10,  color: Colors.black),
                   ),
 
                   SizedBox(
@@ -205,7 +264,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                         hintText: '0.052',
                         hintStyle: TextStyle(
                             
-                            fontWeight: FontWeight.w500,
+                             color: Colors.black,
                             fontSize: 14),
                         border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -219,7 +278,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 10.0),
+              padding: const EdgeInsets.only(top: 12.0),
               child: Text("+"),
             ),
             Expanded(
@@ -232,7 +291,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                       child: Text(
                         getText('leak_off_test_mud_weight', context),
                         style: TextStyle(
-                            fontSize: 10, fontWeight: FontWeight.w500),
+                            fontSize: 10,  color: Colors.black),
                       ),
                     ),
                   ),
@@ -257,12 +316,12 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                             BoxConstraints(minWidth: 0, minHeight: 0),
                         suffixStyle: TextStyle(
                             
-                            fontWeight: FontWeight.w500,
+                             color: Colors.black,
                             fontSize: 6),
-                        hintText: '134',
+                        hintText: leakOffTestMudWeight.toStringAsFixed(1),
                         hintStyle: TextStyle(
                             
-                            fontWeight: FontWeight.w500,
+                             color: Colors.black,
                             fontSize: 14),
                         border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -276,7 +335,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 10.0),
+              padding: const EdgeInsets.only(top: 12.0),
               child: Text("="),
             ),
             Expanded(
@@ -285,7 +344,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                 children: [
                   Text(
                     getText('maximum_mud_weight', context),
-                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
+                    style: TextStyle(fontSize: 10,  color: Colors.black),
                   ),
 
                   SizedBox(
@@ -308,12 +367,12 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                             BoxConstraints(minWidth: 0, minHeight: 0),
                         suffixStyle: TextStyle(
                             
-                            fontWeight: FontWeight.w500,
+                             color: Colors.black,
                             fontSize: 6),
-                        hintText: '134',
+                        hintText: maximumMudWeight.toStringAsFixed(1),
                         hintStyle: TextStyle(
                             
-                            fontWeight: FontWeight.w500,
+                             color: Colors.black,
                             fontSize: 14),
                         border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -356,7 +415,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                     child: Text(
                       getText('maximum_mud_weight', context),
                       style:
-                          TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
+                          TextStyle(fontSize: 10,  color: Colors.black),
                     ),
                   ),
 
@@ -380,12 +439,12 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                             BoxConstraints(minWidth: 0, minHeight: 0),
                         suffixStyle: TextStyle(
                             
-                            fontWeight: FontWeight.w500,
+                             color: Colors.black,
                             fontSize: 6),
-                        hintText: '14.4',
+                        hintText: maximumMudWeight.toStringAsFixed(1),
                         hintStyle: TextStyle(
                             
-                            fontWeight: FontWeight.w500,
+                             color: Colors.black,
                             fontSize: 14),
                         border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -399,7 +458,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 10.0),
+              padding: const EdgeInsets.only(top: 12.0),
               child: Text("-"),
             ),
             Expanded(
@@ -410,7 +469,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                     child: Text(
                       getText('drilling_mud_weight', context),
                       style:
-                          TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
+                          TextStyle(fontSize: 10,  color: Colors.black),
                     ),
                   ),
 
@@ -434,12 +493,12 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                             BoxConstraints(minWidth: 0, minHeight: 0),
                         suffixStyle: TextStyle(
                             
-                            fontWeight: FontWeight.w500,
+                             color: Colors.black,
                             fontSize: 6),
-                        hintText: '9.8',
+                        hintText: drillingMudWeight.toStringAsFixed(1),
                         hintStyle: TextStyle(
                             
-                            fontWeight: FontWeight.w500,
+                             color: Colors.black,
                             fontSize: 14),
                         border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -466,7 +525,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                 children: [
                   Text(
                     '',
-                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
+                    style: TextStyle(fontSize: 10,  color: Colors.black),
                   ),
 
                   SizedBox(
@@ -484,7 +543,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                         hintText: '0.052',
                         hintStyle: TextStyle(
                             
-                            fontWeight: FontWeight.w500,
+                             color: Colors.black,
                             fontSize: 14),
                         border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -498,7 +557,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 10.0),
+              padding: const EdgeInsets.only(top: 12.0),
               child: Text("\u00D7"),
             ),
             Expanded(
@@ -509,7 +568,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                     child: Text(
                       getText('casing_tvd', context),
                       style:
-                          TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
+                          TextStyle(fontSize: 10,  color: Colors.black),
                     ),
                   ),
 
@@ -533,12 +592,12 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                             BoxConstraints(minWidth: 0, minHeight: 0),
                         suffixStyle: TextStyle(
                             
-                            fontWeight: FontWeight.w500,
+                             color: Colors.black,
                             fontSize: 6),
-                        hintText: '4000',
+                        hintText: casingTVD.toStringAsFixed(0),
                         hintStyle: TextStyle(
                             
-                            fontWeight: FontWeight.w500,
+                             color: Colors.black,
                             fontSize: 14),
                         border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -552,7 +611,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 10.0),
+              padding: const EdgeInsets.only(top: 12.0),
               child: Text("="),
             ),
             Expanded(
@@ -564,7 +623,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                         'maximum_allowable_annulus_surface_pressure', context),
                     style: TextStyle(
                       fontSize: 9,
-                      fontWeight: FontWeight.w500,
+                       color: Colors.black,
                     ),
                     textAlign: TextAlign.center,
                   ),
@@ -589,12 +648,12 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                             BoxConstraints(minWidth: 0, minHeight: 0),
                         suffixStyle: TextStyle(
                             
-                            fontWeight: FontWeight.w500,
+                             color: Colors.black,
                             fontSize: 6),
-                        hintText: '956',
+                        hintText: maximumAllowableAnnulusSurfacePressure.toStringAsFixed(0),
                         hintStyle: TextStyle(
                             
-                            fontWeight: FontWeight.w500,
+                             color: Colors.black,
                             fontSize: 14),
                         border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -633,7 +692,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                     child: Text(
                       getText('s_i_d_p_p', context),
                       style:
-                          TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
+                          TextStyle(fontSize: 10,  color: Colors.black),
                     ),
                   ),
 
@@ -657,12 +716,12 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                             BoxConstraints(minWidth: 0, minHeight: 0),
                         suffixStyle: TextStyle(
                             
-                            fontWeight: FontWeight.w500,
+                             color: Colors.black,
                             fontSize: 6),
-                        hintText: '416',
+                        hintText: sidpp.toStringAsFixed(0),
                         hintStyle: TextStyle(
-                            
-                            fontWeight: FontWeight.w500,
+                            color: Colors.black,
+                            //  color: Colors.black,
                             fontSize: 14),
                         border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -676,7 +735,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 10.0),
+              padding: const EdgeInsets.only(top: 12.0),
               child: Text("\u00F7"),
             ),
             Expanded(
@@ -687,7 +746,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                     child: Text(
                       getText('t_v_d_from_rkb', context),
                       style:
-                          TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
+                          TextStyle(fontSize: 10,  color: Colors.black),
                     ),
                   ),
 
@@ -711,12 +770,12 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                             BoxConstraints(minWidth: 0, minHeight: 0),
                         suffixStyle: TextStyle(
                             
-                            fontWeight: FontWeight.w500,
+                             color: Colors.black,
                             fontSize: 6),
-                        hintText: '8000',
+                        hintText: tvdFromRKB.toStringAsFixed(0),
                         hintStyle: TextStyle(
                             
-                            fontWeight: FontWeight.w500,
+                             color: Colors.black,
                             fontSize: 14),
                         border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -730,7 +789,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 10.0),
+              padding: const EdgeInsets.only(top: 12.0),
               child: Text("\u00F7"),
             ),
             Expanded(
@@ -739,7 +798,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                 children: [
                   Text(
                     '',
-                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
+                    style: TextStyle(fontSize: 10,  color: Colors.black),
                   ),
 
                   SizedBox(
@@ -757,7 +816,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                         hintText: '0.052',
                         hintStyle: TextStyle(
                             
-                            fontWeight: FontWeight.w500,
+                             color: Colors.black,
                             fontSize: 14),
                         border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -771,7 +830,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 10.0),
+              padding: const EdgeInsets.only(top: 12.0),
               child: Text("+"),
             ),
             Expanded(
@@ -780,7 +839,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                 children: [
                   Text(
                     getText('current_mud_weight', context),
-                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
+                    style: TextStyle(fontSize: 10,  color: Colors.black),
                   ),
 
                   SizedBox(
@@ -803,12 +862,12 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                             BoxConstraints(minWidth: 0, minHeight: 0),
                         suffixStyle: TextStyle(
                             
-                            fontWeight: FontWeight.w500,
+                             color: Colors.black,
                             fontSize: 6),
-                        hintText: '9.8',
+                        hintText: drillingMudWeight.toStringAsFixed(1),
                         hintStyle: TextStyle(
                             
-                            fontWeight: FontWeight.w500,
+                             color: Colors.black,
                             fontSize: 14),
                         border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -822,7 +881,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 8.0),
+              padding: const EdgeInsets.only(top: 12.0),
               child: Text("="),
             ),
             Expanded(
@@ -831,7 +890,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                 children: [
                   Text(
                     getText('kill_mud', context),
-                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
+                    style: TextStyle(fontSize: 10,  color: Colors.black),
                   ),
 
                   SizedBox(
@@ -854,12 +913,12 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                             BoxConstraints(minWidth: 0, minHeight: 0),
                         suffixStyle: TextStyle(
                             
-                            fontWeight: FontWeight.w500,
+                             color: Colors.black,
                             fontSize: 6),
-                        hintText: '10.8',
+                        hintText: killMud.toStringAsFixed(0),
                         hintStyle: TextStyle(
                             
-                            fontWeight: FontWeight.w500,
+                             color: Colors.black,
                             fontSize: 14),
                         border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -900,7 +959,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                 children: [
                   Text(
                     getText('maximum_mud_weight', context),
-                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
+                    style: TextStyle(fontSize: 10,  color: Colors.black),
                   ),
 
                   SizedBox(
@@ -923,12 +982,12 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                             BoxConstraints(minWidth: 0, minHeight: 0),
                         suffixStyle: TextStyle(
                             
-                            fontWeight: FontWeight.w500,
+                             color: Colors.black,
                             fontSize: 6),
-                        hintText: '14.4',
+                        hintText: maximumMudWeight.toStringAsFixed(1),
                         hintStyle: TextStyle(
                             
-                            fontWeight: FontWeight.w500,
+                             color: Colors.black,
                             fontSize: 14),
                         border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -942,7 +1001,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 10.0),
+              padding: const EdgeInsets.only(top: 12.0),
               child: Text("-"),
             ),
             Expanded(
@@ -953,7 +1012,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                     child: Text(
                       getText('kill_mud_weight', context),
                       style:
-                          TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
+                          TextStyle(fontSize: 10,  color: Colors.black),
                     ),
                   ),
 
@@ -977,12 +1036,12 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                             BoxConstraints(minWidth: 0, minHeight: 0),
                         suffixStyle: TextStyle(
                             
-                            fontWeight: FontWeight.w500,
+                             color: Colors.black,
                             fontSize: 6),
-                        hintText: '10.8',
+                        hintText:  killMud.toStringAsFixed(1),
                         hintStyle: TextStyle(
                             
-                            fontWeight: FontWeight.w500,
+                             color: Colors.black,
                             fontSize: 14),
                         border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -1000,7 +1059,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
               style: TextStyle(fontSize: 50),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 8.0, top: 8.0),
+              padding: const EdgeInsets.only(left: 8.0, top: 10.0),
               child: Text("\u00D7"),
             ),
             Expanded(
@@ -1009,7 +1068,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                 children: [
                   Text(
                     '',
-                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
+                    style: TextStyle(fontSize: 10,  color: Colors.black),
                   ),
 
                   SizedBox(
@@ -1027,7 +1086,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                         hintText: '0.052',
                         hintStyle: TextStyle(
                             
-                            fontWeight: FontWeight.w500,
+                             color: Colors.black,
                             fontSize: 14),
                         border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -1041,7 +1100,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 10.0),
+              padding: const EdgeInsets.only(top: 12.0),
               child: Text("\u00D7"),
             ),
             Expanded(
@@ -1050,7 +1109,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                 children: [
                   Text(
                     getText('casing_tvd', context),
-                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
+                    style: TextStyle(fontSize: 10,  color: Colors.black),
                   ),
 
                   SizedBox(
@@ -1073,12 +1132,12 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                             BoxConstraints(minWidth: 0, minHeight: 0),
                         suffixStyle: TextStyle(
                             
-                            fontWeight: FontWeight.w500,
+                             color: Colors.black,
                             fontSize: 6),
-                        hintText: '4000',
+                        hintText:  casingTVD.toStringAsFixed(0),
                         hintStyle: TextStyle(
                             
-                            fontWeight: FontWeight.w500,
+                             color: Colors.black,
                             fontSize: 14),
                         border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -1092,7 +1151,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 10.0),
+              padding: const EdgeInsets.only(top: 12.0),
               child: Text("="),
             ),
             Expanded(
@@ -1104,7 +1163,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                         context),
                     style: TextStyle(
                       fontSize: 9,
-                      fontWeight: FontWeight.w500,
+                       color: Colors.black,
                     ),
                     textAlign: TextAlign.center,
                   ),
@@ -1129,12 +1188,12 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                             BoxConstraints(minWidth: 0, minHeight: 0),
                         suffixStyle: TextStyle(
                             
-                            fontWeight: FontWeight.w500,
+                             color: Colors.black,
                             fontSize: 6),
                         hintText: '748',
                         hintStyle: TextStyle(
                             
-                            fontWeight: FontWeight.w500,
+                             color: Colors.black,
                             fontSize: 14),
                         border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -1170,7 +1229,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
               children: [
                 Text(
                   getText('casing_yield', context),
-                  style: TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
+                  style: TextStyle(fontSize: 10,  color: Colors.black),
                 ),
 
                 SizedBox(
@@ -1194,9 +1253,10 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                       suffixStyle: TextStyle(
                          
                           fontSize: 6),
-                      hintText: '7040',
+                      hintText:  casingYeild.toStringAsFixed(0),
                       hintStyle: TextStyle(
                         //  
+                        color: Colors.black,
                           fontSize: 14),
                       border: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.white),
@@ -1217,7 +1277,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
               children: [
                 Text(
                   getText('safety_factor', context),
-                  style: TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
+                  style: TextStyle(fontSize: 10,  color: Colors.black),
                 ),
 
                 SizedBox(
@@ -1241,9 +1301,9 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                       suffixStyle: TextStyle(
                          
                           fontSize: 6),
-                      hintText: '5632',
+                      hintText:  safetyFactor.toStringAsFixed(2),
                       hintStyle: TextStyle(
-                         
+                          color: Colors.black,
                           fontSize: 14),
                       border: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.white),
@@ -1256,7 +1316,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
               ],
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 18.0, right: 12.0),
+              padding: const EdgeInsets.only(left: 18.0, right: 12.0,),
               child: Text("="),
             ),
             Column(
@@ -1271,7 +1331,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                       getText('maximum_allowable_surface_pressure', context),
                       style: TextStyle(
                         fontSize: 9,
-                        fontWeight: FontWeight.w500,
+                         color: Colors.black,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -1295,9 +1355,9 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                       suffixStyle: TextStyle(
                          
                           fontSize: 6),
-                      hintText: '748',
+                      hintText: '1201',
                       hintStyle: TextStyle(
-                         
+                          color: Colors.black,
                           fontSize: 14),
                       border: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.white),
@@ -1325,73 +1385,67 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
         padding: const EdgeInsets.all(8.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Column(
-              // crossAxisAlignment: CrossAxisAlignment.start,
+           
+  Column(
+               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(
+
+Text(
                   getText('sidpp', context),
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                  style: TextStyle(fontSize: 14,  color: Colors.black),
                 ),
 
                 SizedBox(
                   height: 18,
                 ),
-
-                new Container(
-                  height: 90.0,
-                  width: 90.0,
-                  decoration: BoxDecoration(
-                    gradient: new LinearGradient(
-                      colors: [
-                        Colors.blueGrey[50],
-                        Colors.blueGrey[200],
-                      ],
-                    ),
-                    shape: BoxShape.circle,
-                     border: new Border.all( color: Colors.black, width: 4.0),
-                    // border: new Border.all( width: 4.0),
-                  ),
-                  child: Stack(
-                    children: [
-                      Center(
-                        child: SizedBox(
-                          width: 50,
-                          child: TextFormField(
-                            textAlign: TextAlign.center,
-                            readOnly: true,
-                            decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(4),
-                              isDense: true,
-                              hintText: '623',
-                              hintStyle: TextStyle(
-                                  
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 14),
-                              border: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.white),
-                                borderRadius: BorderRadius.circular(0),
+                 Container(
+                    height: 100.0,
+                    //  width: 180.0,
+                   child: Stack(
+                     children: [
+                       Image(image: AssetImage('assets/images/iconShadedCircle.png')),
+                        Positioned(
+                          right: 25,
+                          top: 35,
+                                                  child: Center(
+                          child: SizedBox(
+                            width: 50,
+                            child: TextFormField(
+                              textAlign: TextAlign.center,
+                              readOnly: true,
+                              decoration: InputDecoration(
+                                contentPadding: EdgeInsets.all(4),
+                                isDense: true,
+                                hintText: '623',
+                                hintStyle: TextStyle(
+                                    
+                                     color: Colors.black,
+                                    fontSize: 14),
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.white),
+                                  borderRadius: BorderRadius.circular(0),
+                                ),
                               ),
                             ),
                           ),
-                        ),
                       ),
-                      Positioned(
-                        bottom: 15,
-                        right: 18,
-                        child: Text(
-                          'psi',
-                          style: TextStyle(fontSize: 10),
                         ),
+                          Positioned(
+                          right: 24,
+                          bottom:26,
+                                                  child: Center(
+                          child:Text('psi', style: TextStyle(fontSize: 10),),
                       ),
-                    ],
-                  ),
-                ),
+                        ),
+                       ]),
+                   //  child: Center(child: Text('Choose Configuration',style: TextStyle(color: Colors.white),)),
+                 ),
+           
                 SizedBox(
                   height: 18,
                 ),
-
                 Row(
                   children: [
                     Text('Day: ',style: TextStyle(fontSize: 16),),
@@ -1407,7 +1461,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                          hintText: day.toString(),
                           hintStyle: TextStyle(
                               
-                              fontWeight: FontWeight.w500,
+                               color: Colors.black,
                               fontSize: 14),
                           border: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.white),
@@ -1421,71 +1475,65 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                 // Text("My Awesome Border"),
               ],
             ),
-              Column(
-              // crossAxisAlignment: CrossAxisAlignment.start,
+
+             Column(
+               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(
+
+Text(
                   getText('pit_gain', context),
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                  style: TextStyle(fontSize: 14,  color: Colors.black),
                 ),
 
                 SizedBox(
                   height: 18,
                 ),
-
-                new Container(
-                  height: 90.0,
-                  width: 90.0,
-                  decoration: BoxDecoration(
-                    gradient: new LinearGradient(
-                      colors: [
-                        Colors.blueGrey[50],
-                        Colors.blueGrey[200],
-                      ],
-                    ),
-                    shape: BoxShape.circle,
-                     border: new Border.all( color: Colors.black, width: 4.0),
-                    // border: new Border.all( width: 4.0),
-                  ),
-                  child: Stack(
-                    children: [
-                      Center(
-                        child: SizedBox(
-                          width: 50,
-                          child: TextFormField(
-                            textAlign: TextAlign.center,
-                            readOnly: true,
-                            decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(4),
-                              isDense: true,
-                              hintText: '8.0',
-                              hintStyle: TextStyle(
-                                  
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 14),
-                              border: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.white),
-                                borderRadius: BorderRadius.circular(0),
+                 Container(
+                    height: 100.0,
+                    //  width: 180.0,
+                   child: Stack(
+                     children: [
+                       Image(image: AssetImage('assets/images/iconPitGainContainer.png')),
+                        Positioned(
+                          right: 10,
+                          top: 40,
+                                                  child: Center(
+                          child: SizedBox(
+                            width: 50,
+                            child: TextFormField(
+                              textAlign: TextAlign.center,
+                              readOnly: true,
+                              decoration: InputDecoration(
+                                contentPadding: EdgeInsets.all(4),
+                                isDense: true,
+                                hintText: '623',
+                                hintStyle: TextStyle(
+                                    
+                                     color: Colors.black,
+                                    fontSize: 14),
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.white),
+                                  borderRadius: BorderRadius.circular(0),
+                                ),
                               ),
                             ),
                           ),
-                        ),
                       ),
-                      Positioned(
-                        bottom: 15,
-                        right: 18,
-                        child: Text(
-                          'lbs',
-                          style: TextStyle(fontSize: 10),
                         ),
+                          Positioned(
+                          right: 14,
+                          bottom:20,
+                                                  child: Center(
+                          child:Text('bbls', style: TextStyle(fontSize: 10),),
                       ),
-                    ],
-                  ),
-                ),
+                        ),
+                       ]),
+                   //  child: Center(child: Text('Choose Configuration',style: TextStyle(color: Colors.white),)),
+                 ),
+           
                 SizedBox(
                   height: 18,
                 ),
-
                 Row(
                   children: [
                     Text('Date: ',style: TextStyle(fontSize: 16),),
@@ -1501,7 +1549,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                         
                           hintStyle: TextStyle(
                               
-                              fontWeight: FontWeight.w500,
+                               color: Colors.black,
                               fontSize: 14),
                           border: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.white),
@@ -1517,71 +1565,66 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
             ),
 
 
-             Column(
-              // crossAxisAlignment: CrossAxisAlignment.start,
+
+            Column(
+               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(
+
+Text(
                   getText('sicp', context),
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                  style: TextStyle(fontSize: 14,  color: Colors.black),
                 ),
 
                 SizedBox(
                   height: 18,
                 ),
-
-                new Container(
-                  height: 90.0,
-                  width: 90.0,
-                  decoration: BoxDecoration(
-                    gradient: new LinearGradient(
-                      colors: [
-                        Colors.blueGrey[50],
-                        Colors.blueGrey[200],
-                      ],
-                    ),
-                    shape: BoxShape.circle,
-                   border: new Border.all( color: Colors.black, width: 4.0),
-                  ),
-                  child: Stack(
-                    children: [
-                      Center(
-                        child: SizedBox(
-                          width: 50,
-                          child: TextFormField(
-                            textAlign: TextAlign.center,
-                            readOnly: true,
-                            decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(4),
-                              isDense: true,
-                              hintText: '724',
-                              hintStyle: TextStyle(
-                                  
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 14),
-                              border: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.white),
-                                borderRadius: BorderRadius.circular(0),
+                 Container(
+                    height: 100.0,
+                    //  width: 180.0,
+                   child: Stack(
+                     children: [
+                       Image(image: AssetImage('assets/images/iconShadedCircle.png')),
+                        Positioned(
+                          right: 25,
+                          top: 35,
+                                                  child: Center(
+                          child: SizedBox(
+                            width: 50,
+                            child: TextFormField(
+                              textAlign: TextAlign.center,
+                              readOnly: true,
+                              decoration: InputDecoration(
+                                contentPadding: EdgeInsets.all(4),
+                                isDense: true,
+                                hintText: '623',
+                                hintStyle: TextStyle(
+                                    
+                                     color: Colors.black,
+                                    fontSize: 14),
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.white),
+                                  borderRadius: BorderRadius.circular(0),
+                                ),
                               ),
                             ),
                           ),
-                        ),
                       ),
-                      Positioned(
-                        bottom: 15,
-                        right: 18,
-                        child: Text(
-                          'psi',
-                          style: TextStyle(fontSize: 10),
                         ),
+                          Positioned(
+                          right: 24,
+                          bottom:26,
+                                                  child: Center(
+                          child:Text('psi', style: TextStyle(fontSize: 10),),
                       ),
-                    ],
-                  ),
-                ),
+                        ),
+                       ]),
+                   //  child: Center(child: Text('Choose Configuration',style: TextStyle(color: Colors.white),)),
+                 ),
+           
                 SizedBox(
                   height: 18,
                 ),
-
-                Row(
+                 Row(
                   children: [
                     Text('Time: ',style: TextStyle(fontSize: 16),),
                     SizedBox(
@@ -1596,7 +1639,7 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                         
                           hintStyle: TextStyle(
                               
-                              fontWeight: FontWeight.w500,
+                               color: Colors.black,
                               fontSize: 14),
                           border: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.white),
@@ -1610,7 +1653,9 @@ String time =  DateFormat('HH:mm').format(DateTime.now());
                 // Text("My Awesome Border"),
               ],
             ),
-           
+
+            
+            
            
           ],
         ),

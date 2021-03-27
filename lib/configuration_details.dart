@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/mode_selection.dart';
 import 'package:flutter_application_1/utilities/constants.dart';
 import 'package:mm_initial_data/mmid_dm_wwm_initial_data.dart';
 
 class Configuration extends StatefulWidget {
+  SelectedConfigurations sc;
+  Configuration(this.sc);
   @override
-  _ConfigurationState createState() => _ConfigurationState();
+  _ConfigurationState createState() => _ConfigurationState(sc);
 }
 
 // class ConfigInfo{
@@ -16,21 +19,41 @@ class Configuration extends StatefulWidget {
 //   ConfigInfo(this.id,this.key,this.name);
 // }
 
+class SelectedMethodRig {
+  bool isDrillersMethod;
+  bool isSubsea;
+  int selectedConfigIndex = 0;
+}
+
 class _ConfigurationState extends State<Configuration> {
-  double drillpipeOD ;
-  double drillpipeID ;
-  double drillCollarOD ;
-  double drillCollarID ;
-  double casingOD ;
-  double casingID ;
-  double drillbitSize ;
-  double formationPressure ;
+  SelectedConfigurations sc;
+  _ConfigurationState(this.sc);
+
+  SelectedMethodRig methodRig = new SelectedMethodRig();
+  double drillpipeOD;
+  double drillpipeID;
+  double drillCollarOD;
+  double drillCollarID;
+  double casingOD;
+  double casingID;
+  double drillbitSize;
+  double surfaceLineVol;
+  double chokeLineId;
+  double openHoleDiameter;
+  double fracturePressureGradient;
+  double formationPressure;
+  double lot;
+  double fitLowerRange;
+  double surfaceLineRadius;
+
+
+  String drillpipeODUnit;
 
   bool isSelected = false;
 
   int selectedIndex = 0;
 
-  int selectedConfigIndex = 0;
+  // int selectedConfigIndex = 0;
 
   List<String> configList = [
     "Well Config 1",
@@ -44,8 +67,26 @@ class _ConfigurationState extends State<Configuration> {
   ];
 
   List<ConfigInfo> configData = [];
+
   @override
   void initState() {
+    if (sc.selectedField == 'Wait and Weight' && sc.selectedRig == 'Subsea') {
+      methodRig.isDrillersMethod = false;
+      methodRig.isSubsea = true;
+    } else if (sc.selectedField == 'Wait and Weight' &&
+        sc.selectedRig == 'Surface') {
+      methodRig.isDrillersMethod = false;
+      methodRig.isSubsea = false;
+    } else if (sc.selectedField == "Driller's Method" &&
+        sc.selectedRig == 'Surface') {
+      methodRig.isDrillersMethod = true;
+      methodRig.isSubsea = false;
+    } else if (sc.selectedField == "Driller's Method" &&
+        sc.selectedRig == 'Subsea') {
+      methodRig.isDrillersMethod = true;
+      methodRig.isSubsea = true;
+    }
+
     Units().initialize().then((value) {
       DmWwmInitialData().loadConfigMetaData().then((success) {
         if (DmWwmInitialData().configMetaData == null) {
@@ -64,15 +105,19 @@ class _ConfigurationState extends State<Configuration> {
             .configMetaData
             .configInfo[0]
             .loadConfig(
-                isDrillersMethod: false,
-                isSubsea: true,
+                isDrillersMethod: methodRig.isDrillersMethod,
+                isSubsea: methodRig.isSubsea,
                 influxType: InfluxType.gas)
             .then((success) {
           var _config = DmWwmInitialData().current.configuration;
           // var name = DmWwmInitialData().current.configInfo.name;
-
+          surfaceLineRadius = _config.surfaceLine.innerDiameter.value / 2;
+          surfaceLineVol = 3.14 *
+              surfaceLineRadius *
+              surfaceLineRadius *
+              _config.surfaceLine.length.value;
           drillpipeOD = _config.drillstring[0].outerDiameter.value;
-
+          drillpipeODUnit = _config.drillstring[0].outerDiameter.unit.name;
           drillpipeID = _config.drillstring[0].innerDiameter.value;
 
           drillCollarOD = _config.drillstring[2].outerDiameter.value;
@@ -83,10 +128,19 @@ class _ConfigurationState extends State<Configuration> {
 
           casingID = _config.casing.innerDiameter.value;
 
+          chokeLineId = _config.chokeLine.innerDiameter.value;
+
+          openHoleDiameter = 8.5;
+
+          formationPressure = 6739;
+
           drillbitSize = _config.drillbit.width.value;
 
-          formationPressure =
+          fracturePressureGradient =
               _config.fracturePressure.fracturePressureGradient.value;
+
+          lot = _config.leakOffTests.mudWeight.value;
+          fitLowerRange = 10.0;
         });
 
         setState(() {});
@@ -102,39 +156,70 @@ class _ConfigurationState extends State<Configuration> {
         .configMetaData
         .configInfo[index]
         .loadConfig(
-            isDrillersMethod: false, isSubsea: true, influxType: InfluxType.gas)
+            isDrillersMethod: methodRig.isDrillersMethod,
+            isSubsea: methodRig.isSubsea,
+            influxType: InfluxType.gas)
         .then((success) {
       //  printConfig();
       setState(() {
         var _config = DmWwmInitialData().current.configuration;
         var name = DmWwmInitialData().current.configInfo.name;
-        print(name);
+        // print(name);
+        // drillpipeOD = _config.drillstring[0].outerDiameter.value;
+        // print(drillpipeOD);
+        // drillpipeID = _config.drillstring[0].innerDiameter.value;
+        // print(drillpipeID);
+        // drillCollarOD = _config.drillstring[2].outerDiameter.value;
+        // print(drillCollarOD);
+        // drillCollarID = _config.drillstring[2].innerDiameter.value;
+        // print(drillCollarID);
+        // casingOD = _config.casing.outerDiameter.value;
+        // print(casingOD);
+        // casingID = _config.casing.innerDiameter.value;
+        // print(casingID);
+        // drillbitSize = _config.drillbit.width.value;
+        // print(drillbitSize);
+        // formationPressure =
+        //     _config.fracturePressure.fracturePressureGradient.value;
+
+        surfaceLineRadius = _config.surfaceLine.innerDiameter.value / 2;
+        surfaceLineVol = 3.14 *
+            surfaceLineRadius *
+            surfaceLineRadius *
+            _config.surfaceLine.length.value;
         drillpipeOD = _config.drillstring[0].outerDiameter.value;
-        print(drillpipeOD);
+
         drillpipeID = _config.drillstring[0].innerDiameter.value;
-        print(drillpipeID);
+
         drillCollarOD = _config.drillstring[2].outerDiameter.value;
-        print(drillCollarOD);
+
         drillCollarID = _config.drillstring[2].innerDiameter.value;
-        print(drillCollarID);
+
         casingOD = _config.casing.outerDiameter.value;
-        print(casingOD);
+
         casingID = _config.casing.innerDiameter.value;
-        print(casingID);
+
+        chokeLineId = _config.chokeLine.innerDiameter.value;
+
+        openHoleDiameter = 8.5;
+
+        formationPressure = 6739;
+
         drillbitSize = _config.drillbit.width.value;
-        print(drillbitSize);
-        formationPressure =
+
+        fracturePressureGradient =
             _config.fracturePressure.fracturePressureGradient.value;
+
+        lot = _config.leakOffTests.mudWeight.value;
+        fitLowerRange = 10.0;
         //  casingOD =  _config.casing.length.value;
         // print("length" + casingOD.toString());
 
-        selectedConfigIndex = index;
+        sc.selectedConfigIndex = index;
       });
       // print('suceed');
     });
   }
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -201,7 +286,7 @@ class _ConfigurationState extends State<Configuration> {
                       flex: 2,
                       child: Container(
                         //  color: Colors.yellow,
-                        child: configurationDetails(),
+                        child: sc.selectedRig=='Subsea' ? configurationDetailsSubsea(): configurationDetails(),
                       ))
                 ],
               ),
@@ -515,6 +600,7 @@ class _ConfigurationState extends State<Configuration> {
             ),
           ],
         ),
+
         SizedBox(
           height: 150,
         ),
@@ -526,12 +612,15 @@ class _ConfigurationState extends State<Configuration> {
               height: 50,
               child: RaisedButton(
                 color: Color(0xFF166ABE),
-                child: Text(
-                  'Continue With this configuration',
-                  style: TextStyle(color: Colors.white),
+                child: Center(
+                  child: Text(
+                    'Continue With this configuration',
+                    style: TextStyle(color: Colors.white),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
                 onPressed: () {
-                  Navigator.pushNamed(context, '/killsheet',arguments: selectedConfigIndex);
+                  Navigator.pushNamed(context, '/killsheet', arguments: sc);
                 },
               ),
             ),
@@ -559,4 +648,466 @@ class _ConfigurationState extends State<Configuration> {
       ],
     );
   }
+
+   Widget configurationDetailsSubsea() {
+    return ListView(
+      children: [
+
+
+        Container(
+          //  height: 50,
+          color: Colors.grey.withOpacity(0.4),
+          child: Padding(
+            padding: const EdgeInsets.only(top: 4.0, bottom: 4.0),
+            child: Row(
+              children: [
+                Text('Configuration Details'),
+              ],
+            ),
+          ),
+        ),
+
+
+         Row(
+          children: [
+            Expanded(child: Text('Surface Line Volume')),
+            Expanded(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                        readOnly: true,
+                        decoration: InputDecoration(
+                          hintStyle: TextStyle(color: Colors.black),
+                          isDense: true,
+                          contentPadding: EdgeInsets.all(8.0),
+                          hintText: surfaceLineVol.toString(),
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.circular(5.7),
+                          ),
+                        )),
+                  ),
+                  Text('  inches  ')
+                ],
+              ),
+            ),
+          ],
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 8.0),
+          child: Row(
+            children: [
+              Expanded(child: Text('Drillpipe OD')),
+              Expanded(
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: TextFormField(
+                          readOnly: true,
+                          decoration: InputDecoration(
+                            hintStyle: TextStyle(color: Colors.black),
+                            isDense: true,
+                            contentPadding: EdgeInsets.all(8.0),
+                            hintText: drillpipeOD.toString(),
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(5.7),
+                            ),
+                          )),
+                    ),
+                    Text('  inches  ')
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+        Divider(),
+        Row(
+          children: [
+            Expanded(child: Text('Drillpipe ID')),
+            Expanded(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                        readOnly: true,
+                        decoration: InputDecoration(
+                          hintStyle: TextStyle(color: Colors.black),
+                          isDense: true,
+                          contentPadding: EdgeInsets.all(8.0),
+                          hintText: drillpipeID.toString(),
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.circular(5.7),
+                          ),
+                        )),
+                  ),
+                  Text('  inches  ')
+                ],
+              ),
+            ),
+          ],
+        ),
+        Divider(),
+        //  Row(
+        //   children: [
+        //     Expanded(child: Text('Drillpipe ID')),
+        //     Expanded(
+        //       child: Row(
+        //         children: [
+        //           Expanded(
+        //             child: TextFormField(
+        //                 decoration: InputDecoration(
+        //               isDense: true,
+        //               contentPadding: EdgeInsets.all(8.0),
+        //               hintText:  drillpipeID.toString(),
+        //               border: OutlineInputBorder(
+        //                 borderSide: BorderSide(color: Colors.white),
+        //                 borderRadius: BorderRadius.circular(5.7),
+        //               ),
+        //             )),
+        //           ),
+        //           Text('  inches  ')
+        //         ],
+        //       ),
+        //     ),
+        //   ],
+        // ),
+        // Divider(),
+        Row(
+          children: [
+            Expanded(child: Text('Drill collar OD')),
+            Expanded(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                        readOnly: true,
+                        decoration: InputDecoration(
+                          hintStyle: TextStyle(color: Colors.black),
+                          isDense: true,
+                          contentPadding: EdgeInsets.all(8.0),
+                          hintText: drillCollarOD.toString(),
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.circular(5.7),
+                          ),
+                        )),
+                  ),
+                  Text('  inches  ')
+                ],
+              ),
+            ),
+          ],
+        ),
+        Divider(),
+        Row(
+          children: [
+            Expanded(child: Text('Drill collar ID')),
+            Expanded(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                        readOnly: true,
+                        decoration: InputDecoration(
+                          hintStyle: TextStyle(color: Colors.black),
+                          isDense: true,
+                          contentPadding: EdgeInsets.all(8.0),
+                          hintText: drillCollarID.toString(),
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.circular(5.7),
+                          ),
+                        )),
+                  ),
+                  Text('  inches  ')
+                ],
+              ),
+            ),
+          ],
+        ),
+        Divider(),
+        Row(
+          children: [
+            Expanded(child: Text('Casing OD')),
+            Expanded(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                        readOnly: true,
+                        decoration: InputDecoration(
+                          hintStyle: TextStyle(color: Colors.black),
+                          isDense: true,
+                          contentPadding: EdgeInsets.all(8.0),
+                          hintText: casingOD.toString(),
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.circular(5.7),
+                          ),
+                        )),
+                  ),
+                  Text('  inches  ')
+                ],
+              ),
+            ),
+          ],
+        ),
+        Divider(),
+        Row(
+          children: [
+            Expanded(child: Text('Casing ID')),
+            Expanded(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                        readOnly: true,
+                        decoration: InputDecoration(
+                          hintStyle: TextStyle(color: Colors.black),
+                          isDense: true,
+                          contentPadding: EdgeInsets.all(8.0),
+                          hintText: casingID.toString(),
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.circular(5.7),
+                          ),
+                        )),
+                  ),
+                  Text('  inches  ')
+                ],
+              ),
+            ),
+          ],
+        ),
+        Divider(),
+         Row(
+          children: [
+            Expanded(child: Text('Choke Line ID')),
+            Expanded(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                        readOnly: true,
+                        decoration: InputDecoration(
+                          hintStyle: TextStyle(color: Colors.black),
+                          isDense: true,
+                          contentPadding: EdgeInsets.all(8.0),
+                          hintText: chokeLineId.toString(),
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.circular(5.7),
+                          ),
+                        )),
+                  ),
+                  Text('  inches  ')
+                ],
+              ),
+            ),
+          ],
+        ),
+         Divider(),
+         Row(
+          children: [
+            Expanded(child: Text('Open Hole Diameter')),
+            Expanded(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                        readOnly: true,
+                        decoration: InputDecoration(
+                          hintStyle: TextStyle(color: Colors.black),
+                          isDense: true,
+                          contentPadding: EdgeInsets.all(8.0),
+                          hintText: openHoleDiameter.toString(),
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.circular(5.7),
+                          ),
+                        )),
+                  ),
+                  Text('  inches  ')
+                ],
+              ),
+            ),
+          ],
+        ),
+         Divider(),
+        Row(
+          children: [
+            Expanded(child: Text('Formation Pressure')),
+            Expanded(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                        readOnly: true,
+                        decoration: InputDecoration(
+                          hintStyle: TextStyle(color: Colors.black),
+                          isDense: true,
+                          contentPadding: EdgeInsets.all(8.0),
+                          hintText: formationPressure.toString(),
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.circular(5.7),
+                          ),
+                        )),
+                  ),
+                  Text('  inches  ')
+                ],
+              ),
+            ),
+          ],
+        ),
+        Divider(),
+        Row(
+          children: [
+            Expanded(child: Text('Fractual Pressure Gradient')),
+            Expanded(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                        readOnly: true,
+                        decoration: InputDecoration(
+                          hintStyle: TextStyle(color: Colors.black),
+                          isDense: true,
+                          contentPadding: EdgeInsets.all(8.0),
+                          hintText: fracturePressureGradient.toString(),
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.circular(5.7),
+                          ),
+                        )),
+                  ),
+                  Text('  psi / ft  ')
+                ],
+              ),
+            ),
+          ],
+        ),
+        SizedBox(height: 6,),
+      Container(
+          //  height: 50,
+          color: Colors.grey.withOpacity(0.4),
+          child: Padding(
+            padding: const EdgeInsets.only(top: 4.0, bottom: 4.0),
+            child: Row(
+              children: [
+                Text('LOT and FIT test at Casing Shoe'),
+              ],
+            ),
+          ),
+        ),
+        SizedBox(height: 6,),
+
+         Row(
+          children: [
+            Expanded(child: Text('Leack off test(LOT)')),
+            Expanded(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                        readOnly: true,
+                        decoration: InputDecoration(
+                          hintStyle: TextStyle(color: Colors.black),
+                          isDense: true,
+                          contentPadding: EdgeInsets.all(8.0),
+                          hintText: lot.toString(),
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.circular(5.7),
+                          ),
+                        )),
+                  ),
+                  Text('    ppg    ')
+                ],
+              ),
+            ),
+          ],
+        ),
+SizedBox(height: 6,),
+         Row(
+          children: [
+            Expanded(child: Text('FIT Lower Range')),
+            Expanded(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                        readOnly: true,
+                        decoration: InputDecoration(
+                          hintStyle: TextStyle(color: Colors.black),
+                          isDense: true,
+                          contentPadding: EdgeInsets.all(8.0),
+                          hintText: fitLowerRange.toString(),
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.circular(5.7),
+                          ),
+                        )),
+                  ),
+                  Text('    ppg    ')
+                ],
+              ),
+            ),
+          ],
+        ),
+
+
+        SizedBox(
+          height: 150,
+        ),
+        Container(
+          child: Align(
+            alignment: Alignment.bottomCenter,
+            child: SizedBox(
+              width: 250,
+              height: 50,
+              child: RaisedButton(
+                color: Color(0xFF166ABE),
+                child: Center(
+                  child: Text(
+                    'Continue With this configuration',
+                    style: TextStyle(color: Colors.white),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/killsheet', arguments: sc);
+                },
+              ),
+            ),
+          ),
+        ),
+
+        SizedBox(
+          height: 30,
+        ),
+        // RaisedButton(onPressed: (){})
+        // ignore: deprecated_member_use
+        //       Container(
+        //         width: 50,
+        //         child: RaisedButton(
+
+        //          shape: RoundedRectangleBorder(
+
+        // borderRadius: BorderRadius.circular(4.0),),
+        //            color:Color(0xFF166ABE),
+        //            child: Text('Continue With this Configuration',style: TextStyle(color: Colors.white),),
+        //           onPressed: (){
+
+        //         }),
+        //       )
+      ],
+    );
+  }
+
+
 }

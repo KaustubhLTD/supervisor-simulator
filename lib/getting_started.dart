@@ -1,15 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/mode_selection.dart';
 
 class Guidelines extends StatefulWidget {
+  SelectedConfigurations sc;
+  Guidelines(this.sc);
   @override
-  _GuidelinesState createState() => _GuidelinesState();
+  _GuidelinesState createState() => _GuidelinesState(sc);
 }
 
 class _GuidelinesState extends State<Guidelines> {
+   SelectedConfigurations sc;
+  _GuidelinesState(this.sc);
+
   bool _lights = false;
   @override
   Widget build(BuildContext context) {
+     print('hello' +sc.selectedRig.toString());
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -145,7 +152,7 @@ class _GuidelinesState extends State<Guidelines> {
              color:Colors.blue,
              child: Text('Continue',style: TextStyle(color: Colors.white),),
             onPressed: (){
-              Navigator.pushNamed(context, '/configuration');
+              Navigator.pushNamed(context, '/configuration',arguments: sc);
            
           }),
                                           ],

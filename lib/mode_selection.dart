@@ -15,6 +15,15 @@ class KillMethodModel {
   KillMethodModel(this.image, this.title);
 }
 
+class SelectedConfigurations {
+  String selectedField = '';
+  String selectedMode = '';
+   String selectedRig = '';
+   int selectedConfigIndex = 0;
+   
+  // SelectedConfigurations(this.selectedField, this.selectedMode,this.selectedRig);
+}
+
 class _ModeSelectionState extends State<ModeSelection> {
   List<KillMethodModel> killMethodData = [
     KillMethodModel('assets/images/drillerMethod.png', 'drillers_method'),
@@ -24,8 +33,11 @@ class _ModeSelectionState extends State<ModeSelection> {
     KillMethodModel('assets/images/lubeAndBleed.png', 'lube_and_bleed'),
   ];
 
+  SelectedConfigurations sc = SelectedConfigurations();
+
   String selectedField = '';
   String selectedMode = '';
+  String selectedRig = '';
 
   bool visiblebutton = false;
 
@@ -34,6 +46,9 @@ class _ModeSelectionState extends State<ModeSelection> {
       selectedField = field;
       selectedMode = mode;
       visiblebutton = visibility;
+      sc.selectedField= field;
+      sc.selectedMode = mode;
+     
     });
   }
 
@@ -517,7 +532,11 @@ class _ModeSelectionState extends State<ModeSelection> {
                           children: [
                             InkWell(
                                 onTap: () {
-                                  Navigator.pushNamed(context, '/guidelines');
+                                 
+                                  setState(() {
+                                    sc.selectedRig = 'Surface';
+                                     Navigator.pushNamed(context, '/guidelines',arguments: sc);
+                                  });
                                 },
                                 child: rigSelectionCards(
                                     'assets/images/surface.png', 'Surface')),
@@ -527,7 +546,11 @@ class _ModeSelectionState extends State<ModeSelection> {
                                 : SizedBox(),
                             InkWell(
                                 onTap: () {
-                                  Navigator.pushNamed(context, '/guidelines');
+                                 
+                                    setState(() {
+                                    sc.selectedRig = 'Subsea';
+                                     Navigator.pushNamed(context, '/guidelines',arguments: sc);
+                                  });
                                 },
                                 child: rigSelectionCards(
                                     'assets/images/subsea.png', 'Subsea'))
