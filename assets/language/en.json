@@ -333,6 +333,9 @@
     "1.0": "1.0",
     "0.0": "0.0",
     "module_1_scoring": "Module 1 Score = ",
+    "module_2_scoring": "Module 2 Score = ",
+    "module_3_scoring": "Module 3 Score = ",
+   
     "passed": "Passed",
     "failed": "Failed",
     "reattempt": "Reattempt",
@@ -431,6 +434,7 @@
     "casing_shoe": "Casing Shoe",
     "pit_volume": "Pit Volume",
     "co": "CO",
+   
     "graph_summary": "Graph Summary",
     "kill_line_pressure": "Kill Line Pressure",
     "strokes": "Strokes",

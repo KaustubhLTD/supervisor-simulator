@@ -620,7 +620,9 @@ class _ConfigurationState extends State<Configuration> {
                   ),
                 ),
                 onPressed: () {
-                  Navigator.pushNamed(context, '/killsheet', arguments: sc);
+                  // Navigator.pushNamed(context, '/activityselection');
+                    Navigator.pushNamed(context, '/activityselection', arguments: sc);
+                  //  Navigator.pushNamed(context,  '/killsheet', arguments: sc);
                 },
               ),
             ),
@@ -1080,7 +1082,7 @@ SizedBox(height: 6,),
                   ),
                 ),
                 onPressed: () {
-                  Navigator.pushNamed(context, '/killsheet', arguments: sc);
+                  Navigator.pushNamed(context, '/activityselection', arguments: sc);
                 },
               ),
             ),
