@@ -8,7 +8,7 @@ class ActivityLog extends StatefulWidget {
 class _ActivityLogState extends State<ActivityLog> {
   List lr = ['hey', 'hello', 'how are u'];
 
-  Map<String, dynamic> dynamicMap = {
+  Map<String, List<String> > dynamicMap = {
     '1) Pumps to Kill Speed - Startup to Kill Procedure': 
     [
     'You have effortlessly bought the pumps to Kill Speed',
@@ -52,56 +52,51 @@ class _ActivityLogState extends State<ActivityLog> {
         body: SafeArea(
       child: Column(children: [
         Container(
-          margin: const EdgeInsets.all(6.0),
-          padding: const EdgeInsets.only(
-              top: 12.0, bottom: 12, left: 10.0, right: 10.0),
-          decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          
+           margin: const EdgeInsets.all(2.0),
+          padding: const EdgeInsets.only(top: 12.0, bottom: 12,left: 10.0,right:10.0),
+          decoration:
+            BoxDecoration(border: Border.all(color:Color(0xff012160))),
+          child: 
+          Row(
+               mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+
               Expanded(
-                flex: 1,
-                child: Column(
+               
+                              child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Name : Wait and Weight',
-                        style:
-                            TextStyle(color: Colors.indigo[900], fontSize: 12)),
-                    SizedBox(height: 30),
-                    Text('Session :31/03/2021,2:33 PM',
-                        style:
-                            TextStyle(color: Colors.indigo[900], fontSize: 12)),
-                  ],
-                ),
+                   
+                  Row(
+                   mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      SizedBox(width:10),
+                      Text('Name: Wait and Weight',style: TextStyle(color:Color(0xff012160),fontSize: 12,fontWeight: FontWeight.bold)),
+                    ],
+                  ),
+                  SizedBox(height:30),
+                   Text('Session:31/03/2021,2:33 PM',style: TextStyle(color:Color(0xff012160),fontSize: 12,fontWeight: FontWeight.bold)),
+                 
+                ],),
               ),
               Expanded(
-
-                  // flex: 1,
-
-                  child: Center(
-                      child: Text(
-                'Activity Log',
-                style: TextStyle(
-                    color: Colors.indigo[900],
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold),
-              ))),
-              Expanded(
-                flex: 1,
-                child: Column(
+                // flex: 1,
+                child: Center(child: Text('Activity Log',style: TextStyle(color:Color(0xff012160),fontSize:20,fontWeight: FontWeight.bold),))),
+               Expanded(
+                
+                                child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Text('Wait and Weight',
-                        style:
-                            TextStyle(color: Colors.indigo[900], fontSize: 12)),
-                    SizedBox(height: 30),
-                    Text('Choke Plugging',
-                        style:
-                            TextStyle(color: Colors.indigo[900], fontSize: 12)),
-                  ],
-                ),
-              ),
+                 
+                   Text('Wait and Weight',style: TextStyle(color:Color(0xff012160),fontSize: 12,fontWeight: FontWeight.bold)),
+                    SizedBox(height:30),
+                  Text('Choke Plugging',style: TextStyle(color:Color(0xff012160),fontSize: 12,fontWeight: FontWeight.bold)),
+              ],),
+               ),
             ],
           ),
-        ),
+          ),
         new Expanded(
             child: new ListView.builder(
           itemCount: dynamicMap.length,
@@ -114,10 +109,10 @@ class _ActivityLogState extends State<ActivityLog> {
               child: new Column(
                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  new Text('${key}'),
+                  new Text('${key}',style: TextStyle(fontWeight: FontWeight.bold,),),
                   SizedBox(height:2),
                   for (int i = 0; i < dynamicMap.values.length; i++)
-                    new Text('        - ' + dynamicMap[key][i].toString(),style: TextStyle(color:Colors.green),)
+                    FittedBox(child: new Text('        - ' + dynamicMap[key][i].toString(),style: TextStyle(color:Colors.green,letterSpacing: 0.5),))
                 ],
               ),
             );

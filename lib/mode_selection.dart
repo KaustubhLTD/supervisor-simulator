@@ -206,7 +206,7 @@ class _ModeSelectionState extends State<ModeSelection> {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                getText("simulator_for_drilling_operations_supervisor_course",
+                getText("simulator_for_drilling_operations_driller_and_supervisor_course",
                     context),
                 // "Simulator for Drilling Operation Supervisor Course",
                 style: TextStyle(color: Constants.textColor),
@@ -261,11 +261,11 @@ class _ModeSelectionState extends State<ModeSelection> {
       ),
       TextSpan(
         text: getText('select_method', context),
-        style: TextStyle(color: Colors.white,
+        style: TextStyle(color: Colors.white,fontStyle: FontStyle.italic,
          shadows: [
         Shadow(
             blurRadius: 2.0,
-            color: Colors.white,
+            color: Colors.black,
             offset: Offset(1.0, 1.0),
             ),
         ],
@@ -293,11 +293,11 @@ class _ModeSelectionState extends State<ModeSelection> {
       ),
       TextSpan(
         text: getText('select_method', context),
-        style: TextStyle(color: Colors.white,
+        style: TextStyle(color: Colors.white,fontStyle: FontStyle.italic,
          shadows: [
         Shadow(
             blurRadius: 2.0,
-            color: Colors.white,
+            color: Colors.black,
             offset: Offset(1.0, 1.0),
             ),
         ],
@@ -340,11 +340,11 @@ class _ModeSelectionState extends State<ModeSelection> {
       ),
       TextSpan(
         text: getText('select_rig', context),
-        style: TextStyle(color: Colors.white,
+        style: TextStyle(color: Colors.white,fontStyle: FontStyle.italic,
          shadows: [
         Shadow(
             blurRadius: 2.0,
-            color: Colors.white,
+            color: Colors.black,
             offset: Offset(1.0, 1.0),
             ),
         ],
@@ -383,11 +383,11 @@ class _ModeSelectionState extends State<ModeSelection> {
       ),
       TextSpan(
         text: getText('select_rig', context),
-        style: TextStyle(color: Colors.white,
+        style: TextStyle(color: Colors.white,fontStyle: FontStyle.italic,
          shadows: [
         Shadow(
             blurRadius: 2.0,
-            color: Colors.white,
+            color: Colors.black,
             offset: Offset(1.0, 1.0),
             ),
         ],
@@ -425,11 +425,11 @@ class _ModeSelectionState extends State<ModeSelection> {
       ),
       TextSpan(
         text: getText('select_rig', context),
-        style: TextStyle(color: Colors.white,
+        style: TextStyle(color: Colors.white,fontStyle: FontStyle.italic,
          shadows: [
         Shadow(
             blurRadius: 2.0,
-            color: Colors.white,
+            color: Colors.black,
             offset: Offset(1.0, 1.0),
             ),
         ],
@@ -469,11 +469,11 @@ class _ModeSelectionState extends State<ModeSelection> {
       ),
       TextSpan(
         text: getText('select_rig', context),
-        style: TextStyle(color: Colors.white,
+        style: TextStyle(color: Colors.white,fontStyle: FontStyle.italic,
          shadows: [
         Shadow(
             blurRadius: 2.0,
-            color: Colors.white,
+            color: Colors.black,
             offset: Offset(1.0, 1.0),
             ),
         ],
@@ -523,10 +523,12 @@ class _ModeSelectionState extends State<ModeSelection> {
               selectedField == "Practice" || selectedField == "Take a Test"
                   ? methodSelectionView()
                   : (selectedField == "Driller's Method" ||
-                          selectedField == "Wait and Weight" ||
+                          selectedField == "Wait and Weight" 
+                          ||
                           selectedField == "Bullheading" ||
                           selectedField == "Volumetric" ||
-                          selectedField == "Lube and Bleed")
+                          selectedField == "Lube and Bleed"
+                          )
                       ? Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -680,7 +682,7 @@ class _ModeSelectionState extends State<ModeSelection> {
                   fontSize: 16.0,
                   fontWeight: FontWeight.normal,
                   color: Colors.white)),
-          Text(getText('credits', context) + ':5',
+          Text(getText('credits', context) + ': 5',
               // 'Credits:5',
               style: TextStyle(fontSize: 12.0, color: Colors.white)),
           SizedBox(
@@ -777,7 +779,10 @@ class _ModeSelectionState extends State<ModeSelection> {
                 padding: const EdgeInsets.only(left: 4.0, right: 4.0),
                 child: InkWell(
                   onTap: () {
-                    _changed(
+
+                    // selectedField == "Driller's Method" || selectedField =="Wait and Weight" ?
+              
+                  _changed(
                         true, getText(killmethod.title, context), selectedMode);
                   },
 //  _changed(true, killmethod.title),

@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
        
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: KillLog(),  
+      home: ModeSelection(),  
        supportedLocales: [
         Locale('en', 'US'),
   ],
@@ -116,7 +116,40 @@ class MyApp extends StatelessWidget {
        return PageTransition(
           child: 
             // ActivitySelectionScreen(),
-           KillLog(),
+           KillLog(settings.arguments),
+           type: PageTransitionType.rightToLeftWithFade
+       );
+       break;
+
+       case '/module1score':
+       return PageTransition(
+          child: 
+            // ActivitySelectionScreen(),
+           Module1Score(),
+           type: PageTransitionType.rightToLeftWithFade
+       );
+       break;
+       case '/module2score':
+       return PageTransition(
+          child: 
+            // ActivitySelectionScreen(),
+           Module2Score(),
+           type: PageTransitionType.rightToLeftWithFade
+       );
+       break;
+       case '/module3score':
+       return PageTransition(
+          child: 
+            // ActivitySelectionScreen(),
+           Module3Score(),
+           type: PageTransitionType.rightToLeftWithFade
+       );
+       break;
+        case '/skillassessment':
+       return PageTransition(
+          child: 
+            // ActivitySelectionScreen(),
+           SkillAssessment(),
            type: PageTransitionType.rightToLeftWithFade
        );
        break;

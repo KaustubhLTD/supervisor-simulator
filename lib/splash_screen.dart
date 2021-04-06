@@ -38,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
                    child: Column(
                       mainAxisSize: MainAxisSize.min,
                      children: [
-                       Text(getText("drilling_supervisor_simulation", context),
+                       Text(getText("well_control_simulator", context),
                        style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold) ,
                        ),
                       // Text('Well Control Simulator',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),

@@ -1,8 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/mode_selection.dart';
 import 'package:flutter_application_1/utilities/constants.dart';
 import 'package:flutter_application_1/utilities/multilingual_service.dart';
 
-class KillLog extends StatelessWidget {
+class KillLog extends StatefulWidget {
+   SelectedConfigurations sc;
+   KillLog(this.sc);
+
+  @override
+  _KillLogState createState() => _KillLogState(sc);
+}
+
+class _KillLogState extends State<KillLog> {
+   SelectedConfigurations sc;
+   _KillLogState(this.sc);
   final List<Map<String, String>> listOfColumns = [
     {
       "time": "00:09:54",
@@ -10,6 +21,7 @@ class KillLog extends StatelessWidget {
       "strokes_counter": "0",
       "dpp": "646",
       "cp": "748",
+      "klp": "111",
       "bhp": "6732",
       "casing_shoe": "4805",
       "pit_volume": "8.1",
@@ -23,6 +35,7 @@ class KillLog extends StatelessWidget {
       "strokes_counter": "0",
       "dpp": "646",
       "cp": "748",
+      "klp": "111",
       "bhp": "6732",
       "casing_shoe": "4805",
       "pit_volume": "8.1",
@@ -36,6 +49,7 @@ class KillLog extends StatelessWidget {
       "strokes_counter": "0",
       "dpp": "646",
       "cp": "748",
+      "klp": "111",
       "bhp": "6732",
       "casing_shoe": "4805",
       "pit_volume": "8.1",
@@ -49,6 +63,7 @@ class KillLog extends StatelessWidget {
       "strokes_counter": "0",
       "dpp": "646",
       "cp": "748",
+      "klp": "111",
       "bhp": "6732",
       "casing_shoe": "4805",
       "pit_volume": "8.1",
@@ -62,6 +77,7 @@ class KillLog extends StatelessWidget {
       "strokes_counter": "0",
       "dpp": "646",
       "cp": "748",
+      "klp": "111",
       "bhp": "6732",
       "casing_shoe": "4805",
       "pit_volume": "8.1",
@@ -75,6 +91,7 @@ class KillLog extends StatelessWidget {
       "strokes_counter": "0",
       "dpp": "646",
       "cp": "748",
+      "klp": "111",
       "bhp": "6732",
       "casing_shoe": "4805",
       "pit_volume": "8.1",
@@ -83,7 +100,7 @@ class KillLog extends StatelessWidget {
       "spm": "0"
     },
   ];
-//  DataTableWidget(this.listOfColumns);     // Getting the data from outside, on initialization
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -127,7 +144,7 @@ class KillLog extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height:30),
-                   Text('Session:31/03/2021,2:33 PM',style: TextStyle(color:Color(0xff012160),fontSize: 12,fontWeight: FontWeight.bold)),
+                   Text('Session: 31/03/2021, 2:33 PM',style: TextStyle(color:Color(0xff012160),fontSize: 12,fontWeight: FontWeight.bold)),
                  
                 ],),
               ),
@@ -151,126 +168,321 @@ class KillLog extends StatelessWidget {
      
           
           
-                    Expanded(
-                                        child: Column(
-                                          
-                                          //  shrinkWrap: true,
-                                          children: [
-            // ignore: missing_required_param
-            Expanded(
-                        child: SingleChildScrollView(
-
-                          child: DataTable(
-
-                    headingRowColor:
-                                MaterialStateColor.resolveWith((states) => Colors.grey[200]),
-                  columnSpacing: 13.0,
-                  columns: [
-                    DataColumn(
-                                  label: Expanded(
-                                      child: Text(
-                                getText('time', context),
-                                textAlign: TextAlign.center,
-                    ))),
-                   DataColumn(
-                                  label: Expanded(
-                                      child: Text(
-                                'Strokes\nPump',
-                                textAlign: TextAlign.center,
-                    ))),
-                   DataColumn(
-                                  label: Expanded(
-                                      child: Text(
-                                  'Strokes\nCounter',
-                                textAlign: TextAlign.center,
-                    ))),
-                    DataColumn(
-                                  label: Expanded(
-                                      child: Text(
-                                getText('dpp', context),
-                                textAlign: TextAlign.center,
-                    ))),
-                    DataColumn(
-                                  label: Expanded(
-                                      child: Text(
-                                getText('cp', context),
-                                textAlign: TextAlign.center,
-                    ))),
-                    DataColumn(
-                                  label: Expanded(
-                                      child: Text(
-                                getText('bhp', context),
-                                textAlign: TextAlign.center,
-                    ))),
-                    DataColumn(
-                                  label: Expanded(
-                                      child: Text(
-                                'Casing\nShoe',
-                                textAlign: TextAlign.center,
-                    ))),
-                    DataColumn(
-                                  label: Expanded(
-                                      child: Text(
-                                getText('pit_volume', context),
-                                textAlign: TextAlign.center,
-                    ))),
-                    DataColumn(
-                                  label: Text(
-                                'Formation\nPressure',
-                                textAlign: TextAlign.center,
-                    )),
-                    DataColumn(
-                                  label: Expanded(
-                                      child: Text(
-                                getText('co', context),
-                                textAlign: TextAlign.center,
-                    ))),
-                    DataColumn(
-                                  label: Expanded(
-                                      child: Text(
-                                getText('spm', context),
-                                textAlign: TextAlign.center,
-                    ))),
-                  ],
-                 
-                  rows:
-                                listOfColumns // Loops through dataColumnText, each iteration assigning the value to element
-                                    .map(
-                                      ((element) => 
-                                      DataRow(
-                                            cells: <DataCell>[
-                              DataCell(Center(
-                                  child: Text(element[
-                                      "time"]))), //Extracting from Map element the value
-                              DataCell(
-                                  Center(child: Text(element["strokes_pump"]))),
-                              DataCell(
-                                  Center(child: Text(element["strokes_counter"]))),
-                              DataCell(Center(
-                                  child: Text(element[
-                                      "dpp"]))), //Extracting from Map element the value
-                              DataCell(Center(child: Text(element["cp"]))),
-                              DataCell(Center(child: Text(element["bhp"]))),
-                              DataCell(Center(
-                                  child: Text(element[
-                                      "casing_shoe"]))), //Extracting from Map element the value
-                              DataCell(Center(child: Text(element["pit_volume"]))),
-                              DataCell(Center(
-                                  child: Text(element["formation_pressure"]))),
-                              DataCell(Center(
-                                  child: Text(element[
-                                      "co"]))), //Extracting from Map element the value
-                              DataCell(Center(child: Text(element["spm"]))),
-                                            ],
-                                          )),
-                                    )
-                                    .toList(),
+                    Padding(
+                      padding: const EdgeInsets.only(left:2.0,right: 2.0),
+                      child: Table(
+                        children: [
+                         sc.selectedRig=="Surface" ? 
+                         TableRow(
+                         decoration: new BoxDecoration(
+                  color: Colors.grey
                 ),
-              ),
-            ),
-          ],
+                            children: [
+                             Container(
+                               height: 40,
+                               child: Center(
+                                 child: Text(getText('time', context),
+                                    textAlign: TextAlign.center,
+                                     style: TextStyle(fontSize: 12),
+                                    ),
+                               ),
+                             ) ,
+                               Container(
+                                    height: 40,
+                                 child: Center(
+                                 child: Text(getText('strokes_pump', context),
+                                    textAlign: TextAlign.center,
+                                     style: TextStyle(fontSize: 12),
+                                    ),
+                             ),
+                               ) ,
+                               Container(
+                                    height: 40,
+                                 child: Center(
+                                 child: Text(getText('strokes_counter', context),
+                                    textAlign: TextAlign.center,
+                                     style: TextStyle(fontSize: 12),
+                                    ),
+                             ),
+                               ),
+                             Container(
+                                  height: 40,
+                               child: Center(
+                                 child: Text(getText('dpp', context),
+                                    textAlign: TextAlign.center,
+                                     style: TextStyle(fontSize: 12),
+                                    ),
+                               ),
+                             ) , 
+                              Container(
+                                   height: 40,
+                                                            child: Center(
+                                 child: Text(getText('cp', context),
+                                    textAlign: TextAlign.center,
+                                     style: TextStyle(fontSize: 12),
+                                    ),
+                             ),
+                              ) ,
+                             
+                          //  sc.selectedRig == 'Subsea' ? Container(
+                          //          height: 40,
+                          //                                   child: Center(
+                          //        child: Text(getText('KLP', context),
+                          //           textAlign: TextAlign.center,
+                          //            style: TextStyle(fontSize: 12),
+                          //           ),
+                          //    ),
+                          //     ): SizedBox(),  
+                               Container(
+                                    height: 40,
+                                 child: Center(
+                                 child: Text(getText('bhp', context),
+                                    textAlign: TextAlign.center,
+                                     style: TextStyle(fontSize: 12),
+                                    ),
+                             ),
+                               ) , 
+                              Container(
+                                   height: 40,
+                                child: Center(
+                                 child: Text(getText('casing_shoe', context),
+                                    textAlign: TextAlign.center,
+                                     style: TextStyle(fontSize: 12),
+                                    ),
+                             ),
+                              ) , 
+                              Container(
+                                   height: 40,
+                                child: Center(
+                                 child: Text(getText('pit_volume', context),
+                                    textAlign: TextAlign.center,
+                                     style: TextStyle(fontSize: 12),
+                                    ),
+                             ),
+                              ) , 
+                              Container(
+                                   height: 40,
+                                child: Center(
+                                 child: Text(getText('formation_pressure', context),
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(fontSize: 12),
+                                    ),
+                             ),
+                              ) , 
+                              Container(
+                                   height: 40,
+                                child: Center(
+                                 child: Text(getText('co', context),
+                                    textAlign: TextAlign.center,
+                                     style: TextStyle(fontSize: 12),
+                                    ),
+                             ),
+                              ) , 
+                              Container(
+                                   height: 40,
+                                child: Center(
+                                 child: Text(getText('spm', context),
+                                    textAlign: TextAlign.center,
+                                     style: TextStyle(fontSize: 12),
+                                    ),
+                             ),
+                              ) , 
+                           
+
+
+                            ]
+                          ) 
+                          :
+                          TableRow(
+                         decoration: new BoxDecoration(
+                  color: Colors.grey
+                ),
+                            children: [
+                             Container(
+                               height: 40,
+                               child: Center(
+                                 child: Text(getText('time', context),
+                                    textAlign: TextAlign.center,
+                                     style: TextStyle(fontSize: 12),
+                                    ),
+                               ),
+                             ) ,
+                               Container(
+                                    height: 40,
+                                 child: Center(
+                                 child: Text(getText('strokes_pump', context),
+                                    textAlign: TextAlign.center,
+                                     style: TextStyle(fontSize: 12),
+                                    ),
+                             ),
+                               ) ,
+                               Container(
+                                    height: 40,
+                                 child: Center(
+                                 child: Text(getText('strokes_counter', context),
+                                    textAlign: TextAlign.center,
+                                     style: TextStyle(fontSize: 12),
+                                    ),
+                             ),
+                               ),
+                             Container(
+                                  height: 40,
+                               child: Center(
+                                 child: Text(getText('dpp', context),
+                                    textAlign: TextAlign.center,
+                                     style: TextStyle(fontSize: 12),
+                                    ),
+                               ),
+                             ) , 
+                              Container(
+                                   height: 40,
+                                                            child: Center(
+                                 child: Text(getText('cp', context),
+                                    textAlign: TextAlign.center,
+                                     style: TextStyle(fontSize: 12),
+                                    ),
+                             ),
+                              ) ,
+                             
+                           Container(
+                                   height: 40,
+                                                            child: Center(
+                                 child: Text(getText('KLP', context),
+                                    textAlign: TextAlign.center,
+                                     style: TextStyle(fontSize: 12),
+                                    ),
+                             )),
+                     
+                               Container(
+                                    height: 40,
+                                 child: Center(
+                                 child: Text(getText('bhp', context),
+                                    textAlign: TextAlign.center,
+                                     style: TextStyle(fontSize: 12),
+                                    ),
+                             ),
+                               ) , 
+                              Container(
+                                   height: 40,
+                                child: Center(
+                                 child: Text(getText('casing_shoe', context),
+                                    textAlign: TextAlign.center,
+                                     style: TextStyle(fontSize: 12),
+                                    ),
+                             ),
+                              ) , 
+                              Container(
+                                   height: 40,
+                                child: Center(
+                                 child: Text(getText('pit_volume', context),
+                                    textAlign: TextAlign.center,
+                                     style: TextStyle(fontSize: 12),
+                                    ),
+                             ),
+                              ) , 
+                              Container(
+                                   height: 40,
+                                child: Center(
+                                 child: Text(getText('formation_pressure', context),
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(fontSize: 12),
+                                    ),
+                             ),
+                              ) , 
+                              Container(
+                                   height: 40,
+                                child: Center(
+                                 child: Text(getText('co', context),
+                                    textAlign: TextAlign.center,
+                                     style: TextStyle(fontSize: 12),
+                                    ),
+                             ),
+                              ) , 
+                              Container(
+                                   height: 40,
+                                child: Center(
+                                 child: Text(getText('spm', context),
+                                    textAlign: TextAlign.center,
+                                     style: TextStyle(fontSize: 12),
+                                    ),
+                             ),
+                              ) , 
+                           
+
+
+                            ]
+                          )
+                        ],
+
                       ),
                     ),
+
+                     Expanded(
+                                            child: SingleChildScrollView(
+
+                                              child: Padding(
+                                                padding: const EdgeInsets.only(left:2.0,right:2),
+                                                child: Table(
+                                           border: TableBorder(
+                            
+                              horizontalInside: BorderSide(
+                                    color: Colors.grey[300],
+                              ),
+                             
+                            ),
+                           children: [
+                                  for(var element in listOfColumns )  
+                         sc.selectedRig == 'Surface'?    TableRow(
+                               children: [
+                               Container(height:40,child: Center(child: FittedBox(child: Text(element["time"])))),
+                                Container(height:40,child: Center(child: FittedBox(child: Text(element["strokes_pump"])))),
+                                 Container(height:40,child: Center(child: FittedBox(child: Text(element["strokes_counter"])))),
+                                  Container(height:40,child: Center(child: FittedBox(child: Text(element["dpp"]))))
+                              ,
+                              Container(height:40,child: Center(child: FittedBox(child: Text(element["cp"])))),
+                  
+                                Container(height:40,child: Center(child: FittedBox(child: Text(element["bhp"])))),
+                                 Container(height:40,child: Center(child: FittedBox(child: Text(element["casing_shoe"])))),
+                                  Container(height:40,child:Center(child: FittedBox(child: Text(element["pit_volume"])))),
+                                 Container(height:40,child: Center(child: FittedBox(child: Text(element["formation_pressure"])))),
+                              Container(height:40,child:  Center(child: FittedBox(child: Text(element["co"]))
+                              )),
+                              Container(height:40,child:  Center(child: FittedBox(child: Text(element["spm"])))),
+
+                                
+
+                               ]):
+                             
+                            TableRow(
+                               children: [
+                               Container(height:40,child: Center(child: FittedBox(child: Text(element["time"])))),
+                                Container(height:40,child: Center(child: FittedBox(child: Text(element["strokes_pump"])))),
+                                 Container(height:40,child: Center(child: FittedBox(child: Text(element["strokes_counter"])))),
+                                  Container(height:40,child: Center(child: FittedBox(child: Text(element["dpp"]))))
+                              ,
+                              Container(height:40,child: Center(child: FittedBox(child: Text(element["cp"])))),
+                                Container(height:40,child: Center(child: FittedBox(child: Text(element["klp"])))),
+                  
+                                Container(height:40,child: Center(child: FittedBox(child: Text(element["bhp"])))),
+                                 Container(height:40,child: Center(child: FittedBox(child: Text(element["casing_shoe"])))),
+                                  Container(height:40,child:Center(child: FittedBox(child: Text(element["pit_volume"])))),
+                                 Container(height:40,child: Center(child: FittedBox(child: Text(element["formation_pressure"])))),
+                              Container(height:40,child:  Center(child: FittedBox(child: Text(element["co"]))
+                              )),
+                              Container(height:40,child:  Center(child: FittedBox(child: Text(element["spm"])))),
+
+                                
+
+                               ])
+                           ]
+                             //  listOfColumns // Loops through dataColumnText, each iteration assigning the value to element
+                             //           .map(
+                             //             ((element) => 
+                           
+                             ),
+                                              ),
+                       ),
+                     ),
                   ],
                 ),
         ),
