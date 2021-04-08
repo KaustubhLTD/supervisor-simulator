@@ -43,6 +43,7 @@ class _ModeSelectionState extends State<ModeSelection> {
 
   void _changed(bool visibility, String field, String mode) {
     setState(() {
+      
       selectedField = field;
       selectedMode = mode;
       visiblebutton = visibility;
@@ -251,11 +252,12 @@ class _ModeSelectionState extends State<ModeSelection> {
     children: [
       TextSpan(
         text: getText('practice', context),
-        style: TextStyle(color: Colors.white),
+        style: TextStyle(color: Colors.white,fontStyle: FontStyle.italic),
       
       ), 
       TextSpan(
-        text: ' -> ',
+      
+       text:  " \u2794 "  ,
         style: TextStyle(color: Colors.white),
       
       ),
@@ -283,11 +285,11 @@ class _ModeSelectionState extends State<ModeSelection> {
     children: [
       TextSpan(
         text: getText('take_a_test', context),
-        style: TextStyle(color: Colors.white),
+        style: TextStyle(color: Colors.white,fontStyle: FontStyle.italic),
       
       ), 
       TextSpan(
-        text: ' -> ',
+        text: ' \u2794 ',
         style: TextStyle(color: Colors.white),
       
       ),
@@ -319,22 +321,22 @@ class _ModeSelectionState extends State<ModeSelection> {
     children: [
       TextSpan(
         text: getText('practice', context),
-        style: TextStyle(color: Colors.white),
+        style: TextStyle(color: Colors.white,fontStyle: FontStyle.italic),
       
       ), 
       TextSpan(
-        text: ' -> ',
+        text: ' \u2794 ',
         style: TextStyle(color: Colors.white),
       
       ),
       TextSpan(
         text: getText('drillers_method', context),
-        style: TextStyle(color: Colors.white,
+        style: TextStyle(color: Colors.white,fontStyle: FontStyle.italic
         
         ),
       ),
        TextSpan(
-        text: ' -> ',
+        text: ' \u2794 ',
         style: TextStyle(color: Colors.white),
       
       ),
@@ -362,22 +364,22 @@ class _ModeSelectionState extends State<ModeSelection> {
     children: [
       TextSpan(
         text: getText('take_a_test', context),
-        style: TextStyle(color: Colors.white),
+        style: TextStyle(color: Colors.white,fontStyle: FontStyle.italic),
       
       ), 
       TextSpan(
-        text: ' -> ',
+        text: ' \u2794 ',
         style: TextStyle(color: Colors.white),
       
       ),
       TextSpan(
         text: getText('drillers_method', context),
-        style: TextStyle(color: Colors.white,
+        style: TextStyle(color: Colors.white,fontStyle: FontStyle.italic
        
         ),
       ),
        TextSpan(
-        text: ' -> ',
+        text: ' \u2794 ',
         style: TextStyle(color: Colors.white),
       
       ),
@@ -399,27 +401,28 @@ class _ModeSelectionState extends State<ModeSelection> {
 )
                                   : selectedField == "Wait and Weight" &&
                                           selectedMode == "Practice"
-                                      ?  RichText(
+                                      ? 
+                                       RichText(
   text: TextSpan(
     children: [
       TextSpan(
         text: getText('practice', context),
-        style: TextStyle(color: Colors.white),
+        style: TextStyle(color: Colors.white,fontStyle: FontStyle.italic),
       
       ), 
       TextSpan(
-        text: ' -> ',
+        text: ' \u2794 ',
         style: TextStyle(color: Colors.white),
       
       ),
       TextSpan(
         text: getText('wait_and_weight', context),
-        style: TextStyle(color: Colors.white,
+        style: TextStyle(color: Colors.white,fontStyle: FontStyle.italic
         
         ),
       ),
        TextSpan(
-        text: ' -> ',
+        text: ' \u2794 ',
         style: TextStyle(color: Colors.white),
       
       ),
@@ -448,22 +451,22 @@ class _ModeSelectionState extends State<ModeSelection> {
     children: [
       TextSpan(
         text: getText('test', context),
-        style: TextStyle(color: Colors.white),
+        style: TextStyle(color: Colors.white,fontStyle: FontStyle.italic),
       
       ), 
       TextSpan(
-        text: ' -> ',
+        text: ' \u2794 ',
         style: TextStyle(color: Colors.white),
       
       ),
       TextSpan(
-        text: getText('wait_and_weight', context),
-        style: TextStyle(color: Colors.white,
+        text: getText('wait_and_weight', context,),
+        style: TextStyle(color: Colors.white,fontStyle: FontStyle.italic
         
         ),
       ),
        TextSpan(
-        text: ' -> ',
+        text: ' \u2794 ',
         style: TextStyle(color: Colors.white),
       
       ),
@@ -492,10 +495,10 @@ class _ModeSelectionState extends State<ModeSelection> {
                                           //       text:   TextSpan(
                                           //   children: <TextSpan>[
                                           //      TextSpan(
-                                          //         text: 'Practice ->',
+                                          //         text: 'Practice \u2794',
                                           //         style: TextStyle(fontSize: 14, color: Colors.white)),
                                           //     TextSpan(
-                                          //         text: '$selectedField ->',
+                                          //         text: '$selectedField \u2794',
                                           //         style: TextStyle(fontSize: 14, color: Colors.white)),
                                           //     TextSpan(
 
@@ -507,7 +510,7 @@ class _ModeSelectionState extends State<ModeSelection> {
                                           //     )
 
                                           // Text(
-                                          //     'Practices -> $selectedField -> Select rig',
+                                          //     'Practices \u2794 $selectedField \u2794 Select rig',
                                           //     style:
                                           //         TextStyle(fontSize: 14, color: Colors.white),
                                           //   )
@@ -558,7 +561,8 @@ class _ModeSelectionState extends State<ModeSelection> {
                                     'assets/images/subsea.png', 'Subsea'))
                           ],
                         )
-                      : Row(
+                      : 
+                      Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             InkWell(
@@ -694,33 +698,43 @@ class _ModeSelectionState extends State<ModeSelection> {
   }
 
   Widget rigSelectionCards(String image, String title) {
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      color: Constants.themeTang,
-      child: Column(children: <Widget>[
-        Container(
-            decoration: BoxDecoration(
-                color: Constants.themeBlue,
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(10),
-                    topRight: Radius.circular(10))),
-            height: MediaQuery.of(context).orientation == Orientation.landscape
-                ? MediaQuery.of(context).size.width * 0.21
-                : null,
-            child: Image(
-                image: AssetImage(image),
-                fit: BoxFit.contain,
-                height: MediaQuery.of(context).size.height * 0.42,
-                width: MediaQuery.of(context).size.height * 0.42)),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(title,
-              style: TextStyle(
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.normal,
-                  color: Colors.white)),
-        ),
-      ]),
+    return AnimatedSwitcher(
+      transitionBuilder: (Widget child, Animation<double> animation){
+        return
+          ScaleTransition(child: child,scale: animation,);
+        
+      },
+          duration: Duration(milliseconds: 1000),
+
+          child: Card(
+              key: UniqueKey(),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        color: Constants.themeTang,
+        child: Column(children: <Widget>[
+          Container(
+              decoration: BoxDecoration(
+                  color: Constants.themeBlue,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(10),
+                      topRight: Radius.circular(10))),
+              height: MediaQuery.of(context).orientation == Orientation.landscape
+                  ? MediaQuery.of(context).size.width * 0.21
+                  : null,
+              child: Image(
+                  image: AssetImage(image),
+                  fit: BoxFit.contain,
+                  height: MediaQuery.of(context).size.height * 0.42,
+                  width: MediaQuery.of(context).size.height * 0.42)),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(title,
+                style: TextStyle(
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.normal,
+                    color: Colors.white)),
+          ),
+        ]),
+      ),
     );
   }
 
@@ -775,99 +789,119 @@ class _ModeSelectionState extends State<ModeSelection> {
         // );
 
         MediaQuery.of(context).orientation == Orientation.landscape
-            ? Padding(
-                padding: const EdgeInsets.only(left: 4.0, right: 4.0),
-                child: InkWell(
-                  onTap: () {
+            ?
+             AnimatedSwitcher(
 
-                    // selectedField == "Driller's Method" || selectedField =="Wait and Weight" ?
-              
-                  _changed(
-                        true, getText(killmethod.title, context), selectedMode);
-                  },
+                 transitionBuilder: (Widget child, Animation<double> animation){
+        return
+          ScaleTransition(child: child,scale: animation,);
+        
+      },
+               duration: Duration(milliseconds: 1000),
+                 key: UniqueKey(),
+                          child: Padding(
+                  padding: const EdgeInsets.only(left: 4.0, right: 4.0),
+                  child: InkWell(
+                    onTap: () {
+
+                      // selectedField == "Driller's Method" || selectedField =="Wait and Weight" ?
+                
+                    _changed(
+                          true, getText(killmethod.title, context), selectedMode);
+                    },
 //  _changed(true, killmethod.title),
-                  child: Card(
-                    color: Constants.themeTang,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                    child: Card(
+                      color: Constants.themeTang,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Column(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                                color: Constants.themeBlue,
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(10),
+                                    topRight: Radius.circular(10))),
+                            child: Image(
+                              image: AssetImage(killmethod.image),
+                              fit: BoxFit.contain,
+                              height: MediaQuery.of(context).orientation ==
+                                      Orientation.landscape
+                                  ? MediaQuery.of(context).size.height * 0.38
+                                  : 100,
+                              width: MediaQuery.of(context).orientation ==
+                                      Orientation.landscape
+                                  ? MediaQuery.of(context).size.height * 0.42
+                                  : 100,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 5),
+                            child: Text(getText(killmethod.title, context),
+                                style: TextStyle(
+                                    fontSize: 16.0,
+                                    fontWeight: FontWeight.normal,
+                                    color: Colors.white)),
+                          ),
+                        ],
+                      ),
                     ),
-                    child: Column(
-                      children: [
+                  ),
+                ),
+            )
+            : AnimatedSwitcher(
+                 transitionBuilder: (Widget child, Animation<double> animation){
+        return
+          ScaleTransition(child: child,scale: animation,);
+        
+      },
+               duration: Duration(milliseconds: 1000),
+                          child: InkWell(
+                            key: ValueKey<int>(1),
+                  onTap: () {
+                    _changed(true, killmethod.title, selectedMode);
+                  },
+                  child: AnimatedSwitcher(
+                    duration: const Duration(milliseconds: 1000),
+                    transitionBuilder:
+                        (Widget child, Animation<double> animation) {
+                      return ScaleTransition(child: child, scale: animation);
+                    },
+                    child: Card(
+                      key: UniqueKey(),
+                      color: Constants.themeTang,
+                      child: Column(children: <Widget>[
                         Container(
-                          decoration: BoxDecoration(
-                              color: Constants.themeBlue,
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(10),
-                                  topRight: Radius.circular(10))),
-                          child: Image(
-                            image: AssetImage(killmethod.image),
-                            fit: BoxFit.contain,
-                            height: MediaQuery.of(context).orientation ==
-                                    Orientation.landscape
-                                ? MediaQuery.of(context).size.height * 0.38
-                                : 100,
+                            // height: MediaQuery.of(context).orientation == Orientation.landscape ?125 : 160,
                             width: MediaQuery.of(context).orientation ==
                                     Orientation.landscape
-                                ? MediaQuery.of(context).size.height * 0.42
-                                : 100,
-                          ),
-                        ),
+                                ? 125
+                                : 150,
+                            color: Constants.themeBlue,
+                            child: Image(
+                                image: AssetImage(killmethod.image),
+                                fit: BoxFit.contain,
+                                // height:  MediaQuery.of(context).orientation == Orientation.landscape ?170 : 161,
+                                width: MediaQuery.of(context).orientation ==
+                                        Orientation.landscape
+                                    ? 160
+                                    : 172)),
                         Padding(
-                          padding: const EdgeInsets.only(top: 5),
-                          child: Text(getText(killmethod.title, context),
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(killmethod.title,
                               style: TextStyle(
-                                  fontSize: 16.0,
+                                  fontSize: MediaQuery.of(context).orientation ==
+                                          Orientation.landscape
+                                      ? 15.0
+                                      : 18.0,
                                   fontWeight: FontWeight.normal,
                                   color: Colors.white)),
                         ),
-                      ],
+                      ]),
                     ),
                   ),
                 ),
-              )
-            : InkWell(
-                onTap: () {
-                  _changed(true, killmethod.title, selectedMode);
-                },
-                child: AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 1000),
-                  transitionBuilder:
-                      (Widget child, Animation<double> animation) {
-                    return ScaleTransition(child: child, scale: animation);
-                  },
-                  child: Card(
-                    key: UniqueKey(),
-                    color: Constants.themeTang,
-                    child: Column(children: <Widget>[
-                      Container(
-                          // height: MediaQuery.of(context).orientation == Orientation.landscape ?125 : 160,
-                          width: MediaQuery.of(context).orientation ==
-                                  Orientation.landscape
-                              ? 125
-                              : 150,
-                          color: Constants.themeBlue,
-                          child: Image(
-                              image: AssetImage(killmethod.image),
-                              fit: BoxFit.contain,
-                              // height:  MediaQuery.of(context).orientation == Orientation.landscape ?170 : 161,
-                              width: MediaQuery.of(context).orientation ==
-                                      Orientation.landscape
-                                  ? 160
-                                  : 172)),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(killmethod.title,
-                            style: TextStyle(
-                                fontSize: MediaQuery.of(context).orientation ==
-                                        Orientation.landscape
-                                    ? 15.0
-                                    : 18.0,
-                                fontWeight: FontWeight.normal,
-                                color: Colors.white)),
-                      ),
-                    ]),
-                  ),
-                ),
-              );
+            );
   }
 }

@@ -21,21 +21,26 @@ class _Module2ScoreState extends State<Module2Score> {
                 // mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 4.0),
-                    child: Card(
-                        shape: RoundedRectangleBorder(
-                          side: BorderSide(color: Colors.white70, width: 1),
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        color: Constants.textColor,
-                        child: Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: Icon(
-                            Icons.home,
-                            color: Colors.white,
+                  InkWell(
+                    onTap: (){
+                       Navigator.pop(context);
+                    },
+                                      child: Padding(
+                      padding: const EdgeInsets.only(top: 4.0),
+                      child: Card(
+                          shape: RoundedRectangleBorder(
+                            side: BorderSide(color: Colors.white70, width: 1),
+                            borderRadius: BorderRadius.circular(5),
                           ),
-                        )),
+                          color: Constants.textColor,
+                          child: Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: Icon(
+                              Icons.home,
+                              color: Colors.white,
+                            ),
+                          )),
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(10.0),
@@ -499,7 +504,9 @@ class _Module2ScoreState extends State<Module2Score> {
                                     // color: Constants.themeBlue,
                                     textColor: Colors.white,
                                     child: Text(getText("done", context)),
-                                    onPressed: () {})),
+                                    onPressed: () {
+                                        Navigator.pop(context);
+                                    })),
                           ),
                         ])
                       ],

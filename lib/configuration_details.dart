@@ -53,6 +53,8 @@ class _ConfigurationState extends State<Configuration> {
 
   int selectedIndex = 0;
 
+   bool isLoaded = false;
+
   // int selectedConfigIndex = 0;
 
   List<String> configList = [
@@ -101,48 +103,8 @@ class _ConfigurationState extends State<Configuration> {
               '** configMetaData configInfo id ${ci.id} key ${ci.key} name: ${ci.name}');
         });
 
-        DmWwmInitialData()
-            .configMetaData
-            .configInfo[0]
-            .loadConfig(
-                isDrillersMethod: methodRig.isDrillersMethod,
-                isSubsea: methodRig.isSubsea,
-                influxType: InfluxType.gas)
-            .then((success) {
-          var _config = DmWwmInitialData().current.configuration;
-          // var name = DmWwmInitialData().current.configInfo.name;
-          surfaceLineRadius = _config.surfaceLine.innerDiameter.value / 2;
-          surfaceLineVol = 3.14 *
-              surfaceLineRadius *
-              surfaceLineRadius *
-              _config.surfaceLine.length.value;
-          drillpipeOD = _config.drillstring[0].outerDiameter.value;
-          drillpipeODUnit = _config.drillstring[0].outerDiameter.unit.name;
-          drillpipeID = _config.drillstring[0].innerDiameter.value;
-
-          drillCollarOD = _config.drillstring[2].outerDiameter.value;
-
-          drillCollarID = _config.drillstring[2].innerDiameter.value;
-
-          casingOD = _config.casing.outerDiameter.value;
-
-          casingID = _config.casing.innerDiameter.value;
-
-          chokeLineId = _config.chokeLine.innerDiameter.value;
-
-          openHoleDiameter = 8.5;
-
-          formationPressure = 6739;
-
-          drillbitSize = _config.drillbit.width.value;
-
-          fracturePressureGradient =
-              _config.fracturePressure.fracturePressureGradient.value;
-
-          lot = _config.leakOffTests.mudWeight.value;
-          fitLowerRange = 10.0;
-        });
-
+         loadConfigurationDetails(0);
+        isLoaded = true;
         setState(() {});
       });
     });
@@ -151,8 +113,8 @@ class _ConfigurationState extends State<Configuration> {
     super.initState();
   }
 
-  loadConfigurationDetails(int index) {
-    DmWwmInitialData()
+  loadConfigurationDetails(int index) async{
+ await   DmWwmInitialData()
         .configMetaData
         .configInfo[index]
         .loadConfig(
@@ -242,8 +204,46 @@ class _ConfigurationState extends State<Configuration> {
   }
 
   Widget buildHorizontalLayout() {
-    return Scaffold(
-      body: SafeArea(
+    return 
+    
+    
+    Scaffold(
+
+      
+      // bottomNavigationBar: Row(
+      //   mainAxisAlignment: MainAxisAlignment.end,
+      //   children: [
+      //    Padding(
+      //      padding: const EdgeInsets.only(right:90.0,bottom: 50),
+      //      child: SizedBox(
+      //        width: 250,
+      //        height: 40,
+      //        child: RaisedButton(
+      //          color: Color(0xFF166ABE),
+      //          child: Center(
+      //            child: Text(
+      //              'Continue With this configuration',
+      //              style: TextStyle(color: Colors.white),
+      //              textAlign: TextAlign.center,
+      //            ),
+      //          ),
+      //          onPressed: () {
+      //            Navigator.pushNamed(context, '/activityselection', arguments: sc);
+      //          },
+      //        ),
+      //      ),
+      //    ),
+      //   ],
+      // ),
+      body: 
+      
+       isLoaded == false
+            ? Center(
+                child:
+                    CircularProgressIndicator(), // AssetProgressIndicator(currentValue: loadingPercentage),
+              )
+            :
+      SafeArea(
         child: Column(
           children: [
             Row(

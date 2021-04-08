@@ -4,6 +4,7 @@ import 'package:flutter_application_1/activity_log.dart';
 import 'package:flutter_application_1/activity_selection_screen.dart';
 import 'package:flutter_application_1/configuration_details.dart';
 import 'package:flutter_application_1/getting_started.dart';
+import 'package:flutter_application_1/html_demo.dart';
 import 'package:flutter_application_1/kill_log.dart';
 import 'package:flutter_application_1/kill_sheet.dart';
 import 'package:flutter_application_1/kill_sheet_page2.dart';
@@ -44,10 +45,11 @@ class MyApp extends StatelessWidget {
         errorColor: Colors.grey,
        
         primarySwatch: Colors.blue,
+
        
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: ModeSelection(),  
+      home:ModeSelection(),  
        supportedLocales: [
         Locale('en', 'US'),
   ],
@@ -160,6 +162,8 @@ class MyApp extends StatelessWidget {
            type: PageTransitionType.rightToLeftWithFade
        );
        break;
+
+
 
 
     }

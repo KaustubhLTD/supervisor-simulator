@@ -96,6 +96,11 @@ class _ActivitySlectionState extends State<ActivitySlection>  with SingleTickerP
    SelectedConfigurations sc;
   _ActivitySlectionState(this.sc);
 
+     final module1Key = new GlobalKey();
+         final module2Key = new GlobalKey();
+          final module3Key = new GlobalKey();
+           final module4Key = new GlobalKey();
+
    TabController _tabController;
  @override
   void initState() {
@@ -121,10 +126,7 @@ class _ActivitySlectionState extends State<ActivitySlection>  with SingleTickerP
           final List<ActivityModel> activityListEvaluation =
         ActivityModel.getActivityListEvaluation(context);
        
-        final module1Key = new GlobalKey();
-         final module2Key = new GlobalKey();
-          final module3Key = new GlobalKey();
-           final module4Key = new GlobalKey();
+     
     return Container(
       height: MediaQuery.of(context).size.height -
           (MediaQuery.of(context).size.height * 0.20),
@@ -160,7 +162,7 @@ class _ActivitySlectionState extends State<ActivitySlection>  with SingleTickerP
                   ),
 
                    Container(
-                     width: 400,
+                     width: MediaQuery.of(context).size.width*0.65,
               height: 35,
               decoration: BoxDecoration(
                 color: Colors.blue,
@@ -208,7 +210,10 @@ class _ActivitySlectionState extends State<ActivitySlection>  with SingleTickerP
 
  Tab(child: Text(getText('module_3', context),style: TextStyle(color:Colors.black),textAlign: TextAlign.center),),
 
- Tab(child: Text(getText('your_evaluation', context),style: TextStyle(color:Colors.black,),textAlign: TextAlign.center,),),
+ Tab(child: 
+ Text(
+  getText('your_evaluation', context),
+  style: TextStyle(color:Colors.black,fontSize: 13),textAlign: TextAlign.center,),),
 
 
         
@@ -259,7 +264,11 @@ class _ActivitySlectionState extends State<ActivitySlection>  with SingleTickerP
                             Padding(
                                  key: module4Key,
                                padding: const EdgeInsets.all(10.0),
-                              child: Text(getText('your_evaluation', context),style: TextStyle(color:Colors.white,fontSize: 20,fontWeight: FontWeight.bold),),
+                              child: Text(
+                                
+                                getText('your_evaluation', context),
+                                
+                                style: TextStyle(color:Colors.white,fontSize: 20,fontWeight: FontWeight.bold),),
                             ),
                              Wrap(
                               children:  
@@ -344,12 +353,14 @@ class _ActivitySlectionState extends State<ActivitySlection>  with SingleTickerP
                alignment: Alignment.bottomCenter,
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              activityModel.activitTitle,
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.white,
-                                // fontSize: 12,
+                            child: FittedBox(
+                                                          child: Text(
+                                activityModel.activitTitle,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  // fontSize: 12,
+                                ),
                               ),
                             ),
                           ),
@@ -420,13 +431,8 @@ class ActivityModel {
 
   
 
-     activityListModuleTwo.add(ActivityModel(
-        activityModule: "Procedure",
-        activitTitle: "Kill Sheet\n",
-        activityImagePath:
-            "assets/images/iconKillSheetCalculations.png",
-         activityRoute: '/killsheet',
-        ));
+    
+
          activityList.add(ActivityModel(
         activityModule: "Procedure",
         activitTitle: "Module 1 Score\n",
@@ -570,7 +576,13 @@ class ActivityModel {
    
      List<ActivityModel> activityListModuleTwo = new List<ActivityModel>();
       
- 
+         activityListModuleTwo.add(ActivityModel(
+        activityModule: "Procedure",
+        activitTitle: "Kill Sheet\n",
+        activityImagePath:
+            "assets/images/iconKillSheetCalculations.png",
+         activityRoute: '/killsheet',
+        ));
   
          activityListModuleTwo.add(ActivityModel(
         activityModule: "Procedure",
@@ -642,10 +654,10 @@ class ActivityModel {
          
          activityListEvaluation.add(ActivityModel(
         activityModule: "Procedure",
-        activitTitle: "Skills Assessment Grade",
+        activitTitle: "Skills Assessment \nGrade",
         activityImagePath:
             "assets/images/iconYourScore.png",
-         activityRoute: '/skillassessment\n',
+         activityRoute: '/skillassessment',
         ));
 
 

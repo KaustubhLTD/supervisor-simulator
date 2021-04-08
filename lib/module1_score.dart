@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/mode_selection.dart';
 import 'package:flutter_application_1/utilities/constants.dart';
 import 'package:flutter_application_1/utilities/multilingual_service.dart';
 
 class Module1Score extends StatefulWidget {
+ 
   @override
   _Module1ScoreState createState() => _Module1ScoreState();
 }
 
 class _Module1ScoreState extends State<Module1Score> {
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,21 +25,26 @@ class _Module1ScoreState extends State<Module1Score> {
                 // mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 4.0),
-                    child: Card(
-                        shape: RoundedRectangleBorder(
-                          side: BorderSide(color: Colors.white70, width: 1),
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        color: Constants.textColor,
-                        child: Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: Icon(
-                            Icons.home,
-                            color: Colors.white,
+                  InkWell(
+                    onTap: (){
+                    Navigator.pop(context);
+                    },
+                                      child: Padding(
+                      padding: const EdgeInsets.only(top: 4.0),
+                      child: Card(
+                          shape: RoundedRectangleBorder(
+                            side: BorderSide(color: Colors.white70, width: 1),
+                            borderRadius: BorderRadius.circular(5),
                           ),
-                        )),
+                          color: Constants.textColor,
+                          child: Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: Icon(
+                              Icons.home,
+                              color: Colors.white,
+                            ),
+                          )),
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(10.0),
@@ -639,7 +648,7 @@ class _Module1ScoreState extends State<Module1Score> {
                             textColor: Colors.white,
                             child: Text(getText("reattempt", context)),
                             onPressed: () {
-                             
+                               Navigator.pop(context);
                              
                             })),
                   ),

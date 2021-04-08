@@ -21,21 +21,26 @@ class _SkillAssessmentState extends State<SkillAssessment> {
                 // mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 4.0),
-                    child: Card(
-                        shape: RoundedRectangleBorder(
-                          side: BorderSide(color: Colors.white70, width: 1),
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        color: Constants.textColor,
-                        child: Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: Icon(
-                            Icons.home,
-                            color: Colors.white,
+                  InkWell(
+                     onTap: (){
+                       Navigator.pop(context);
+                    },
+                                      child: Padding(
+                      padding: const EdgeInsets.only(top: 4.0),
+                      child: Card(
+                          shape: RoundedRectangleBorder(
+                            side: BorderSide(color: Colors.white70, width: 1),
+                            borderRadius: BorderRadius.circular(5),
                           ),
-                        )),
+                          color: Constants.textColor,
+                          child: Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: Icon(
+                              Icons.home,
+                              color: Colors.white,
+                            ),
+                          )),
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(10.0),
@@ -1793,7 +1798,8 @@ class _SkillAssessmentState extends State<SkillAssessment> {
                 // right: BorderSide(color: Colors.grey),
               ),
               children: [
-                TableRow(children: [
+                TableRow(
+                  children: [
                   Container(
                       color: Colors.grey[200],
                     height: 60,

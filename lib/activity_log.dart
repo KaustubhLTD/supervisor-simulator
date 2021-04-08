@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/utilities/constants.dart';
 
 class ActivityLog extends StatefulWidget {
   @override
@@ -51,6 +52,45 @@ class _ActivityLogState extends State<ActivityLog> {
     return Scaffold(
         body: SafeArea(
       child: Column(children: [
+
+         Container(
+              height: 50,
+              color: Colors.grey,
+              child: Row(
+                // mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  InkWell(
+                    onTap: (){
+                    Navigator.pop(context);
+                    },
+                                      child: Padding(
+                      padding: const EdgeInsets.only(top: 4.0),
+                      child: Card(
+                          shape: RoundedRectangleBorder(
+                            side: BorderSide(color: Colors.white70, width: 1),
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          color: Constants.textColor,
+                          child: Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: Icon(
+                              Icons.home,
+                              color: Colors.white,
+                            ),
+                          )),
+                    ),
+                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.all(10.0),
+                  //   child: Text(
+                  //     getText('your_score', context),
+                  //     style: TextStyle(color: Constants.textColor,fontSize: 20,fontWeight: FontWeight.bold ),
+                  //   ),
+                  // )
+                ],
+              ),
+            ),
         Container(
           
            margin: const EdgeInsets.all(2.0),

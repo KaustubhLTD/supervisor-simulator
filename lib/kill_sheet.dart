@@ -953,19 +953,27 @@ class _KillSheetState extends State<KillSheet> {
                 )
               : Padding(
                   padding: const EdgeInsets.only(top: 10.0),
-                  child: Card(
-                      shape: RoundedRectangleBorder(
-                        side: BorderSide(color: Colors.white70, width: 1),
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      color: Constants.textColor,
-                      child: Padding(
-                        padding: const EdgeInsets.all(4.0),
-                        child: Icon(
-                          Icons.home,
-                          color: Colors.white,
+                  child: InkWell(
+                    onTap: (){
+                      
+                        Navigator.popAndPushNamed(context, '/activityselection',arguments: sc);
+                    
+                    },
+                   
+                                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          side: BorderSide(color: Colors.white70, width: 1),
+                          borderRadius: BorderRadius.circular(5),
                         ),
-                      )),
+                        color: Constants.textColor,
+                        child: Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: Icon(
+                            Icons.home,
+                            color: Colors.white,
+                          ),
+                        )),
+                  ),
                 ),
           title: Column(
             children: [
@@ -988,7 +996,9 @@ class _KillSheetState extends State<KillSheet> {
                 ? Padding(
                     padding: EdgeInsets.only(top: 20),
                     child: FlatButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.popAndPushNamed(context, '/activityselection',arguments: sc);
+                      },
                       child: Text(
                         getText('done',context),
                         style: TextStyle(color: Colors.white),
