@@ -41,6 +41,34 @@ class _ModeSelectionState extends State<ModeSelection> {
 
   bool visiblebutton = false;
 
+
+   bool isAssetsLoaded = false;
+  double loadingPercentage = 50;
+  Future<void> laodImages(BuildContext context) async {
+    await precacheImage(
+        AssetImage("assets/images/bgSimulationSelectionDown.png"), context);
+    setState(() {
+      loadingPercentage = 70;
+    });
+    await precacheImage(
+        AssetImage("assets/images/bgSimulationSelectionDown.png"), context);
+    setState(() {
+      loadingPercentage = 80;
+    });
+    await precacheImage(
+        AssetImage("assets/images/bgSimulationSelectionDown.png"), context);
+    setState(() {
+      loadingPercentage = 90;
+    });
+    await precacheImage(
+        AssetImage("assets/images/bgSimulationSelectionDown.png"), context);
+    setState(() {
+      loadingPercentage = 100;
+
+      isAssetsLoaded = true;
+    });
+  }
+
   void _changed(bool visibility, String field, String mode) {
     setState(() {
       
@@ -55,6 +83,7 @@ class _ModeSelectionState extends State<ModeSelection> {
 
   @override
   Widget build(BuildContext context) {
+     laodImages(context);
     return Scaffold(
       extendBody: true,
       appBar: AppBar(
@@ -215,8 +244,17 @@ class _ModeSelectionState extends State<ModeSelection> {
             ),
             preferredSize: Size.fromHeight(30)),
       ),
-      body: Stack(
+      body: 
+       isAssetsLoaded == false
+            ? Center(
+                child:
+                    CircularProgressIndicator(), // AssetProgressIndicator(currentValue: loadingPercentage),
+              )
+            :
+      
+      Stack(
         children: [
+         
           Container(
             decoration: BoxDecoration(
                 image: DecorationImage(
@@ -698,44 +736,35 @@ class _ModeSelectionState extends State<ModeSelection> {
   }
 
   Widget rigSelectionCards(String image, String title) {
-    return AnimatedSwitcher(
-      transitionBuilder: (Widget child, Animation<double> animation){
-        return
-          ScaleTransition(child: child,scale: animation,);
-        
-      },
-          duration: Duration(milliseconds: 1000),
-
-          child: Card(
-              key: UniqueKey(),
+    return Card(
+        // key: UniqueKey(),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         color: Constants.themeTang,
         child: Column(children: <Widget>[
-          Container(
-              decoration: BoxDecoration(
-                  color: Constants.themeBlue,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(10),
-                      topRight: Radius.circular(10))),
-              height: MediaQuery.of(context).orientation == Orientation.landscape
-                  ? MediaQuery.of(context).size.width * 0.21
-                  : null,
-              child: Image(
-                  image: AssetImage(image),
-                  fit: BoxFit.contain,
-                  height: MediaQuery.of(context).size.height * 0.42,
-                  width: MediaQuery.of(context).size.height * 0.42)),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(title,
-                style: TextStyle(
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.normal,
-                    color: Colors.white)),
-          ),
+    Container(
+        decoration: BoxDecoration(
+            color: Constants.themeBlue,
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(10),
+                topRight: Radius.circular(10))),
+        height: MediaQuery.of(context).orientation == Orientation.landscape
+            ? MediaQuery.of(context).size.width * 0.21
+            : null,
+        child: Image(
+            image: AssetImage(image),
+            fit: BoxFit.contain,
+            height: MediaQuery.of(context).size.height * 0.42,
+            width: MediaQuery.of(context).size.height * 0.42)),
+    Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Text(title,
+          style: TextStyle(
+              fontSize: 18.0,
+              fontWeight: FontWeight.normal,
+              color: Colors.white)),
+    ),
         ]),
-      ),
-    );
+      );
   }
 
   Widget methodSelectionView() {
@@ -755,51 +784,10 @@ class _ModeSelectionState extends State<ModeSelection> {
   Widget getMethodCard(KillMethodModel killmethod, BuildContext context) {
     return
 
-        //  Card(
-        //   shape: RoundedRectangleBorder(
-        //         borderRadius: BorderRadius.circular(10)),
-        //   color: Constants.themeTang,
-        //   child: Column(children: <Widget>[
-        //     Container(
-        //        decoration: BoxDecoration(
-        //                 color: Constants.themeBlue,
-        //                 borderRadius: BorderRadius.only(
-        //                     topLeft: Radius.circular(10),
-        //                     topRight: Radius.circular(10))),
-        //         height: MediaQuery.of(context).orientation == Orientation.landscape
-        //             ? MediaQuery.of(context).size.width * 0.21
-        //             : null,
-
-        //         child: Image(
-        //             image: AssetImage(killmethod.image),
-        //             fit: BoxFit.contain,
-        //             height:  MediaQuery.of(context).size.height*0.42,
-        //             width:  MediaQuery.of(context).size.height*0.42
-        //             )
-        //             ),
-        //     Padding(
-        //       padding: const EdgeInsets.all(8.0),
-        //       child: Text(killmethod.title,
-        //           style: TextStyle(
-        //               fontSize: 18.0,
-        //               fontWeight: FontWeight.normal,
-        //               color: Colors.white)),
-        //     ),
-        //   ]),
-        // );
 
         MediaQuery.of(context).orientation == Orientation.landscape
             ?
-             AnimatedSwitcher(
-
-                 transitionBuilder: (Widget child, Animation<double> animation){
-        return
-          ScaleTransition(child: child,scale: animation,);
-        
-      },
-               duration: Duration(milliseconds: 1000),
-                 key: UniqueKey(),
-                          child: Padding(
+              Padding(
                   padding: const EdgeInsets.only(left: 4.0, right: 4.0),
                   child: InkWell(
                     onTap: () {
@@ -807,101 +795,86 @@ class _ModeSelectionState extends State<ModeSelection> {
                       // selectedField == "Driller's Method" || selectedField =="Wait and Weight" ?
                 
                     _changed(
-                          true, getText(killmethod.title, context), selectedMode);
+             true, getText(killmethod.title, context), selectedMode);
                     },
 //  _changed(true, killmethod.title),
                     child: Card(
+                        // key: UniqueKey(),
                       color: Constants.themeTang,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Column(
                         children: [
-                          Container(
-                            decoration: BoxDecoration(
-                                color: Constants.themeBlue,
-                                borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(10),
-                                    topRight: Radius.circular(10))),
-                            child: Image(
-                              image: AssetImage(killmethod.image),
-                              fit: BoxFit.contain,
-                              height: MediaQuery.of(context).orientation ==
-                                      Orientation.landscape
-                                  ? MediaQuery.of(context).size.height * 0.38
-                                  : 100,
-                              width: MediaQuery.of(context).orientation ==
-                                      Orientation.landscape
-                                  ? MediaQuery.of(context).size.height * 0.42
-                                  : 100,
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 5),
-                            child: Text(getText(killmethod.title, context),
-                                style: TextStyle(
-                                    fontSize: 16.0,
-                                    fontWeight: FontWeight.normal,
-                                    color: Colors.white)),
-                          ),
+             Container(
+               decoration: BoxDecoration(
+                   color: Constants.themeBlue,
+                   borderRadius: BorderRadius.only(
+                       topLeft: Radius.circular(10),
+                       topRight: Radius.circular(10))),
+               child: Image(
+                 image: AssetImage(killmethod.image),
+                 fit: BoxFit.contain,
+                 height: MediaQuery.of(context).orientation ==
+                         Orientation.landscape
+                     ? MediaQuery.of(context).size.height * 0.38
+                     : 100,
+                 width: MediaQuery.of(context).orientation ==
+                         Orientation.landscape
+                     ? MediaQuery.of(context).size.height * 0.42
+                     : 100,
+               ),
+             ),
+             Padding(
+               padding: const EdgeInsets.only(top: 5),
+               child: Text(getText(killmethod.title, context),
+                   style: TextStyle(
+                       fontSize: 16.0,
+                       fontWeight: FontWeight.normal,
+                       color: Colors.white)),
+             ),
                         ],
                       ),
                     ),
                   ),
-                ),
-            )
-            : AnimatedSwitcher(
-                 transitionBuilder: (Widget child, Animation<double> animation){
-        return
-          ScaleTransition(child: child,scale: animation,);
-        
-      },
-               duration: Duration(milliseconds: 1000),
-                          child: InkWell(
-                            key: ValueKey<int>(1),
+                )
+            : InkWell(
+                         
                   onTap: () {
                     _changed(true, killmethod.title, selectedMode);
                   },
-                  child: AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 1000),
-                    transitionBuilder:
-                        (Widget child, Animation<double> animation) {
-                      return ScaleTransition(child: child, scale: animation);
-                    },
-                    child: Card(
-                      key: UniqueKey(),
-                      color: Constants.themeTang,
-                      child: Column(children: <Widget>[
-                        Container(
-                            // height: MediaQuery.of(context).orientation == Orientation.landscape ?125 : 160,
-                            width: MediaQuery.of(context).orientation ==
-                                    Orientation.landscape
-                                ? 125
-                                : 150,
-                            color: Constants.themeBlue,
-                            child: Image(
-                                image: AssetImage(killmethod.image),
-                                fit: BoxFit.contain,
-                                // height:  MediaQuery.of(context).orientation == Orientation.landscape ?170 : 161,
-                                width: MediaQuery.of(context).orientation ==
-                                        Orientation.landscape
-                                    ? 160
-                                    : 172)),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(killmethod.title,
-                              style: TextStyle(
-                                  fontSize: MediaQuery.of(context).orientation ==
-                                          Orientation.landscape
-                                      ? 15.0
-                                      : 18.0,
-                                  fontWeight: FontWeight.normal,
-                                  color: Colors.white)),
-                        ),
-                      ]),
-                    ),
+                  child: Card(
+                    // key: UniqueKey(),
+                    color: Constants.themeTang,
+                    child: Column(children: <Widget>[
+                      Container(
+              // height: MediaQuery.of(context).orientation == Orientation.landscape ?125 : 160,
+              width: MediaQuery.of(context).orientation ==
+                    Orientation.landscape
+                  ? 125
+                  : 150,
+              color: Constants.themeBlue,
+              child: Image(
+                  image: AssetImage(killmethod.image),
+                  fit: BoxFit.contain,
+                  // height:  MediaQuery.of(context).orientation == Orientation.landscape ?170 : 161,
+                  width: MediaQuery.of(context).orientation ==
+                        Orientation.landscape
+                    ? 160
+                    : 172)),
+                      Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(killmethod.title,
+                style: TextStyle(
+                  fontSize: MediaQuery.of(context).orientation ==
+                          Orientation.landscape
+                      ? 15.0
+                      : 18.0,
+                  fontWeight: FontWeight.normal,
+                  color: Colors.white)),
+                      ),
+                    ]),
                   ),
-                ),
-            );
+                );
   }
 }

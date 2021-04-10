@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/configuration_details.dart';
 import 'package:flutter_application_1/utilities/multilingual_service.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:intl/intl.dart';
 
 class KillSheetThree extends StatefulWidget {
@@ -142,7 +143,7 @@ casingYeild = _config.casing.yieldStrength.value;
                       child: Text(
                         getText('surface_leak_off_test', context),
                         style: TextStyle(
-                            fontSize: 10,  color: Colors.black),
+                            fontSize:  kIsWeb? 0 :10,  color: Colors.black),
                       ),
                     ),
                   ),
@@ -195,7 +196,7 @@ casingYeild = _config.casing.yieldStrength.value;
                 children: [
                   Text(
                     getText('casing_shoe_tvd', context),
-                    style: TextStyle(fontSize: 10,  color: Colors.black),
+                    style: TextStyle(  fontSize:  kIsWeb? 0 :10,  color: Colors.black),
                   ),
 
                   SizedBox(
@@ -246,7 +247,7 @@ casingYeild = _config.casing.yieldStrength.value;
                 children: [
                   Text(
                     '',
-                    style: TextStyle(fontSize: 10,  color: Colors.black),
+                    style: TextStyle(  fontSize:  kIsWeb? 0 :10,  color: Colors.black),
                   ),
 
                   SizedBox(
@@ -291,7 +292,7 @@ casingYeild = _config.casing.yieldStrength.value;
                       child: Text(
                         getText('leak_off_test_mud_weight', context),
                         style: TextStyle(
-                            fontSize: 10,  color: Colors.black),
+                             fontSize:  kIsWeb? 0 :10,  color: Colors.black),
                       ),
                     ),
                   ),
@@ -344,7 +345,7 @@ casingYeild = _config.casing.yieldStrength.value;
                 children: [
                   Text(
                     getText('maximum_mud_weight', context),
-                    style: TextStyle(fontSize: 10,  color: Colors.black),
+                    style: TextStyle(  fontSize:  kIsWeb? 0 :10,  color: Colors.black),
                   ),
 
                   SizedBox(
@@ -415,7 +416,7 @@ casingYeild = _config.casing.yieldStrength.value;
                     child: Text(
                       getText('maximum_mud_weight', context),
                       style:
-                          TextStyle(fontSize: 10,  color: Colors.black),
+                          TextStyle(  fontSize:  kIsWeb? 0 :10,  color: Colors.black),
                     ),
                   ),
 
@@ -469,7 +470,7 @@ casingYeild = _config.casing.yieldStrength.value;
                     child: Text(
                       getText('drilling_mud_weight', context),
                       style:
-                          TextStyle(fontSize: 10,  color: Colors.black),
+                          TextStyle(  fontSize:  kIsWeb? 0 :10,  color: Colors.black),
                     ),
                   ),
 
@@ -525,7 +526,7 @@ casingYeild = _config.casing.yieldStrength.value;
                 children: [
                   Text(
                     '',
-                    style: TextStyle(fontSize: 10,  color: Colors.black),
+                    style: TextStyle(  fontSize:  kIsWeb? 0 :10,  color: Colors.black),
                   ),
 
                   SizedBox(
@@ -568,7 +569,7 @@ casingYeild = _config.casing.yieldStrength.value;
                     child: Text(
                       getText('casing_tvd', context),
                       style:
-                          TextStyle(fontSize: 10,  color: Colors.black),
+                          TextStyle(  fontSize:  kIsWeb? 0 :10,  color: Colors.black),
                     ),
                   ),
 
@@ -622,14 +623,14 @@ casingYeild = _config.casing.yieldStrength.value;
                     getText(
                         'maximum_allowable_annulus_surface_pressure', context),
                     style: TextStyle(
-                      fontSize: 9,
+                        fontSize:  kIsWeb? 0 :9,
                        color: Colors.black,
                     ),
                     textAlign: TextAlign.center,
                   ),
 
                   SizedBox(
-                    height: MediaQuery.of(context).size.width > 1047 ? 18 : 8,
+                    height: MediaQuery.of(context).size.width > 1047 ? 16 : 8,
                   ),
 
                   SizedBox(
@@ -692,7 +693,7 @@ casingYeild = _config.casing.yieldStrength.value;
                     child: Text(
                       getText('s_i_d_p_p', context),
                       style:
-                          TextStyle(fontSize: 10,  color: Colors.black),
+                          TextStyle(  fontSize:  kIsWeb? 0 :10,  color: Colors.black),
                     ),
                   ),
 
@@ -746,7 +747,7 @@ casingYeild = _config.casing.yieldStrength.value;
                     child: Text(
                       getText('t_v_d_from_rkb', context),
                       style:
-                          TextStyle(fontSize: 10,  color: Colors.black),
+                          TextStyle(  fontSize:  kIsWeb? 0 :10,  color: Colors.black),
                     ),
                   ),
 
@@ -798,7 +799,7 @@ casingYeild = _config.casing.yieldStrength.value;
                 children: [
                   Text(
                     '',
-                    style: TextStyle(fontSize: 10,  color: Colors.black),
+                    style: TextStyle(  fontSize:  kIsWeb? 0 :10,  color: Colors.black),
                   ),
 
                   SizedBox(
@@ -839,7 +840,7 @@ casingYeild = _config.casing.yieldStrength.value;
                 children: [
                   Text(
                     getText('current_mud_weight', context),
-                    style: TextStyle(fontSize: 10,  color: Colors.black),
+                    style: TextStyle(  fontSize:  kIsWeb? 0 :10,  color: Colors.black),
                   ),
 
                   SizedBox(
@@ -890,7 +891,7 @@ casingYeild = _config.casing.yieldStrength.value;
                 children: [
                   Text(
                     getText('kill_mud', context),
-                    style: TextStyle(fontSize: 10,  color: Colors.black),
+                    style: TextStyle(  fontSize:  kIsWeb? 0 :10,  color: Colors.black),
                   ),
 
                   SizedBox(
@@ -959,7 +960,7 @@ casingYeild = _config.casing.yieldStrength.value;
                 children: [
                   Text(
                     getText('maximum_mud_weight', context),
-                    style: TextStyle(fontSize: 10,  color: Colors.black),
+                    style: TextStyle(  fontSize:  kIsWeb? 0 :10,  color: Colors.black),
                   ),
 
                   SizedBox(
@@ -1012,7 +1013,7 @@ casingYeild = _config.casing.yieldStrength.value;
                     child: Text(
                       getText('kill_mud_weight', context),
                       style:
-                          TextStyle(fontSize: 10,  color: Colors.black),
+                          TextStyle(  fontSize:  kIsWeb? 0 :10,  color: Colors.black),
                     ),
                   ),
 
@@ -1068,7 +1069,7 @@ casingYeild = _config.casing.yieldStrength.value;
                 children: [
                   Text(
                     '',
-                    style: TextStyle(fontSize: 10,  color: Colors.black),
+                    style: TextStyle(  fontSize:  kIsWeb? 0 :10,  color: Colors.black),
                   ),
 
                   SizedBox(
@@ -1109,7 +1110,7 @@ casingYeild = _config.casing.yieldStrength.value;
                 children: [
                   Text(
                     getText('casing_tvd', context),
-                    style: TextStyle(fontSize: 10,  color: Colors.black),
+                    style: TextStyle(  fontSize:  kIsWeb? 0 :10,  color: Colors.black),
                   ),
 
                   SizedBox(
@@ -1161,8 +1162,10 @@ casingYeild = _config.casing.yieldStrength.value;
                   Text(
                     getText('new_maximum_allowable_annulus_surface_pressure',
                         context),
+                      
                     style: TextStyle(
-                      fontSize: 9,
+                      
+                        fontSize:  kIsWeb? 11 :9,
                        color: Colors.black,
                     ),
                     textAlign: TextAlign.center,
@@ -1229,7 +1232,7 @@ casingYeild = _config.casing.yieldStrength.value;
               children: [
                 Text(
                   getText('casing_yield', context),
-                  style: TextStyle(fontSize: 10,  color: Colors.black),
+                  style: TextStyle(  fontSize:  kIsWeb? 0 :10,  color: Colors.black),
                 ),
 
                 SizedBox(
@@ -1277,7 +1280,7 @@ casingYeild = _config.casing.yieldStrength.value;
               children: [
                 Text(
                   getText('safety_factor', context),
-                  style: TextStyle(fontSize: 10,  color: Colors.black),
+                  style: TextStyle(  fontSize:  kIsWeb? 0 :10,  color: Colors.black),
                 ),
 
                 SizedBox(
@@ -1330,7 +1333,7 @@ casingYeild = _config.casing.yieldStrength.value;
                     child: Text(
                       getText('maximum_allowable_surface_pressure', context),
                       style: TextStyle(
-                        fontSize: 9,
+                          fontSize:  kIsWeb? 0 :9,
                          color: Colors.black,
                       ),
                       textAlign: TextAlign.center,
@@ -1436,7 +1439,7 @@ Text(
                           right: 24,
                           bottom:26,
                                                   child: Center(
-                          child:Text('psi', style: TextStyle(fontSize: 10),),
+                          child:Text('psi', style: TextStyle(  fontSize:  kIsWeb? 0 :10),),
                       ),
                         ),
                        ]),
@@ -1524,7 +1527,7 @@ Text(
                           right: 14,
                           bottom:20,
                                                   child: Center(
-                          child:Text('bbls', style: TextStyle(fontSize: 10),),
+                          child:Text('bbls', style: TextStyle(  fontSize:  kIsWeb? 0 :10),),
                       ),
                         ),
                        ]),
@@ -1614,7 +1617,7 @@ Text(
                           right: 24,
                           bottom:26,
                                                   child: Center(
-                          child:Text('psi', style: TextStyle(fontSize: 10),),
+                          child:Text('psi', style: TextStyle(  fontSize:  kIsWeb? 0 :10),),
                       ),
                         ),
                        ]),

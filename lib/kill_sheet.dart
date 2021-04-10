@@ -1592,7 +1592,7 @@ class _KillSheetState extends State<KillSheet> {
                           Center(
                             child: Text(
                               totalLength.toString(),
-                              style: TextStyle(fontSize: 12),
+                              // style: TextStyle(fontSize: 12),
                             ),
                           ),
                           Positioned(bottom: 1, right: 8, child: Text('ft')),
@@ -1604,7 +1604,7 @@ class _KillSheetState extends State<KillSheet> {
                           Center(
                             child: Text(
                               totalVolumeDrillString.toStringAsFixed(2),
-                              style: TextStyle(fontSize: 12),
+                            // style: TextStyle(fontSize: 12),
                             ),
                           ),
                           Positioned(
@@ -2002,12 +2002,14 @@ class _KillSheetState extends State<KillSheet> {
                                     style: TextStyle(fontSize: 9),
                                     textAlign: TextAlign.center,
                                   ):
-                                  Text(
-                                    getText(
-                                        'check_that_total_length_measured_depth',
-                                        context),
-                                    style: TextStyle(fontSize: 9),
-                                    textAlign: TextAlign.center,
+                                  FittedBox(
+                                                                      child: Text(
+                                      getText(
+                                          'check_that_total_length_measured_depth',
+                                          context),
+                                      // style: TextStyle(fontSize: 9),
+                                      textAlign: TextAlign.center,
+                                    ),
                                   ),
                                 )),
                           ),

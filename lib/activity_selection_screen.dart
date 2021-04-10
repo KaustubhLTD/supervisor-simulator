@@ -1,4 +1,5 @@
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/kill_sheet.dart';
 import 'package:flutter_application_1/mode_selection.dart';
@@ -396,7 +397,7 @@ class SimulatorHeader extends StatelessWidget {
                   .getText("drilling_supervisor_simulation"),
               style: TextStyle(
                 color: Colors.blue,
-                fontSize: 14.0, //16
+                fontSize:  kIsWeb? 22 : 14.0, //16
               ),
             ),
           ],

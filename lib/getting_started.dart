@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/mode_selection.dart';
 
@@ -63,28 +64,33 @@ class _GuidelinesState extends State<Guidelines> {
                       ),
                       Text(
                           'At the end of this simulation, you will be able to learn and/or evaluate yourself on how to:',
-                          style: TextStyle(color: Colors.grey[500],),
+                          style: TextStyle(
+                            fontSize: kIsWeb? 22 : 0,
+                            ),
                         ),
                       SizedBox(height: 12),
                       Text(
                           '\u2022 Verify pre-operational setups before begining the kill operations.',
-                          style: TextStyle(color: Colors.grey[500])),
+                          style: TextStyle(
+                              fontSize: kIsWeb? 18 : 0,
+                            )),
                       Text(
                           '\u2022 Prepare yourself and the crew for the kill operation.',
-                          style: TextStyle(color: Colors.grey[500])),
+                          style: TextStyle(   fontSize: kIsWeb? 18 : 0,)),
                       Text(
                           '\u2022 Carry-out the kill operation while keeping the BHP constant.',
-                          style: TextStyle(color: Colors.grey[500])),
+                          style: TextStyle(   fontSize: kIsWeb? 18 : 0,)),
                       Text(
                           '\u2022 Detect and resolve the problems occuring during kill operation.',
-                          style: TextStyle(color: Colors.grey[500]))
+                          style: TextStyle(   fontSize: kIsWeb? 18 : 0,))
                     ],
                   )),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
               child: Image(
-                image: AssetImage('assets/images/guideline.PNG'),
+                image: AssetImage('assets/images/guideline.PNG',),
+                fit: BoxFit.cover,
                 width: double.infinity,
               ),
             ),
@@ -98,20 +104,22 @@ class _GuidelinesState extends State<Guidelines> {
                       SizedBox(
                         height: 6,
                       ),
-                      Text('This is what you need to do:'),
+                      Text('This is what you need to do:',
+                        style: TextStyle(   fontSize: kIsWeb? 18 : 0,)
+                       ),
                       SizedBox(height: 12),
                       Text(
                           '\u2022 Tap the first procedure in each Module, e.g. Line-up BOP Panel.',
-                          style: TextStyle(color: Colors.grey[500])),
+                          style: TextStyle(   fontSize: kIsWeb? 18 : 0,)),
                       Text(
                           '\u2022 On the next screen perform the activity based on the Hints provided.',
-                          style: TextStyle(color: Colors.grey[500])),
+                          style: TextStyle(   fontSize: kIsWeb? 18 : 0,)),
                       Text(
                           '\u2022 Once you are done with the procedure return back to the Home Screen by tapping on the "Done" button.',
-                          style: TextStyle(color: Colors.grey[500])),
+                          style: TextStyle(   fontSize: kIsWeb? 18 : 0,)),
                       Text(
                           '\u2022 Continue int this manner for all activities under Module 1 2 and 3 until you obtain your final score under "Skill Assesment Grade".',
-                          style: TextStyle(color: Colors.grey[500]))
+                          style: TextStyle(   fontSize: kIsWeb? 18 : 0,))
                     ],
                   )),
             ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/configuration_details.dart';
 import 'package:flutter_application_1/utilities/multilingual_service.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 class Killsheetfour extends StatefulWidget {
    SelectedMethodRig methodRig;
@@ -234,7 +235,7 @@ class _KillsheetfourState extends State<Killsheetfour> {
                       child: Text(
                         getText('scr_riser_psi', context),
                         style: TextStyle(
-                            fontSize: 10, fontWeight: FontWeight.w500),
+                               fontSize:  kIsWeb? 0 :10, fontWeight: FontWeight.w500),
                       ),
                     ),
 
@@ -274,7 +275,7 @@ class _KillsheetfourState extends State<Killsheetfour> {
                     Text(
                       getText('sidpp_psi', context),
                       style:
-                          TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
+                          TextStyle(   fontSize:  kIsWeb? 0 :10, fontWeight: FontWeight.w500),
                     ),
 
                     SizedBox(
@@ -313,7 +314,7 @@ class _KillsheetfourState extends State<Killsheetfour> {
                     Text(
                       getText('initial_circulating_pressure', context),
                       style:
-                          TextStyle(fontSize: 9, fontWeight: FontWeight.w500),
+                          TextStyle(  fontSize:  kIsWeb? 0 :9, fontWeight: FontWeight.w500),
                     ),
 
                     SizedBox(
@@ -375,7 +376,7 @@ class _KillsheetfourState extends State<Killsheetfour> {
                       child: Text(
                         getText('scr_riser_psi', context),
                         style: TextStyle(
-                            fontSize: 10, fontWeight: FontWeight.w500),
+                               fontSize:  kIsWeb? 0 :10, fontWeight: FontWeight.w500),
                       ),
                     ),
 
@@ -414,7 +415,7 @@ class _KillsheetfourState extends State<Killsheetfour> {
                 children: [
                   Text(
                     getText('kill_mud_ppg', context),
-                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
+                    style: TextStyle(   fontSize:  kIsWeb? 0 :10, fontWeight: FontWeight.w500),
                   ),
 
                   SizedBox(
@@ -452,7 +453,7 @@ class _KillsheetfourState extends State<Killsheetfour> {
                       child: Text(
                         getText('drilling_mud_weight_ppg', context),
                         style: TextStyle(
-                            fontSize: 10, fontWeight: FontWeight.w500),
+                               fontSize:  kIsWeb? 0 :10, fontWeight: FontWeight.w500),
                       ),
                     ),
 
@@ -493,7 +494,7 @@ class _KillsheetfourState extends State<Killsheetfour> {
                       child: Text(
                         getText('final_circulating_pressure', context),
                         style:
-                            TextStyle(fontSize: 9, fontWeight: FontWeight.w500),
+                            TextStyle(  fontSize:  kIsWeb? 0 :9, fontWeight: FontWeight.w500),
                       ),
                     ),
 
@@ -556,7 +557,7 @@ class _KillsheetfourState extends State<Killsheetfour> {
                       child: Text(
                         getText('difference_icp_fcp', context),
                         style: TextStyle(
-                            fontSize: 10, fontWeight: FontWeight.w500),
+                               fontSize:  kIsWeb? 0 :10, fontWeight: FontWeight.w500),
                       ),
                     ),
 
@@ -596,7 +597,7 @@ class _KillsheetfourState extends State<Killsheetfour> {
                     Text(
                       getText('surface_to_bit_strokes', context),
                       style:
-                          TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
+                          TextStyle(   fontSize:  kIsWeb? 0 :10, fontWeight: FontWeight.w500),
                     ),
 
                     SizedBox(
@@ -635,7 +636,7 @@ class _KillsheetfourState extends State<Killsheetfour> {
                     Text(
                       getText('pressure_stepdown', context),
                       style:
-                          TextStyle(fontSize: 9, fontWeight: FontWeight.w500),
+                          TextStyle(  fontSize:  kIsWeb? 0 :9, fontWeight: FontWeight.w500),
                     ),
 
                     SizedBox(
@@ -707,7 +708,7 @@ class _KillsheetfourState extends State<Killsheetfour> {
                           child: Text(
                             getText('surface_to_bit_strokes', context),
                             style: TextStyle(
-                                fontSize: 10, fontWeight: FontWeight.w500),
+                                   fontSize:  kIsWeb? 0 :10, fontWeight: FontWeight.w500),
                           ),
                         ),
 
@@ -747,7 +748,7 @@ class _KillsheetfourState extends State<Killsheetfour> {
                         Text(
                           getText('bit_to_surface_strokes', context),
                           style: TextStyle(
-                              fontSize: 10, fontWeight: FontWeight.w500),
+                                 fontSize:  kIsWeb? 0 :10, fontWeight: FontWeight.w500),
                         ),
 
                         SizedBox(
@@ -786,7 +787,7 @@ class _KillsheetfourState extends State<Killsheetfour> {
                         Text(
                           getText('total_strokes_to_kill_well', context),
                           style: TextStyle(
-                              fontSize: 9, fontWeight: FontWeight.w500),
+                                fontSize:  kIsWeb? 0 :9, fontWeight: FontWeight.w500),
                         ),
 
                         SizedBox(
@@ -830,7 +831,7 @@ class _KillsheetfourState extends State<Killsheetfour> {
                           child: Text(
                             getText('surface_to_bit_time', context),
                             style: TextStyle(
-                                fontSize: 10, fontWeight: FontWeight.w500),
+                                   fontSize:  kIsWeb? 0 :10, fontWeight: FontWeight.w500),
                           ),
                         ),
 
@@ -870,7 +871,7 @@ class _KillsheetfourState extends State<Killsheetfour> {
                         Text(
                           getText('bit_to_surface_time', context),
                           style: TextStyle(
-                              fontSize: 10, fontWeight: FontWeight.w500),
+                                 fontSize:  kIsWeb? 0 :10, fontWeight: FontWeight.w500),
                         ),
 
                         SizedBox(
@@ -909,7 +910,7 @@ class _KillsheetfourState extends State<Killsheetfour> {
                         Text(
                           getText('total_time_to_kill_well', context),
                           style: TextStyle(
-                              fontSize: 9, fontWeight: FontWeight.w500),
+                                fontSize:  kIsWeb? 0 :9, fontWeight: FontWeight.w500),
                         ),
 
                         SizedBox(
@@ -979,7 +980,7 @@ class _KillsheetfourState extends State<Killsheetfour> {
                       child: Text(
                         getText('choke_line_psi', context),
                         style: TextStyle(
-                            fontSize: 10, fontWeight: FontWeight.w500),
+                               fontSize:  kIsWeb? 0 :10, fontWeight: FontWeight.w500),
                       ),
                     ),
 
@@ -1018,7 +1019,7 @@ class _KillsheetfourState extends State<Killsheetfour> {
                 children: [
                   Text(
                     getText('kill_mud_ppg', context),
-                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
+                    style: TextStyle(   fontSize:  kIsWeb? 0 :10, fontWeight: FontWeight.w500),
                   ),
 
                   SizedBox(
@@ -1056,7 +1057,7 @@ class _KillsheetfourState extends State<Killsheetfour> {
                       child: Text(
                         getText('original_mud_ppg', context),
                         style: TextStyle(
-                            fontSize: 10, fontWeight: FontWeight.w500),
+                               fontSize:  kIsWeb? 0 :10, fontWeight: FontWeight.w500),
                       ),
                     ),
 
@@ -1098,7 +1099,7 @@ class _KillsheetfourState extends State<Killsheetfour> {
                         getText('changeinP',context)+' '+getText('clf', context),
                        
                         style:
-                            TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
+                            TextStyle(   fontSize:  kIsWeb? 0 :10, fontWeight: FontWeight.w500),
                       ),
                     ),
 
@@ -1165,7 +1166,7 @@ riserDataWidget() {
                           child: Text(
                             getText('riser_volume', context),
                             style: TextStyle(
-                                fontSize: 10, fontWeight: FontWeight.w500),
+                                   fontSize:  kIsWeb? 0 :10, fontWeight: FontWeight.w500),
                           ),
                         ),
 
@@ -1205,7 +1206,7 @@ riserDataWidget() {
                         Text(
                           getText('pump_output_bbl_stk', context),
                           style: TextStyle(
-                              fontSize: 10, fontWeight: FontWeight.w500),
+                                 fontSize:  kIsWeb? 0 :10, fontWeight: FontWeight.w500),
                         ),
 
                         SizedBox(
@@ -1244,7 +1245,7 @@ riserDataWidget() {
                         Text(
                           getText('riser_stroke', context),
                           style: TextStyle(
-                              fontSize: 9, fontWeight: FontWeight.w500),
+                                fontSize:  kIsWeb? 0 :9, fontWeight: FontWeight.w500),
                         ),
 
                         SizedBox(
@@ -1288,7 +1289,7 @@ riserDataWidget() {
                           child: Text(
                             getText('riser_stroke', context),
                             style: TextStyle(
-                                fontSize: 10, fontWeight: FontWeight.w500),
+                                   fontSize:  kIsWeb? 0 :10, fontWeight: FontWeight.w500),
                           ),
                         ),
 
@@ -1329,7 +1330,7 @@ riserDataWidget() {
                         Text(
                           getText('slow_circulating_rate_spm', context),
                           style: TextStyle(
-                              fontSize: 10, fontWeight: FontWeight.w500),
+                                 fontSize:  kIsWeb? 0 :10, fontWeight: FontWeight.w500),
                         ),
 
                         SizedBox(
@@ -1369,7 +1370,7 @@ riserDataWidget() {
                         Text(
                           getText('time_to_displace_riser', context),
                           style: TextStyle(
-                              fontSize: 9, fontWeight: FontWeight.w500),
+                                fontSize:  kIsWeb? 0 :9, fontWeight: FontWeight.w500),
                         ),
 
                         SizedBox(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utilities/multilingual_service.dart';
 import 'package:mm_initial_data/mmid_dm_wwm_initial_data.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 import 'configuration_details.dart';
 
@@ -645,7 +646,8 @@ class _KillsheettwoState extends State<Killsheettwo> {
       margin: const EdgeInsets.all(15.0),
       padding: const EdgeInsets.all(3.0),
       decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-      child: Padding(
+      child:
+       Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
@@ -656,11 +658,20 @@ class _KillsheettwoState extends State<Killsheettwo> {
                 Expanded(
                   child: Column(
                     children: [
+                    kIsWeb ?
+                     FittedBox(
+                        child: Text(
+                          getText('drill_string_volume_bbls', context),
+                          style: TextStyle(
+                             fontWeight: FontWeight.w500),
+                        ),
+                      ):
                       FittedBox(
                         child: Text(
                           getText('drill_string_volume_bbls', context),
                           style: TextStyle(
-                              fontSize: 10, fontWeight: FontWeight.w500),
+                              fontSize:
+                              kIsWeb? 0 : 10, fontWeight: FontWeight.w500),
                         ),
                       ),
 
@@ -702,7 +713,8 @@ class _KillsheettwoState extends State<Killsheettwo> {
                         child: Text(
                           getText('pump_output_bbl_stk', context),
                           style: TextStyle(
-                              fontSize: 10, fontWeight: FontWeight.w500),
+                              fontSize:
+                              kIsWeb? 0 : 10, fontWeight: FontWeight.w500),
                         ),
                       ),
 
@@ -744,7 +756,8 @@ class _KillsheettwoState extends State<Killsheettwo> {
                         child: Text(
                           getText('surface_to_bit_strokes', context),
                           style: TextStyle(
-                              fontSize: 10, fontWeight: FontWeight.w500),
+                              fontSize:
+                              kIsWeb? 0 : 10, fontWeight: FontWeight.w500),
                         ),
                       ),
 
@@ -789,7 +802,8 @@ class _KillsheettwoState extends State<Killsheettwo> {
                         child: Text(
                           getText('surface_to_bit_strokes', context),
                           style: TextStyle(
-                              fontSize: 10, fontWeight: FontWeight.w500),
+                              fontSize:
+                              kIsWeb? 0 : 10, fontWeight: FontWeight.w500),
                         ),
                       ),
 
@@ -831,7 +845,8 @@ class _KillsheettwoState extends State<Killsheettwo> {
                         child: Text(
                           getText('slow_circulating_rate_spm', context),
                           style: TextStyle(
-                              fontSize: 10, fontWeight: FontWeight.w500),
+                              fontSize:
+                              kIsWeb? 0 : 10, fontWeight: FontWeight.w500),
                         ),
                       ),
 
@@ -873,7 +888,8 @@ class _KillsheettwoState extends State<Killsheettwo> {
                         child: Text(
                           getText('surface_to_bit_time', context),
                           style: TextStyle(
-                              fontSize: 10, fontWeight: FontWeight.w500),
+                              fontSize:
+                              kIsWeb? 0 : 10, fontWeight: FontWeight.w500),
                         ),
                       ),
 
@@ -946,7 +962,8 @@ class _KillsheettwoState extends State<Killsheettwo> {
                         child: Text(
                           getText('bit_to_shoe_volume_bbls', context),
                           style: TextStyle(
-                              fontSize: 10, fontWeight: FontWeight.w500),
+                              fontSize:
+                              kIsWeb? 0 : 10, fontWeight: FontWeight.w500),
                         ),
                       ),
 
@@ -988,7 +1005,8 @@ class _KillsheettwoState extends State<Killsheettwo> {
                         child: Text(
                           getText('pump_output_bbl_stk', context),
                           style: TextStyle(
-                              fontSize: 10, fontWeight: FontWeight.w500),
+                              fontSize:
+                              kIsWeb? 0 : 10, fontWeight: FontWeight.w500),
                         ),
                       ),
 
@@ -1030,7 +1048,8 @@ class _KillsheettwoState extends State<Killsheettwo> {
                         child: Text(
                           getText('bit_to_shoe_strokes', context),
                           style: TextStyle(
-                              fontSize: 10, fontWeight: FontWeight.w500),
+                              fontSize:
+                              kIsWeb? 0 : 10, fontWeight: FontWeight.w500),
                         ),
                       ),
 
@@ -1075,7 +1094,8 @@ class _KillsheettwoState extends State<Killsheettwo> {
                         child: Text(
                           getText('bit_to_shoe_strokes', context),
                           style: TextStyle(
-                              fontSize: 10, fontWeight: FontWeight.w500),
+                              fontSize:
+                              kIsWeb? 0 : 10, fontWeight: FontWeight.w500),
                         ),
                       ),
 
@@ -1117,7 +1137,8 @@ class _KillsheettwoState extends State<Killsheettwo> {
                         child: Text(
                           getText('slow_circulating_rate_spm', context),
                           style: TextStyle(
-                              fontSize: 10, fontWeight: FontWeight.w500),
+                              fontSize:
+                              kIsWeb? 0 : 10, fontWeight: FontWeight.w500),
                         ),
                       ),
 
@@ -1159,7 +1180,8 @@ class _KillsheettwoState extends State<Killsheettwo> {
                         child: Text(
                           getText('bit_to_shoe_time', context),
                           style: TextStyle(
-                              fontSize: 10, fontWeight: FontWeight.w500),
+                              fontSize:
+                              kIsWeb? 0 : 10, fontWeight: FontWeight.w500),
                         ),
                       ),
 
@@ -1228,10 +1250,13 @@ class _KillsheettwoState extends State<Killsheettwo> {
                 Expanded(
                   child: Column(
                     children: [
-                      Text(
-                        getText('bit_to_surface_volume_via_cl_bbls', context),
-                        style:
-                            TextStyle(fontSize: 8, fontWeight: FontWeight.w500),
+                      FittedBox(
+                                              child: Text(
+                          getText('bit_to_surface_volume_via_cl_bbls', context),
+                          style:
+                              TextStyle( fontSize:
+                                kIsWeb? 0 : 8, fontWeight: FontWeight.w500),
+                        ),
                       ),
 
                       SizedBox(
@@ -1272,7 +1297,8 @@ class _KillsheettwoState extends State<Killsheettwo> {
                         child: Text(
                           getText('pump_output_bbl_stk', context),
                           style: TextStyle(
-                              fontSize: 10, fontWeight: FontWeight.w500),
+                              fontSize:
+                              kIsWeb? 0 : 10, fontWeight: FontWeight.w500),
                         ),
                       ),
 
@@ -1314,7 +1340,8 @@ class _KillsheettwoState extends State<Killsheettwo> {
                         child: Text(
                           getText('bit_to_surface_strokes', context),
                           style: TextStyle(
-                              fontSize: 10, fontWeight: FontWeight.w500),
+                              fontSize:
+                              kIsWeb? 0 : 10, fontWeight: FontWeight.w500),
                         ),
                       ),
 
@@ -1359,7 +1386,8 @@ class _KillsheettwoState extends State<Killsheettwo> {
                         child: Text(
                           getText('bit_to_surface_strokes', context),
                           style: TextStyle(
-                              fontSize: 10, fontWeight: FontWeight.w500),
+                              fontSize:
+                              kIsWeb? 0 : 10, fontWeight: FontWeight.w500),
                         ),
                       ),
 
@@ -1401,7 +1429,8 @@ class _KillsheettwoState extends State<Killsheettwo> {
                         child: Text(
                           getText('slow_circulating_rate_spm', context),
                           style: TextStyle(
-                              fontSize: 10, fontWeight: FontWeight.w500),
+                              fontSize:
+                              kIsWeb? 0 : 10, fontWeight: FontWeight.w500),
                         ),
                       ),
 
@@ -1443,7 +1472,8 @@ class _KillsheettwoState extends State<Killsheettwo> {
                         child: Text(
                           getText('bit_to_surface_time', context),
                           style: TextStyle(
-                              fontSize: 10, fontWeight: FontWeight.w500),
+                              fontSize:
+                              kIsWeb? 0 : 10, fontWeight: FontWeight.w500),
                         ),
                       ),
 
@@ -1516,7 +1546,8 @@ class _KillsheettwoState extends State<Killsheettwo> {
                         child: Text(
                           getText('riser_volume', context),
                           style: TextStyle(
-                              fontSize: 10, fontWeight: FontWeight.w500),
+                              fontSize:
+                              kIsWeb? 0 : 10, fontWeight: FontWeight.w500),
                         ),
                       ),
 
@@ -1558,7 +1589,8 @@ class _KillsheettwoState extends State<Killsheettwo> {
                         child: Text(
                           getText('pump_output_bbl_stk', context),
                           style: TextStyle(
-                              fontSize: 10, fontWeight: FontWeight.w500),
+                              fontSize:
+                              kIsWeb? 0 : 10, fontWeight: FontWeight.w500),
                         ),
                       ),
 
@@ -1600,7 +1632,8 @@ class _KillsheettwoState extends State<Killsheettwo> {
                         child: Text(
                           getText('riser_stroke', context),
                           style: TextStyle(
-                              fontSize: 10, fontWeight: FontWeight.w500),
+                              fontSize:
+                              kIsWeb? 0 : 10, fontWeight: FontWeight.w500),
                         ),
                       ),
 
@@ -1645,7 +1678,8 @@ class _KillsheettwoState extends State<Killsheettwo> {
                         child: Text(
                           getText('riser_stroke', context),
                           style: TextStyle(
-                              fontSize: 10, fontWeight: FontWeight.w500),
+                              fontSize:
+                              kIsWeb? 0 : 10, fontWeight: FontWeight.w500),
                         ),
                       ),
 
@@ -1687,7 +1721,8 @@ class _KillsheettwoState extends State<Killsheettwo> {
                         child: Text(
                           getText('slow_circulating_rate_spm', context),
                           style: TextStyle(
-                              fontSize: 10, fontWeight: FontWeight.w500),
+                              fontSize:
+                              kIsWeb? 0 : 10, fontWeight: FontWeight.w500),
                         ),
                       ),
 
@@ -1729,7 +1764,8 @@ class _KillsheettwoState extends State<Killsheettwo> {
                         child: Text(
                           getText('time_to_displace_riser', context),
                           style: TextStyle(
-                              fontSize: 10, fontWeight: FontWeight.w500),
+                              fontSize:
+                              kIsWeb? 0 : 10, fontWeight: FontWeight.w500),
                         ),
                       ),
 
